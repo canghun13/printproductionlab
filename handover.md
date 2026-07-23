@@ -479,6 +479,19 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 Append new entries at the top of this section.
 
+### 2026-07-24 — Phase 1 final verification
+
+- Model used: Codex
+- Final public HTML / calculators: 20 / 12.
+- Design audit: Browser-rendered audit of all 20 public pages at 1440, 1280, 1024, 768, and 390 px found no horizontal overflow, missing H1, button overflow, or absent header/footer on pages that use those shared elements. No design changes were required.
+- Calculation verification: `tools/verify-calculations.mjs` passed 24 independent normal-input samples (two per calculator). Samples include imposition 56/15-up, items 56/15, yield 15/9, paper 0.042/0.0049896 kg, GSM 118.44/270.48, spine 10.5/2.56 mm, cover 322/211 mm, DPI 10/8 in, creep 1.5/0.24 mm, page totals 16/20 divisible by four, wide-format 100/100 PPI, and cost 2/2 per piece. Invalid-value handling remains in calculator code; the browser audit checked no visible `NaN`, `Infinity`, or `undefined` on loaded pages.
+- Automated QA: `C:\\Users\\cangh\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe tools/qa.mjs` → `QA PASS: 20 public HTML pages checked`.
+- Files added/modified: `tools/verify-calculations.mjs`, `assets/js/main.js`, `assets/js/calculators/calculators.js`, `handover.md`.
+- Known issues: Browser testing covered layout and loaded-state integrity; production printer-specific outcomes remain outside calculator scope.
+- Remaining HIGH / MEDIUM / LOW risks: None / none / printer-specific production assumptions.
+- Phase 1 completion: Ready to close.
+- Exact next task: Configure GitHub Pages and verify the production custom domain, HTTPS, and analytics collection.
+
 ### 2026-07-24 — Phase 1 foundation (in progress)
 
 - Model used: Codex
