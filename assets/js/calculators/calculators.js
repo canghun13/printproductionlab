@@ -5,7 +5,7 @@ if(type==='imposition'){if(!valid([d,e]))return out('Enter positive finished dim
 else if(type==='items'){let across=Math.floor(a/(c+2*b)),down=Math.floor(d/(e+2*b));if(!valid([d,e])||across*down<1)return out('No item fits in the usable sheet area.',true);r=`<strong>${across*down} items</strong><p>${across} across × ${down} down, including ${b} bleed on every edge.</p>`}
 else if(type==='yield'){let good=Math.floor(a/b);if(a<b)return out('The total sheets must be at least the required sheets.',true);r=`<strong>${good} jobs</strong><p>Remaining sheets: ${a-good*b}. Waste: ${(100*(a-good*b)/a).toFixed(1)}%.</p>`}
 else if(type==='paper'){let area=a*b/1000000,kg=area*c/1000; r=`<strong>${kg.toFixed(3)} kg</strong><p>Sheet area: ${area.toFixed(4)} m² × ${c} gsm ÷ 1,000.</p>`}
-else if(type==='gsm'){let gsm=a*453.592/(b*c)*1550.0031;r=`<strong>${gsm.toFixed(1)} gsm</strong><p>Basis weight × 453.592 ÷ basis area in² × 1550.0031. Enter your grade’s basis dimensions.</p>`}
+else if(type==='gsm'){let gsm=a*1406.5/(b*c);r=`<strong>${gsm.toFixed(1)} gsm</strong><p>Basis weight × 1,406.5 ÷ basis area in². Enter your grade’s basis dimensions.</p>`}
 else if(type==='spine'){let sheets=a/2,spine=sheets*b+c;r=`<strong>${spine.toFixed(2)} mm</strong><p>${sheets} leaves × ${b} mm caliper + ${c} mm allowance.</p>`}
 else if(type==='cover'){let width=a*2+b+2*c,height=d+2*c;r=`<strong>${width.toFixed(2)} × ${height.toFixed(2)} mm</strong><p>Flat cover width includes front, back, spine, and ${c} mm bleed; height includes bleed.</p>`}
 else if(type==='creep'){if(a%4)return out('Saddle-stitched page count should be divisible by four.',true);r=`<strong>${((a/4-1)*b).toFixed(2)} mm</strong><p>Approximate outer-sheet creep: (sheets − 1) × paper caliper.</p>`}
