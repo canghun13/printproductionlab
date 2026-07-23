@@ -1,0 +1,1 @@
+document.addEventListener('click',e=>{if(e.target.matches('[data-copy]')){navigator.clipboard.writeText(e.target.closest('.result').innerText);e.target.textContent='Copied';setTimeout(()=>e.target.textContent='Copy result',1200)}});

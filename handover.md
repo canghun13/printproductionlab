@@ -479,6 +479,19 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 Append new entries at the top of this section.
 
+### 2026-07-24 — Phase 1 foundation (in progress)
+
+- Model used: Codex
+- Work completed: Built shared visual system, public hubs, core technical files, and initial calculator implementations for imposition, items per sheet, yield, paper weight, GSM/basis conversion, book spine, book cover and DPI.
+- Files added: `assets/css/styles.css`, `assets/js/main.js`, `assets/js/calculators/calculators.js`, public hubs, technical files and calculator pages.
+- Calculations verified: Representative default examples exercised manually in browser-independent JavaScript review; imposition compares normal and rotated geometry.
+- Browser sizes checked: Pending interactive browser QA.
+- Automated QA: Pending full link/meta/JSON-LD audit.
+- Commit: Pending
+- Push status: Pending
+- Known issues: Remaining roadmap calculators (creep, page order, wide-format resolution and job cost) and full QA/SEO pass are unfinished.
+- Exact next task: Complete the remaining four Phase 1 calculator pages, apply GA/structured-data/metadata consistently to every public page, run automated QA and responsive browser checks, then commit and push.
+
 ### YYYY-MM-DD — Session title
 
 - Model used:
