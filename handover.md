@@ -479,6 +479,14 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 Append new entries at the top of this section.
 
+### 2026-07-24 — Footer spacing and tool-card copy correction
+
+- Footer: Increased desktop column padding and boundary offsets so text has clear separation from dividers; set balanced minimum legal-column width. At 390 px, brand and legal blocks span the width, resources/company form readable columns, and links use 14 px type with 42 px targets.
+- Tools hub: Replaced the repeated card sentence with 36 distinct task-specific descriptions. `tools/fix-hub-descriptions.mjs` checks uniqueness.
+- Browser QA: Fresh checks at 1440, 1280, 1024, 768 and 390 px across Tools, six calculator types and company/legal pages found no overflow, missing footer links or duplicate hub-card copy.
+- QA: Hub Card QA PASS (36 unique descriptions); automatic QA and navigation QA passed.
+- Risks: HIGH none; MEDIUM editorial content depth remains outside this focused UI/copy session; LOW production cache and GA4 verification.
+
 ### 2026-07-24 — Calculator responsiveness and footer layout QA
 
 - Footer: Rebuilt responsive footer grid with brand, resources, company and legal/disclaimer areas. Desktop uses four columns; 390 px uses an ordered two-column/stacked layout with 40 px link targets.
