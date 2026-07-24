@@ -479,6 +479,11 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 Append new entries at the top of this section.
 
+### 2026-07-24 — Critical deployed footer and mobile override
+
+- Added an inline final-layout override to every public document so prior cascading stylesheet layers cannot reintroduce Footer divider borders or calculator multi-column mobile fields.
+- At 390 px, Paper Weight and GSM/Basis Weight calculator field grids resolve to one column, controls use 46 px minimum height, Footer links use 15 px text and no footer navigation border is computed.
+
 ### 2026-07-24 — Reported deployment UI hotfix
 
 - Fixed: Removed the obsolete Tools hub script that wrote to absent `#tool-list`, eliminating the reported console TypeError.
