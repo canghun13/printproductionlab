@@ -479,6 +479,16 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 Append new entries at the top of this section.
 
+### 2026-07-24 — Production design polish and live QA
+
+- Work completed: Corrected the live GSM converter null-selector defect, added local SVG/ICO favicon fallbacks, and added a print-workbench visual polish layer (grid, registration-style brand mark, measurement-oriented panels, stronger result hierarchy, compact headings, and responsive spacing).
+- Browser checks: Actual browser checks at 1440, 1280, 1024, 768 and 390 px across home, hubs, representative calculator pages, Privacy and 404 found no horizontal overflow, button overflow, or H1 count issue. All 12 calculator pages loaded, accepted a button click, rendered a result element, and emitted no console errors.
+- QA: `tools/qa.mjs` passed: `QA PASS: 20 public HTML pages checked`.
+- Files added/modified: `assets/css/polish.css`, `tools/normalize-heads.mjs`, public HTML heads, `favicon.svg`, `favicon.ico`, `assets/js/calculators/calculators.js`, `handover.md`.
+- Known issues: Browser smoke testing verifies interaction and console state, but deployed GitHub Pages cache propagation and GA4 collection require post-push production confirmation.
+- Remaining HIGH / MEDIUM / LOW risks: None / none / deployment cache and production analytics confirmation.
+- Exact next task: Confirm the latest commit at `https://printproductionlab.com`, including favicon response and GA4 realtime activity.
+
 ### 2026-07-24 — Phase 1 final verification
 
 - Model used: Codex
