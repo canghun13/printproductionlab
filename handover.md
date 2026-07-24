@@ -479,6 +479,14 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 Append new entries at the top of this section.
 
+### 2026-07-24 — Layout density and mobile refinement
+
+- Design changes: Reduced display-heading dominance, introduced readable professional sans typography, balanced calculator input/result proportions, compacted empty result treatment, and rebuilt footer links as a responsive column grid.
+- Core page content: Expanded About, Contact and Privacy with substantive purpose, method, limitation, feedback, analytics and data-handling sections.
+- Browser audit: Fresh desktop/mobile checks at 1440, 1280, 1024, 768 and 390 px across hubs, representative calculators, articles and core pages found no navigation, footer, button or horizontal-overflow issue.
+- QA: `tools/qa.mjs` and `tools/navigation-qa.mjs` both passed for 67 pages.
+- Risks: HIGH none; MEDIUM editorial depth across all legacy calculator explanations remains ongoing; LOW production cache and GA4 collection check.
+
 ### 2026-07-24 — Independent visual-system rebuild
 
 - Design differentiation: Replaced the prior light-card/navy-footer presentation with a press-desk system: graphite production bar, registration mark wordmark, signal-green production markers, ticket-style navigation, specification fields, press-summary result blocks, grid racks, manual/spec tables, and compact mobile navigation.
