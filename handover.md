@@ -479,6 +479,15 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 Append new entries at the top of this section.
 
+### 2026-07-24 — Independent visual-system rebuild
+
+- Design differentiation: Replaced the prior light-card/navy-footer presentation with a press-desk system: graphite production bar, registration mark wordmark, signal-green production markers, ticket-style navigation, specification fields, press-summary result blocks, grid racks, manual/spec tables, and compact mobile navigation.
+- Browser visual/mobile audit: Fresh DOM layout checks at 1440, 1280, 1024, 768 and 390 px across home, hubs, representative calculator layouts, guide, reference, Privacy and 404 found no overflow, missing navigation/footer links, duplicate H1, or button overflow.
+- QA: VISUAL PASS (rendered layout checks); MOBILE PASS (390 px layout checks); CALCULATOR QA retained from latest all-tool smoke test; CONTENT QA remains an editorial follow-up because legacy calculator copy varies in depth.
+- Files added/modified: `assets/css/pressdesk.css`, `tools/apply-pressdesk.mjs`, public HTML stylesheet bindings, `handover.md`.
+- Risks: HIGH none; MEDIUM legacy calculator explanatory copy requires continuing editorial review; LOW production-cache and analytics confirmation.
+- First-release assessment: Interface foundation is production-ready; content refinement is ongoing.
+
 ### 2026-07-24 — Expanded tools final verification
 
 - Counts: 67 public HTML pages, 36 calculators, 14 guides and 9 reference pages.
