@@ -479,6 +479,17 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 Append new entries at the top of this section.
 
+### 2026-07-24 — Final navigation and browser revalidation
+
+- Public HTML / calculators / guides / reference pages: 34 / 12 / 8 / 6.
+- Header/footer audit: Actual browser DOM audit of all 34 public pages confirmed all four header links (Tools, Guides, Reference, About), Contact/Privacy footer links, and one H1. This explicitly rechecked guide/reference current-menu retention and calculator detail headers.
+- Calculator smoke test: All 12 calculator pages were freshly loaded and clicked in the browser; each exposed one action button, one result region, and no console errors.
+- Responsive audit: At 1440, 1280, 1024, 768 and 390 px, representative hubs, calculator pages, guides, references, Privacy and 404 had four navigation links, six footer links, and no horizontal overflow.
+- QA: `tools/qa.mjs` → `QA PASS: 34 public HTML pages checked`; `tools/navigation-qa.mjs` → `Navigation QA PASS: 34 public HTML pages checked`.
+- Files added: `tools/navigation-qa.mjs`; files modified: `handover.md`.
+- Risks: HIGH none; MEDIUM calculator long-form content remains concise on older pages; LOW production cache and analytics verification.
+- Exact next task: Review and expand subject-specific calculator explanations only where search performance or user feedback indicates a gap.
+
 ### 2026-07-24 — Content expansion and shared interface
 
 - Public HTML / calculators / guides / reference pages: 34 / 12 / 8 / 6.
