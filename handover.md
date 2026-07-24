@@ -479,6 +479,10 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 Append new entries at the top of this section.
 
+### 2026-07-24 — Footer divider hard removal
+
+- Screenshot follow-up: Resources and Company `nav` elements now receive an inline `border:0!important` override in every public HTML file. This removes any remaining inherited/cascaded vertical divider at the element itself rather than relying only on stylesheet selectors.
+
 ### 2026-07-24 — Actual mobile viewport root-cause fix
 
 - Root cause: Several early calculator pages lacked `<meta name="viewport" content="width=device-width, initial-scale=1">`. Mobile browsers therefore used a desktop layout viewport and scaled the two-column form down, bypassing the intended mobile media queries.
