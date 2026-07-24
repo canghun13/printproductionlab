@@ -479,6 +479,13 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 Append new entries at the top of this section.
 
+### 2026-07-24 — Reported deployment UI hotfix
+
+- Fixed: Removed the obsolete Tools hub script that wrote to absent `#tool-list`, eliminating the reported console TypeError.
+- Fixed: Removed footer vertical dividers that crowded column text; set balanced desktop columns and an accessible mobile two-column/stacked footer.
+- Fixed: Forced calculator fields, controls and result blocks into a true single-column mobile layout with 44–46 px controls. The document body now fills the viewport so short pages do not leave a blank region beneath the footer.
+- Browser check: Tools, paper weight, imposition, About, Contact and Privacy at 1440, 1280, 1024, 768 and 390 px had no overflow, missing footer links, mobile grid failure, bottom whitespace or Tools console error.
+
 ### 2026-07-24 — Footer spacing and tool-card copy correction
 
 - Footer: Increased desktop column padding and boundary offsets so text has clear separation from dividers; set balanced minimum legal-column width. At 390 px, brand and legal blocks span the width, resources/company form readable columns, and links use 14 px type with 42 px targets.
