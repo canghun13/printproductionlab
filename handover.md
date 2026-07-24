@@ -479,6 +479,14 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 Append new entries at the top of this section.
 
+### 2026-07-24 — Calculator responsiveness and footer layout QA
+
+- Footer: Rebuilt responsive footer grid with brand, resources, company and legal/disclaimer areas. Desktop uses four columns; 390 px uses an ordered two-column/stacked layout with 40 px link targets.
+- Calculator UI: Fresh browser audit checked every one of 36 calculators at both 390 and 1440 px (72 page/viewport checks). Each retained a result region, six footer links, usable controls, and no horizontal, input or button overflow.
+- Viewports: Fresh checks at 1440, 1280, 1024, 768 and 390 px across home, hubs, company pages, 404 and representative calculator types found no navigation, footer or overflow failures.
+- QA: `tools/qa.mjs` and `tools/navigation-qa.mjs` passed.
+- Risks: HIGH none; MEDIUM content-depth work remains explicitly out of this UI-only session; LOW production cache and GA4 confirmation.
+
 ### 2026-07-24 — Contact, homepage and footer correction
 
 - Contact email: Replaced the former contact address throughout site text with `canghun13@naver.com`; no `hello@printproductionlab.com` occurrences remain.
