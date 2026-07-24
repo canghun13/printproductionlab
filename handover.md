@@ -479,6 +479,11 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 Append new entries at the top of this section.
 
+### 2026-07-24 — Actual mobile viewport root-cause fix
+
+- Root cause: Several early calculator pages lacked `<meta name="viewport" content="width=device-width, initial-scale=1">`. Mobile browsers therefore used a desktop layout viewport and scaled the two-column form down, bypassing the intended mobile media queries.
+- Fix: Added the viewport declaration to every public HTML page and verified no public page is missing it. The footer no-border/mobile overrides can now activate at real device widths.
+
 ### 2026-07-24 — Critical deployed footer and mobile override
 
 - Added an inline final-layout override to every public document so prior cascading stylesheet layers cannot reintroduce Footer divider borders or calculator multi-column mobile fields.
