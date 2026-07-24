@@ -479,6 +479,13 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 Append new entries at the top of this section.
 
+### 2026-07-24 — Calculator content-depth pass
+
+- Calculator content: Added structured sections to all 36 calculator pages: when to use, inputs, method, worked example, interpretation, production considerations, common mistakes, limitations and related production links. Six core calculators have topic-specific examples and considerations; all remaining tools have scoped task-specific copy.
+- Content QA: `tools/content-depth-qa.mjs` passed all 36 calculator pages after repairing an initial undefined limitation-text defect before commit.
+- Footer: Resources and Company navigation columns retain explicit border-free inline overrides.
+- Risks: HIGH none; MEDIUM editorial review can further enrich individual calculator case studies; LOW production-cache and analytics verification.
+
 ### 2026-07-24 — Footer divider hard removal
 
 - Screenshot follow-up: Resources and Company `nav` elements now receive an inline `border:0!important` override in every public HTML file. This removes any remaining inherited/cascaded vertical divider at the element itself rather than relying only on stylesheet selectors.
