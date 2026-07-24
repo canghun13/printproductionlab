@@ -479,6 +479,15 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 Append new entries at the top of this section.
 
+### 2026-07-24 — Content expansion and shared interface
+
+- Public HTML / calculators / guides / reference pages: 34 / 12 / 8 / 6.
+- Work completed: Unified header navigation and footer links across public pages; added eight practical guides and six reference pages; updated hubs and sitemap; added shared production-workbench visual styling.
+- QA: `tools/qa.mjs` passed with `QA PASS: 34 public HTML pages checked`.
+- Browser QA: Header menu and six footer links verified at 1440, 1280, 1024, 768 and 390 px across home, hubs, representative guide/reference/calculator pages, Privacy and 404. No overflow found.
+- Risks: HIGH none; MEDIUM none; LOW production deployment cache and analytics verification.
+- Exact next task: Verify all newly published pages in the production GitHub Pages deployment after cache propagation.
+
 ### 2026-07-24 — Production design polish and live QA
 
 - Work completed: Corrected the live GSM converter null-selector defect, added local SVG/ICO favicon fallbacks, and added a print-workbench visual polish layer (grid, registration-style brand mark, measurement-oriented panels, stronger result hierarchy, compact headings, and responsive spacing).
