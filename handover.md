@@ -479,6 +479,14 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 Append new entries at the top of this section.
 
+### 2026-07-24 — Contact, homepage and footer correction
+
+- Contact email: Replaced the former contact address throughout site text with `canghun13@naver.com`; no `hello@printproductionlab.com` occurrences remain.
+- Homepage: Rebuilt with hero, six production categories, eight featured calculators, workflow, guide/reference pointers and an explicit trust limitation.
+- Footer: Replaced corrupted separator-based link rows with four structured brand/resource/company/legal areas.
+- QA: Automatic and navigation QA passed; email search returned no prohibited address.
+- Risks: HIGH none; MEDIUM calculator, guide and reference editorial depth still requires a page-by-page subject-matter review; LOW production-cache and GA4 verification.
+
 ### 2026-07-24 — Layout density and mobile refinement
 
 - Design changes: Reduced display-heading dominance, introduced readable professional sans typography, balanced calculator input/result proportions, compacted empty result treatment, and rebuilt footer links as a responsive column grid.
