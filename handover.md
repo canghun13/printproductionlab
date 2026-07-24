@@ -479,6 +479,18 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 Append new entries at the top of this section.
 
+### 2026-07-24 — Expanded tools final verification
+
+- Counts: 67 public HTML pages, 36 calculators, 14 guides and 9 reference pages.
+- Independent samples: `tools/verify-expanded.mjs` exercised two positive input sets for each of 24 added calculators (48 cases); all values were finite, positive inputs and no invalid numeric output path was exposed by browser smoke testing.
+- Full smoke test: All 36 calculators were freshly loaded, clicked, rendered a result region and emitted zero browser console errors.
+- Tools hub: Rebuilt as six category sections containing all 36 calculator links: Paper & Stock; Imposition & Sheet Planning; Books & Binding; Resolution & Prepress; Wide Format & Roll Media; Production Cost & Time.
+- Responsive audit: 1440, 1280, 1024, 768 and 390 px checks on hubs, new calculator representatives, new guides/references, utility pages and 404 found no horizontal or button overflow; four header links and at least six footer links remained visible.
+- QA: `QA PASS: 67 public HTML pages checked`; `Navigation QA PASS: 67 public HTML pages checked`.
+- Risks: HIGH none; MEDIUM production assumptions remain estimates and should be checked with job specifications; LOW GitHub Pages cache and GA4 production collection.
+- First-complete-release assessment: Ready, subject to normal production deployment verification.
+- Exact next task: Monitor production usage and correct formulas only from verified print-production feedback.
+
 ### 2026-07-24 — Phase 2 first-complete-release expansion
 
 - Public HTML / calculators / guides / references: 67 / 36 / 14 / 9.
