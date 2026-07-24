@@ -479,6 +479,14 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 Append new entries at the top of this section.
 
+### 2026-07-24 — Phase 2 first-complete-release expansion
+
+- Public HTML / calculators / guides / references: 67 / 36 / 14 / 9.
+- New calculators: paper thickness, ream and M-weight, sheets from weight, N-up, bleed, allowances, press sheets, signatures, saddle stitch, book weight, coil, pixels, scaling, safe area, roll and banner planning, per-piece cost, spoilage, runtime and profit margin.
+- Validation: New calculator browser smoke test exercised 24 added tools with a click, result rendering and console-error check; all passed. Existing QA and navigation QA both passed for 67 public pages.
+- Risks: HIGH none; MEDIUM formula defaults are planning estimates and need production-side confirmation; LOW GitHub Pages cache and analytics verification.
+- Exact next task: Review usage analytics and add only high-demand calculators or deeper subject guides.
+
 ### 2026-07-24 — Final navigation and browser revalidation
 
 - Public HTML / calculators / guides / reference pages: 34 / 12 / 8 / 6.
