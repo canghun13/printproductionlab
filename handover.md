@@ -479,6 +479,13 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 Append new entries at the top of this section.
 
+### 2026-07-24 — Calculator content layout, encoding and Footer cleanup
+
+- Calculator content layout: Moved all 36 added detail blocks inside their respective `main` containers and applied a shared constrained content-detail layout with aligned headings, readable line length, example/note blocks and grouped related links.
+- Encoding: Removed mojibake/replacement-character patterns and repaired undefined limitation text before verification.
+- Footer: Added final footer rule set that disables borders, pseudo-element separators, column rules, background dividers, outlines and divider shadows for footer descendants.
+- Browser QA: Six representative calculators at 1440, 1280, 1024, 768 and 390 verified content detail inside main, three related-link groups, zero footer nav borders, no replacement character and no overflow.
+
 ### 2026-07-24 — Calculator content-depth pass
 
 - Calculator content: Added structured sections to all 36 calculator pages: when to use, inputs, method, worked example, interpretation, production considerations, common mistakes, limitations and related production links. Six core calculators have topic-specific examples and considerations; all remaining tools have scoped task-specific copy.
