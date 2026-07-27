@@ -479,6 +479,18 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 Append new entries at the top of this section.
 
+### 2026-07-27 — Content-depth and uniqueness completion pass
+
+- Audit scope and classification: 67 public HTML pages reviewed. Before editing, 8 core/hub/legal pages were sufficient, while all 36 calculators, 14 Guides and 9 Reference pages required substantive depth work (59 thin pages). After editing, all 67 pages are classified sufficient; no calculator, Guide or Reference page remains thin or pending.
+- Calculator content: Rewrote the detail section on all 36 calculators with topic-specific production purpose, input/unit selection, method, worked example, result application, production mistakes, assumptions/limitations and workflow links. Existing forms, IDs, calculation JavaScript, URL paths, header/footer, metadata and CSS layout were preserved.
+- Guides and Reference: Reworked all 14 Guides and 9 Reference pages as task-oriented production documents with definitions, unit/method guidance, examples, decision checklists, handoff/preflight guidance, cautions, related workflow and a 2026-07-27 review date.
+- Uniqueness QA: Added `tools/rebuild-content.mjs` as the maintained content source and expanded `tools/content-depth-qa.mjs` to verify all required sections, review dates, length floors and duplicate long body paragraphs. The QA result is `Content QA PASS: 36 calculators and 23 articles`.
+- Content sizes: calculator average 723 words (range 673–776); Guide average 741 words (700–771); Reference average 631 words (602–660). Long body-paragraph duplication: 0.
+- Automated checks: `tools/qa.mjs` PASS for 67 public HTML pages; `tools/navigation-qa.mjs` PASS for 67 public HTML pages; independent calculator verification PASS for 24 core samples and 48 expanded samples. `git diff --check` reported no whitespace errors.
+- Browser QA: Local in-app browser cannot reach the workspace-only static server (`ERR_CONNECTION_REFUSED`), so deployed browser QA at 1440, 1280, 1024, 768 and 390 px remains the post-push release check.
+- Risks: HIGH none; MEDIUM deployed responsive/interactive browser validation pending GitHub Pages propagation; LOW Cloudflare cache and GA4 production collection confirmation.
+- First-complete-release assessment: Content-inclusive first release is ready for commit and push; run the documented post-deployment browser audit before declaring production verification complete.
+
 ### 2026-07-24 — Calculator content layout, encoding and Footer cleanup
 
 - Calculator content layout: Moved all 36 added detail blocks inside their respective `main` containers and applied a shared constrained content-detail layout with aligned headings, readable line length, example/note blocks and grouped related links.
