@@ -479,6 +479,18 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 Append new entries at the top of this section.
 
+### 2026-07-27 — Final local browser rendering and interaction QA
+
+- Browser QA method: Ran a temporary localhost static server from the repository and rendered the checked-out `origin/main` files with installed Google Chrome through Playwright Core. This avoided the in-app browser network boundary and did not use `file://`.
+- Rendering coverage: 67 public HTML pages at 1440, 1280, 1024, 768 and 390 px: 335 real browser render checks. Every page returned HTTP 200 from localhost, displayed Header/Footer/main/H1, had usable body height, and had no horizontal overflow, out-of-viewport elements, table overflow, button overflow, page errors, failed internal requests or internal console errors.
+- Calculator interaction: All 36 calculators were tested at 390 px with a real Calculate click and Reset click. Results were non-empty and contained no `NaN`, `Infinity` or `undefined`; valid sample values produced no validation error; Reset restored input defaults and cleared the calculated result state.
+- Mobile common UI: At 390 px, Home, the three hubs, a calculator, Guide, Reference, About, Contact, Privacy and 404 each passed an open/close mobile-menu interaction check. Navigation, calculator buttons, unit inputs, related links, long text, tables and formula/result areas remained within the viewport.
+- Fixes made: Added the shared `assets/js/main.js` binding to the 38 public pages that did not already load it; added an accessible mobile menu toggle on every page; added a Reset control and default-result restoration to every calculator. No formula, input/result ID, URL, SEO metadata, content text or design system was changed.
+- QA note: The isolated Chrome environment denies external GA network access, which emits external-resource messages; QA counted only page errors and failed/console-error events from localhost assets. Internal console errors and page errors: 0.
+- Revalidation: `tools/qa.mjs`, `tools/navigation-qa.mjs`, `tools/content-depth-qa.mjs`, `tools/verify-calculations.mjs` and `tools/verify-expanded.mjs` all PASS after the UI fixes.
+- Risks: HIGH none; MEDIUM none; LOW GA4 collection and CDN cache observation remain normal production monitoring items.
+- First-complete-release assessment: Content-inclusive first release is fully verified locally, including all 335 required renders and all 36 Calculate/Reset interactions.
+
 ### 2026-07-27 — Content-depth and uniqueness completion pass
 
 - Audit scope and classification: 67 public HTML pages reviewed. Before editing, 8 core/hub/legal pages were sufficient, while all 36 calculators, 14 Guides and 9 Reference pages required substantive depth work (59 thin pages). After editing, all 67 pages are classified sufficient; no calculator, Guide or Reference page remains thin or pending.
