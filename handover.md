@@ -488,6 +488,7 @@ Append new entries at the top of this section.
 - Fixes made: Added the shared `assets/js/main.js` binding to the 38 public pages that did not already load it; added an accessible mobile menu toggle on every page; added a Reset control and default-result restoration to every calculator. No formula, input/result ID, URL, SEO metadata, content text or design system was changed.
 - QA note: The isolated Chrome environment denies external GA network access, which emits external-resource messages; QA counted only page errors and failed/console-error events from localhost assets. Internal console errors and page errors: 0.
 - Revalidation: `tools/qa.mjs`, `tools/navigation-qa.mjs`, `tools/content-depth-qa.mjs`, `tools/verify-calculations.mjs` and `tools/verify-expanded.mjs` all PASS after the UI fixes.
+- Commit and deployment: `d2ea25e` (`Complete browser interaction QA`) pushed to `origin/main`. The live homepage, representative calculator, Guide, Reference, `robots.txt`, `sitemap.xml` and `assets/js/main.js` all returned HTTP 200; cache-busted `main.js?v=d2ea25e` contains the mobile-menu and Reset code.
 - Risks: HIGH none; MEDIUM none; LOW GA4 collection and CDN cache observation remain normal production monitoring items.
 - First-complete-release assessment: Content-inclusive first release is fully verified locally, including all 335 required renders and all 36 Calculate/Reset interactions.
 
