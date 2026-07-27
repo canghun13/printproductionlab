@@ -487,9 +487,10 @@ Append new entries at the top of this section.
 - Uniqueness QA: Added `tools/rebuild-content.mjs` as the maintained content source and expanded `tools/content-depth-qa.mjs` to verify all required sections, review dates, length floors and duplicate long body paragraphs. The QA result is `Content QA PASS: 36 calculators and 23 articles`.
 - Content sizes: calculator average 723 words (range 673–776); Guide average 741 words (700–771); Reference average 631 words (602–660). Long body-paragraph duplication: 0.
 - Automated checks: `tools/qa.mjs` PASS for 67 public HTML pages; `tools/navigation-qa.mjs` PASS for 67 public HTML pages; independent calculator verification PASS for 24 core samples and 48 expanded samples. `git diff --check` reported no whitespace errors.
-- Browser QA: Local in-app browser cannot reach the workspace-only static server (`ERR_CONNECTION_REFUSED`), so deployed browser QA at 1440, 1280, 1024, 768 and 390 px remains the post-push release check.
-- Risks: HIGH none; MEDIUM deployed responsive/interactive browser validation pending GitHub Pages propagation; LOW Cloudflare cache and GA4 production collection confirmation.
-- First-complete-release assessment: Content-inclusive first release is ready for commit and push; run the documented post-deployment browser audit before declaring production verification complete.
+- Commit and push: Content commit `200c35b` (`Deepen print production content`) pushed successfully to `origin/main`. This follow-up handover update records the commit and deployment result.
+- Deployment check: `https://printproductionlab.com/` returned HTTP 200 and contains the current homepage copy after the push. In-app browser navigation is blocked by the execution environment, so visual/browser interaction checks at 1440, 1280, 1024, 768 and 390 px remain the only pending external release check.
+- Risks: HIGH none; MEDIUM deployed responsive/interactive browser validation pending environment access; LOW Cloudflare cache and GA4 production collection confirmation.
+- First-complete-release assessment: Content-inclusive first release is complete and deployed; perform the documented visual browser audit when browser network access is available.
 
 ### 2026-07-24 — Calculator content layout, encoding and Footer cleanup
 
