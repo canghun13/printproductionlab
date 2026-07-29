@@ -15,7 +15,7 @@ Public site language: English
 - Paper Weight formula now renders exactly as: `Formula: width × height ÷ 1,000,000 × gsm ÷ 1,000. Actual delivered weight may vary by tolerance and moisture.`
 - Durable prevention: added `tools/encoding-qa.mjs`. From the repository root run `node tools/encoding-qa.mjs`; it validates UTF-8 decoding, an early HTML charset declaration, known mojibake markers, accidental Korean visible text, double-escaped visible entities, and the Paper Weight formula source.
 - Verification: encoding QA PASS; automated QA PASS (67 public HTML); content QA PASS (36 calculators, 23 articles); navigation QA PASS (67 public HTML); calculation regression PASS (24 independent samples); JavaScript syntax PASS. Chrome localhost QA at 1440px checked the rendered text of all 67 public pages and Calculate/Reset behavior for all 36 calculators, including the exact rendered Paper Weight formula.
-- Pending after this entry: commit, push, remote HEAD comparison, and production HTTP verification.
+- Final delivery: committed as `43ab00c` (`Fix public text encoding`), pushed to `origin/main`, and local/remote HEAD matched. Production HTTP verification passed for home, Paper Weight, one Guide, one Reference, `robots.txt`, and `sitemap.xml` (all 200). A cache-busted Paper Weight response served the corrected formula and no `횞` or `첨` markers. Remaining encoding risk: HIGH 0, MEDIUM 0, LOW 0.
 
 ---
 
