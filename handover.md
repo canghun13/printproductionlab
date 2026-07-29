@@ -7,6 +7,18 @@ Public site language: English
 
 ---
 
+## Encoding repair — 2026-07-29
+
+- Cause: a prior calculator-content expansion serialized UTF-8 production symbols through a non-UTF-8 command path. The affected characters were multiplication, division, square-metre, micrometre, and apostrophe symbols; the source history identifies the content-expansion commits as the introduction point.
+- Scope before repair: 9 public HTML files and 16 visible-text markers. A repository-wide audit of public HTML, user-visible CSS/JavaScript, JSON, and XML found no additional affected asset files.
+- Fixed pages: `privacy.html`; Book Spine Width, Book Weight, GSM/Basis Weight, Paper Thickness, Paper Weight, Print Imposition, Print Job Cost, and Sheets From Total Weight calculators.
+- Paper Weight formula now renders exactly as: `Formula: width × height ÷ 1,000,000 × gsm ÷ 1,000. Actual delivered weight may vary by tolerance and moisture.`
+- Durable prevention: added `tools/encoding-qa.mjs`. From the repository root run `node tools/encoding-qa.mjs`; it validates UTF-8 decoding, an early HTML charset declaration, known mojibake markers, accidental Korean visible text, double-escaped visible entities, and the Paper Weight formula source.
+- Verification: encoding QA PASS; automated QA PASS (67 public HTML); content QA PASS (36 calculators, 23 articles); navigation QA PASS (67 public HTML); calculation regression PASS (24 independent samples); JavaScript syntax PASS. Chrome localhost QA at 1440px checked the rendered text of all 67 public pages and Calculate/Reset behavior for all 36 calculators, including the exact rendered Paper Weight formula.
+- Pending after this entry: commit, push, remote HEAD comparison, and production HTTP verification.
+
+---
+
 ## 1. Project identity
 
 - Domain: `printproductionlab.com`
