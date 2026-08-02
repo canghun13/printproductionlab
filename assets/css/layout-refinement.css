@@ -88,7 +88,8 @@ a:not(:focus-visible), button:not(:focus-visible), input:not(:focus-visible), se
   border: 1px solid #344454;
   border-top: 4px solid var(--ui-lime);
   box-shadow: 0 8px 22px #15231a14;
-  min-height: 164px;
+  display: flex;
+  flex-direction: column;
   padding: 24px;
 }
 .calculator > .result strong {
@@ -108,19 +109,24 @@ a:not(:focus-visible), button:not(:focus-visible), input:not(:focus-visible), se
 .result-actions {
   display: flex;
   align-items: center;
-  grid-column: 2;
-  margin-top: 12px;
+  justify-content: flex-end;
+  gap: 10px;
+  width: 100%;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #ffffff3d;
 }
 .result-actions[hidden] { display: none; }
 .result-actions .copy {
   width: auto;
-  min-height: 40px;
+  min-height: 36px;
   margin: 0;
-  padding: 9px 13px;
-  background: #245ed8;
-  border: 1px solid #7ba4ff;
+  padding: 8px 12px;
+  background: #edf1ec;
+  border: 1px solid #bcc8bf;
   box-shadow: none;
-  color: #fff;
+  color: #202725;
+  font-size: .72rem;
 }
 .calculator > .result:has(.error) {
   background: #35171b;
@@ -137,9 +143,9 @@ a:not(:focus-visible), button:not(:focus-visible), input:not(:focus-visible), se
 }
 
 @media (max-width: 768px) {
-  .calculator > .result { min-height: 0; padding: 20px; }
+  .calculator > .result { padding: 20px; }
   .calculator > .result strong { font-size: clamp(1.9rem, 11vw, 2.5rem); }
-  .result-actions { grid-column: auto; }
+  .result-actions { margin-top: 14px; padding-top: 10px; }
 }
 
 /* Keep the owner-managed directory badges in place while allowing them to wrap on narrow screens. */

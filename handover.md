@@ -489,6 +489,15 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 ## 16. Handover log format
 
+### 2026-08-02 — Copy Result action-row layout repair
+
+- Cause: the state-management repair created `.result-actions` as a sibling after `.result`, making it a third child of the calculator grid. On successful calculations it could create an isolated right-column row, excess vertical space and inconsistent placement across short, long and multi-metric results.
+- Scope: Copy Result placement and result-panel layout only. The existing Copy state rules, payload, clipboard handling, calculations, results, rounding, validation, IDs, URLs, content, SEO, result colors, header/footer and user-managed badges were preserved.
+- Shared DOM repair: `assets/js/main.js` now keeps the action row as the final descendant of the `.result` panel. It remains detached in initial, error and Reset states, is appended only after a valid result, and is removed when result markup is restored. There is no calculator-level action-row grid item.
+- Shared layout repair: `assets/css/layout-refinement.css` makes the result panel a natural column flex container with no forced minimum height. The nested action row follows result content, uses a subtle separator, aligns its secondary Copy button to the right and has no fixed/absolute placement or empty placeholder space. The action row is removed from layout when hidden. Versioned CSS and JS references were advanced for cache-safe delivery.
+- Browser QA: all 43 calculators passed at 1440, 1280, 1024, 768 and 390 px (215 renders). After a successful calculation, each had exactly one Copy control and one action row inside the result panel; calculator-level action rows 0; action row/result panel bounds and button bounds valid; clipping 0; horizontal overflow 0. Initial and Reset states had zero Copy controls/action rows in the rendered DOM and no layout residue. M-Weight was visually inspected at desktop and mobile.
+- Automated QA PASS: Copy Result QA (43), general QA (76), navigation QA (76), content QA (43 calculators and 24 articles), encoding QA, calculation verification (24 samples), expanded verification (48 samples), layout QA (76), JavaScript syntax and `git diff --check`. HIGH 0; MEDIUM 0; LOW production propagation only until verification after push.
+
 ### 2026-08-02 — Copy Result state-management repair
 
 - Cause: 29 of the 43 calculator HTML files contained a static Copy Result button inside the initial result markup; the other 14 did not. The previous shared click handler copied the result container's whole `innerText`, so it could include initial guidance or the Copy button itself. It had no success/error/reset state contract.

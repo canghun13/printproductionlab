@@ -12,11 +12,11 @@ const failures = [];
 for (const name of calculators) {
   const html = fs.readFileSync(path.join(tools, name), 'utf8');
   if (html.includes('data-copy')) failures.push(`${name}: static Copy Result control remains`);
-  if (!html.includes('main.js?v=copy-result-20260802b')) failures.push(`${name}: versioned shared Copy Result logic is missing`);
+  if (!html.includes('main.js?v=copy-result-20260802c')) failures.push(`${name}: versioned shared Copy Result logic is missing`);
 }
 
 const main = fs.readFileSync(path.join(root, 'assets', 'js', 'main.js'), 'utf8');
-for (const marker of ['setupCopyResult', 'new MutationObserver(updateCopy)', "!result.querySelector('.error')", "Boolean(result.querySelector('strong'))", 'button.dataset.copyValue', 'actions.hidden = true']) {
+for (const marker of ['setupCopyResult', 'new MutationObserver(updateCopy)', "!result.querySelector('.error')", "Boolean(result.querySelector('strong'))", 'button.dataset.copyValue', 'result.append(actions)', 'actions.hidden = true']) {
   if (!main.includes(marker)) failures.push(`main.js: missing state-management marker ${marker}`);
 }
 

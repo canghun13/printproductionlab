@@ -32,7 +32,6 @@ const setupCopyResult = calculator => {
   button.textContent = 'Copy result';
   button.setAttribute('aria-label', 'Copy calculation result');
   actions.append(button);
-  result.after(actions);
 
   const hideCopy = () => {
     actions.hidden = true;
@@ -47,6 +46,7 @@ const setupCopyResult = calculator => {
     const visibleResult = result.innerText.trim();
     if (!visibleResult) return hideCopy();
     button.dataset.copyValue = `${heading}\nResult: ${visibleResult}`;
+    if (!result.contains(actions)) result.append(actions);
     actions.hidden = false;
     button.tabIndex = 0;
   };
