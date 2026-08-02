@@ -491,6 +491,16 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 Append new entries at the top of this section.
 
+### 2026-08-02 — Post-Press & Finishing category
+
+- Starting commit: `40546e1` (`Update index.html`); baseline after `git fetch origin` and `git pull --ff-only origin main` was clean and matched `origin/main`.
+- Research and decision record (reviewed 2026-08-02): University of Minnesota Printing Services supplies a roll/gate fold calculator; Texas Litho documents distinct roll, gate and letter-fold panel behavior; University of Southampton distinguishes nesting roll panels, equal-panel Z folds and gate folds. Search also found established free panel calculators, so the category differentiates through editable job-specific allowances, process planning and preflight rather than claiming universal panel compensation. Lamination, cutting-lift and workflow-cost search results were mostly generic/costing tools; these pages expose roll width/length, actual caliper, setup and rates rather than inventing equipment defaults.
+- Proposal validation: Brochure Fold Panels PASS (`/tools/brochure-fold-panel-calculator.html`, basic bi/tri/Z intent); Roll Fold Panels PASS (`/tools/roll-fold-panel-calculator.html`, progressive nested schedule); Gate Fold Panels PASS (`/tools/gate-fold-panel-calculator.html`, flap/centre structure); Folding Allowance PASS (`/tools/folding-allowance-planner.html`, user-defined cumulative adjustment); Lamination PASS (`/tools/lamination-material-cost-calculator.html`, roll-film material/setup/run cost); Cutting Lift PASS (`/tools/cutting-stack-lift-planner.html`, measured stack/lift plan); Finished Quantity After Spoilage MERGE (existing `/tools/spoilage-allowance.html` remains the canonical spoilage calculator); Post-Press Time & Cost PASS (`/tools/post-press-time-cost-planner.html`, finishing workflow rate/cost model).
+- Added hub and guide: `/tools/post-press-finishing.html` and `/guides/post-press-preflight.html`. The advanced public category comprises 9 new pages (7 calculators, hub and guide); the overlapping spoilage proposal was intentionally not duplicated.
+- Formula notes: brochure tri-fold balances `(flat + tuck) / 3` with a reduced closing panel; roll schedules balance a user-entered progressive step-down; allowance uses `n × base − allowance × n × (n−1)/2`; lamination combines sheet length, sides, waste, setup/run time and user cost; cutting derives sheets/lift from measured caliper and target/max height; post-press cost combines setup/run time, labour, machine and outside/material cost.
+- QA: `tools/qa.mjs` PASS (76 public HTML); `tools/encoding-qa.mjs` PASS; `git diff --check` PASS. Browser rendering and live deployment verification remain to be completed after the deployment is available.
+- Risks: HIGH none; MEDIUM live five-viewport browser and production response verification pending deployment; LOW job-specific stock and equipment conditions remain intentionally user-entered.
+
 ### 2026-07-27 — Final local browser rendering and interaction QA
 
 - Browser QA method: Ran a temporary localhost static server from the repository and rendered the checked-out `origin/main` files with installed Google Chrome through Playwright Core. This avoided the in-app browser network boundary and did not use `file://`.
