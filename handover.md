@@ -502,7 +502,8 @@ Append new entries at the top of this section.
 - Browser QA: captured and inspected 25 core screenshots (5 hubs × 5 viewports: 1440, 1280, 1024, 768 and 390 px). Full browser render audit PASS: 76 pages × 5 viewports = 380 renders; horizontal overflow 0, card/heading clipping 0, narrow one-card rows 0, missing header/footer/main/H1 0, missing shared CSS 0, console errors 0. Representative calculator, Guide, Reference and Post-Press detail screenshots retained readable hierarchy and input/result layouts.
 - Interaction/accessibility QA: all 43 calculators passed Calculate/primary action and Reset at 390 px with non-empty finite results; mobile menu open/links PASS; keyboard focus outline computed as 3 px solid with 3 px offset and no clipping.
 - Automated QA PASS: layout QA (76), general QA (76), navigation QA (76), content QA (43 calculators and 24 articles), encoding QA, 24 core independent calculation samples, 48 expanded samples and `git diff --check`.
-- Counts preserved: 76 public HTML; 43 calculators; 15 Guide articles; 9 Reference articles. User-managed badge links and images remain present. HIGH 0; MEDIUM 0; LOW production cache propagation only until live verification after push.
+- Counts preserved: 76 public HTML; 43 calculators; 15 Guide articles; 9 Reference articles. User-managed badge links and images remain present.
+- Delivery verification: committed as `ac8ff41` (`Refine visual hierarchy and card layouts`) and pushed to `origin/main`. Cache-busted production checks loaded `layout-refinement.css` on home, Tools, Guides, Reference, Post-Press, a representative calculator and a representative guide; each retained one H1 plus main/footer landmarks. HIGH 0; MEDIUM 0; LOW 0. Ordinary CDN URLs may briefly serve the preceding HTML while Cloudflare cache propagation completes.
 
 ### 2026-08-02 — Post-Press & Finishing category
 
