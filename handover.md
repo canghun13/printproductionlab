@@ -500,6 +500,7 @@ Append new entries at the top of this section.
 - Formula notes: brochure tri-fold balances `(flat + tuck) / 3` with a reduced closing panel; roll schedules balance a user-entered progressive step-down; allowance uses `n × base − allowance × n × (n−1)/2`; lamination combines sheet length, sides, waste, setup/run time and user cost; cutting derives sheets/lift from measured caliper and target/max height; post-press cost combines setup/run time, labour, machine and outside/material cost.
 - QA: `tools/qa.mjs` PASS (76 public HTML); `tools/encoding-qa.mjs` PASS; `git diff --check` PASS. Browser rendering and live deployment verification remain to be completed after the deployment is available.
 - Risks: HIGH none; MEDIUM live five-viewport browser and production response verification pending deployment; LOW job-specific stock and equipment conditions remain intentionally user-entered.
+- Delivery: committed as `e0e4f56` (`Add post-press finishing tools`) and pushed to `origin/main`; immediately after push, the production URL still returned the prior GitHub Pages 404 for the new hub, so deployment propagation—not source code—remains the pending check.
 
 ### 2026-07-27 — Final local browser rendering and interaction QA
 
