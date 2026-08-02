@@ -11,10 +11,14 @@ const walk = dir => fs.readdirSync(dir, { withFileTypes: true }).flatMap(entry =
 
 for (const file of walk(root).filter(file => file.endsWith('.html'))) {
   let html = fs.readFileSync(file, 'utf8');
-  if (html.includes('assets/css/layout-refinement.css')) continue;
   const rel = path.relative(root, file).replaceAll('\\', '/');
   const prefix = rel.includes('/') ? '../' : '';
-  html = html.replace('</head>', `<link rel="stylesheet" href="${prefix}assets/css/layout-refinement.css"></head>`);
+  const refinement = `<link rel="stylesheet" href="${prefix}assets/css/layout-refinement.css?v=result-a11y-20260802">`;
+  if (html.includes('assets/css/layout-refinement.css')) {
+    html = html.replace(/<link rel="stylesheet" href="(?:\.\.\/)?assets\/css\/layout-refinement\.css(?:\?[^\"]*)?">/, refinement);
+  } else {
+    html = html.replace('</head>', `${refinement}</head>`);
+  }
   fs.writeFileSync(file, html);
 }
 
@@ -53,4 +57,3 @@ for (const [title, description] of hubDescriptions) {
   hub = hub.replace(`<h2>${title}</h2><p>Open the focused planning tool.</p>`, `<h2>${title}</h2><p>${description}</p>`);
 }
 fs.writeFileSync(postPress, hub);
-

@@ -489,6 +489,16 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 ## 16. Handover log format
 
+### 2026-08-02 — Calculator result-panel accessibility repair
+
+- Cause: the final shared layout layer applied a light panel background after the older result-panel rules, while the inherited white result text and lime result value remained. This made a calculated result such as M-Weight `10.00` and its explanation difficult to distinguish.
+- Scope: presentation only. No calculation formula, displayed number, rounding, input/result ID, Calculate/Reset behavior, unit conversion, validation, URL, content, SEO, header/footer, GA4, sitemap, robots or user-managed badge markup changed.
+- Shared fix: extended `assets/css/layout-refinement.css`, which is the final shared stylesheet on all public pages. The calculator-only selector `.calculator > .result` now defines a charcoal `#1f2933` result surface, off-white initial/result text, lime primary values, tabular numerals, readable descriptions, a compact blue Copy button, and a dedicated dark-red error state. It also keeps result padding, height and mobile type scale stable. `tools/apply-layout-refinement.mjs` now writes a versioned stylesheet URL (`result-a11y-20260802`) so normal browser and CDN caches fetch the repaired CSS.
+- Computed-style contrast verification on the rendered M-Weight Calculator: initial guidance 14.03:1; normal primary value 11.78:1; normal explanatory text 12.16:1; error message 13.34:1. All exceed the required 4.5:1 normal-text and 3:1 primary-value thresholds.
+- Browser QA: all 43 calculators were rendered at 1440, 1280, 1024, 768 and 390 px (215 renders). Each used its normal Calculate action, Reset action and an invalid numeric input to expose the error state. Values were present and finite; Calculate/Reset worked; value clipping 0; horizontal overflow 0; normal-value, initial-guidance and error contrast PASS. Nine pages intentionally omit a result-description paragraph, and several retain their own pre-existing initial guidance wording; these were treated as valid page-specific content rather than CSS failures. M-Weight was visually inspected at desktop and 390 px: `10.00`, description and panel boundaries remain fully visible.
+- Regression QA: Homepage, Tools, Guides, Reference, Post-Press hub, one Guide and one Reference were rendered at all five widths (35 renders): header/footer/H1/shared CSS present and overflow 0. Browser console error logs 0.
+- Automated QA PASS: general QA (76), navigation QA (76), content QA (43 calculators and 24 articles), encoding QA, calculation verification (24 samples), expanded calculation verification (48 samples), layout QA (76), and `git diff --check`. HIGH 0; MEDIUM 0; LOW cache propagation only until production verification after push.
+
 Append new entries at the top of this section.
 
 ### 2026-08-02 — Visual hierarchy and card-layout refinement

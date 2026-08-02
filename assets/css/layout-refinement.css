@@ -78,6 +78,62 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 a:not(:focus-visible), button:not(:focus-visible), input:not(:focus-visible), select:not(:focus-visible) { outline: 0; }
 
+/* Calculator results are a production decision surface: keep their contrast independent of earlier panel rules. */
+.calculator > .result {
+  --result-surface: #1f2933;
+  --result-ink: #f7faf7;
+  --result-muted: #e4ebe5;
+  background: var(--result-surface);
+  color: var(--result-ink);
+  border: 1px solid #344454;
+  border-top: 4px solid var(--ui-lime);
+  box-shadow: 0 8px 22px #15231a14;
+  min-height: 164px;
+  padding: 24px;
+}
+.calculator > .result strong {
+  display: block;
+  color: var(--ui-lime);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.035em;
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+}
+.calculator > .result p {
+  color: var(--result-muted);
+  line-height: 1.6;
+  margin: 14px 0 0;
+}
+.calculator > .result .copy {
+  width: auto;
+  min-height: 40px;
+  margin: 18px 0 0;
+  padding: 9px 13px;
+  background: #245ed8;
+  border: 1px solid #7ba4ff;
+  box-shadow: none;
+  color: #fff;
+}
+.calculator > .result:has(.error) {
+  background: #35171b;
+  border-color: #8a3d45;
+  border-top-color: #ffb4a2;
+}
+.calculator > .result .error {
+  margin: 0;
+  padding: 12px 14px;
+  background: #4a1d23;
+  border-left: 4px solid #ffb4a2;
+  color: #fff7f7;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .calculator > .result { min-height: 0; padding: 20px; }
+  .calculator > .result strong { font-size: clamp(1.9rem, 11vw, 2.5rem); }
+}
+
 /* Keep the owner-managed directory badges in place while allowing them to wrap on narrow screens. */
 body > .footer + div[style*="min-width:1280px"] {
   min-width: 0 !important;
@@ -112,4 +168,3 @@ body > .footer + div[style*="min-width:1280px"] img { max-width: 100%; }
   .grid:has(> :only-child) > .tool::after { margin-top: auto; padding-top: 14px; }
   .content-grid { margin-block: 36px; }
 }
-
