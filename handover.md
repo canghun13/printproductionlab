@@ -491,6 +491,19 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 Append new entries at the top of this section.
 
+### 2026-08-02 — Visual hierarchy and card-layout refinement
+
+- Starting commit: `56fc45c` (`Record post-press deployment verification`); local `HEAD` and `origin/main` matched and the worktree was clean.
+- Audit scope: homepage; Tools, Guides, Reference and Post-Press hubs; 10 calculator details; 5 Guide details; 3 Reference details; About, Contact, Privacy and 404. Primary issues were rigid three-column grids, incomplete final rows, a narrow single-card Guide section, heavy repeated border grids, generic featured/Post-Press card copy, uneven section rhythm, and a fixed-width owner badge wrapper causing mobile horizontal scroll.
+- Shared design change: added `assets/css/layout-refinement.css` as the final cascade layer on all 76 public HTML pages. It preserves the commercial print-workbench identity while using lighter card boundaries, restrained background grid contrast, consistent section spacing, balanced count-aware grids, full-width single-card document rows, compact mobile cards and a clear lime `:focus-visible` outline. Header/footer information structure, logo, calculations, content, URLs and SEO were preserved.
+- Grid rules: 2 cards use 2 columns; 3 and 6 cards use 3 desktop columns; 4 cards use 2; 8 cards use 4; all grids become 2 columns at tablet widths and 1 column at mobile. A one-card grid becomes a compact full-width feature row instead of occupying one third of the page. The owner-managed KittyLaunch/Sell With Boost/Twelve Tools/Findly badge content and position were preserved; only its fixed-width wrapper is allowed to wrap responsively.
+- Copy refinement: replaced eight repeated homepage `Open the production calculator.` descriptions and eight repeated Post-Press `Open the focused planning tool.` descriptions with concise function-specific summaries. Corrected the homepage Guide count from 14 to 15. No long-form page content was rewritten.
+- QA maintenance: added `tools/apply-layout-refinement.mjs` and `tools/layout-qa.mjs`; made the retained Post-Press generator emit the shared CSS and unique hub descriptions. Updated `tools/content-depth-qa.mjs` to detect actual calculator pages and recognize the established Post-Press templates without changing public content requirements.
+- Browser QA: captured and inspected 25 core screenshots (5 hubs × 5 viewports: 1440, 1280, 1024, 768 and 390 px). Full browser render audit PASS: 76 pages × 5 viewports = 380 renders; horizontal overflow 0, card/heading clipping 0, narrow one-card rows 0, missing header/footer/main/H1 0, missing shared CSS 0, console errors 0. Representative calculator, Guide, Reference and Post-Press detail screenshots retained readable hierarchy and input/result layouts.
+- Interaction/accessibility QA: all 43 calculators passed Calculate/primary action and Reset at 390 px with non-empty finite results; mobile menu open/links PASS; keyboard focus outline computed as 3 px solid with 3 px offset and no clipping.
+- Automated QA PASS: layout QA (76), general QA (76), navigation QA (76), content QA (43 calculators and 24 articles), encoding QA, 24 core independent calculation samples, 48 expanded samples and `git diff --check`.
+- Counts preserved: 76 public HTML; 43 calculators; 15 Guide articles; 9 Reference articles. User-managed badge links and images remain present. HIGH 0; MEDIUM 0; LOW production cache propagation only until live verification after push.
+
 ### 2026-08-02 — Post-Press & Finishing category
 
 #### Verification completion — 2026-08-02
