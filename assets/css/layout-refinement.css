@@ -105,10 +105,17 @@ a:not(:focus-visible), button:not(:focus-visible), input:not(:focus-visible), se
   line-height: 1.6;
   margin: 14px 0 0;
 }
-.calculator > .result .copy {
+.result-actions {
+  display: flex;
+  align-items: center;
+  grid-column: 2;
+  margin-top: 12px;
+}
+.result-actions[hidden] { display: none; }
+.result-actions .copy {
   width: auto;
   min-height: 40px;
-  margin: 18px 0 0;
+  margin: 0;
   padding: 9px 13px;
   background: #245ed8;
   border: 1px solid #7ba4ff;
@@ -132,6 +139,7 @@ a:not(:focus-visible), button:not(:focus-visible), input:not(:focus-visible), se
 @media (max-width: 768px) {
   .calculator > .result { min-height: 0; padding: 20px; }
   .calculator > .result strong { font-size: clamp(1.9rem, 11vw, 2.5rem); }
+  .result-actions { grid-column: auto; }
 }
 
 /* Keep the owner-managed directory badges in place while allowing them to wrap on narrow screens. */

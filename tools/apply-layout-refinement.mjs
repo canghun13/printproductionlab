@@ -13,7 +13,7 @@ for (const file of walk(root).filter(file => file.endsWith('.html'))) {
   let html = fs.readFileSync(file, 'utf8');
   const rel = path.relative(root, file).replaceAll('\\', '/');
   const prefix = rel.includes('/') ? '../' : '';
-  const refinement = `<link rel="stylesheet" href="${prefix}assets/css/layout-refinement.css?v=result-a11y-20260802">`;
+  const refinement = `<link rel="stylesheet" href="${prefix}assets/css/layout-refinement.css?v=result-a11y-20260802b">`;
   if (html.includes('assets/css/layout-refinement.css')) {
     html = html.replace(/<link rel="stylesheet" href="(?:\.\.\/)?assets\/css\/layout-refinement\.css(?:\?[^\"]*)?">/, refinement);
   } else {
