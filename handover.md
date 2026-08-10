@@ -489,6 +489,20 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 ## 16. Handover log format
 
+### 2026-08-10 — Legacy calculator scaffold and input-semantic audit
+
+- Start commit and synchronized baseline: `7fa74c5` on `main`, matching `origin/main` before edits.
+- Current inventory: 76 public HTML files; 43 calculator pages (44 HTML files under `tools/` including the Post-Press hub); 15 Guides; 9 Reference pages.
+- Audit result: 24 calculator pages contained duplicated top-level legacy scaffold (empty `How to use` / `Formula / method` headings plus generic worked-example, limitation and related copy) ahead of the existing detailed production content. All 24 redundant blocks were removed while preserving the topic-specific `content-detail` sections.
+- Input semantics: 12 calculator pages contained no-op “Reference value” controls. Removed the unused controls and aligned `run2` validation with the actual inputs. Paper Thickness now uses only its measured stack thickness and sheet-count inputs, matching its formula.
+- Booklet Page Order: removed two unused inputs and replaced the first-pair-only response with complete outside-to-centre saddle-stitch sheet pairs. Independent samples for 8, 12, 16 and 20 pages, plus invalid 0/-4/10/14/16.5-page cases, pass in `tools/booklet-page-order-qa.mjs`.
+- Metadata: replaced 24 generic title-adjacent descriptions and generic OG snippets with calculator-specific search descriptions; duplicate calculator descriptions are now prohibited by QA.
+- Durable QA: added `tools/legacy-scaffold-qa.mjs` for empty heading sequences, known scaffold phrases, no-op reference labels, duplicate related blocks, generic/duplicate calculator descriptions, dynamic `run2` input-ID mismatches and Booklet input shape.
+- Automated validation: Legacy Scaffold QA PASS (44 tool HTML checked); `tools/qa.mjs` PASS (76 public HTML); content QA PASS (43 calculators, 24 articles); navigation QA PASS (76 public HTML); encoding QA PASS; calculation verification PASS (24 samples); calculator JavaScript syntax PASS; `git diff --check` PASS.
+- Browser QA: production-browser verification follows the push because the in-app browser cannot resolve the local workspace server path.
+- Risks before deployment browser confirmation: HIGH 0; MEDIUM browser responsive confirmation pending; LOW normal production assumptions and cache observation.
+- Next step: verify the deployed modified calculators at 1440, 1280, 1024, 768 and 390 px, then observe search and analytics signals.
+
 ### 2026-08-08 — New-cluster expansion review: observe
 
 - Baseline: synchronized clean `main` from `6532bb6` to `bdeb6a1`; current inventory remains 76 public HTML pages, 43 calculators, 15 Guide articles and 9 Reference articles. The owner-managed homepage directory/backlink badges were treated as read-only.
