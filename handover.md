@@ -499,9 +499,9 @@ If push permission is unavailable, output the exact commands the owner should ru
 - Metadata: replaced 24 generic title-adjacent descriptions and generic OG snippets with calculator-specific search descriptions; duplicate calculator descriptions are now prohibited by QA.
 - Durable QA: added `tools/legacy-scaffold-qa.mjs` for empty heading sequences, known scaffold phrases, no-op reference labels, duplicate related blocks, generic/duplicate calculator descriptions, dynamic `run2` input-ID mismatches and Booklet input shape.
 - Automated validation: Legacy Scaffold QA PASS (44 tool HTML checked); `tools/qa.mjs` PASS (76 public HTML); content QA PASS (43 calculators, 24 articles); navigation QA PASS (76 public HTML); encoding QA PASS; calculation verification PASS (24 samples); calculator JavaScript syntax PASS; `git diff --check` PASS.
-- Browser QA: production-browser verification follows the push because the in-app browser cannot resolve the local workspace server path.
-- Risks before deployment browser confirmation: HIGH 0; MEDIUM browser responsive confirmation pending; LOW normal production assumptions and cache observation.
-- Next step: verify the deployed modified calculators at 1440, 1280, 1024, 768 and 390 px, then observe search and analytics signals.
+- Browser QA: after deployment, the in-app browser rendered all 25 modified calculators at 1440, 1280, 1024, 768 and 390 px (125 checks): one H1, visible form/input/result controls, no empty adjacent heading, no horizontal overflow, and single-column fields at 390 px all passed. Three unchanged representative calculators passed the same five-width regression (15 checks). At 390 px, all 25 modified calculators passed Calculate, Copy Result and Reset; results were non-empty with no `NaN`, `Infinity` or `undefined`. Internal console errors: 0.
+- Risks after deployment browser confirmation: HIGH 0; MEDIUM 0; LOW normal production assumptions and search/cache observation.
+- Next step: 검색/분석 신호 관찰 유지.
 
 ### 2026-08-08 — New-cluster expansion review: observe
 
