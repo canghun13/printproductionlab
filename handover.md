@@ -489,6 +489,39 @@ If push permission is unavailable, output the exact commands the owner should ru
 
 ## 16. Handover log format
 
+### 2026-08-13 — GSC discovered-not-indexed technical and discovery review
+
+- Start commit: `f2860e08de6ea9d0df55c6a667b8fdd2e0c38bf9`; local `main`, `origin/main`, and `refs/heads/main` matched before this review. The working tree was clean.
+- GSC basis: 19 URLs reported as “Discovered – currently not indexed”, with no crawl timestamp in the supplied export. This review did not change titles, meta descriptions, H1s, or body content on protected high-performing pages.
+- URL-specific diagnosis: every target exists locally, has its exact production canonical, `index,follow` robots meta without `noindex`, is present in `sitemap.xml`, has one title and one H1, and is not blocked by `robots.txt`. Cache-busted production HTTP checks returned `200` without redirects for all 19; production canonical and robots meta matched in all cases.
+
+| URL | HTTP/indexability | Static inbound links after review | Diagnosis |
+|---|---|---:|---|
+| `/contact.html` | 200; canonical/robots/sitemap PASS | 75 | No technical blocker |
+| `/guides/` | 200; canonical/robots/sitemap PASS | 177 | No technical blocker |
+| `/guides/booklet-creep.html` | 200; canonical/robots/sitemap PASS | 1 | Discoverable from Guides hub |
+| `/guides/paper-job-weight.html` | 200; canonical/robots/sitemap PASS | 1 | Was an orphan; linked from Guides hub |
+| `/guides/post-press-preflight.html` | 200; canonical/robots/sitemap PASS | 9 | Post-Press cluster discoverable |
+| `/guides/print-imposition.html` | 200; canonical/robots/sitemap PASS | 37 | No technical blocker |
+| `/guides/print-job-cost.html` | 200; canonical/robots/sitemap PASS | 1 | Discoverable from Guides hub |
+| `/guides/signatures.html` | 200; canonical/robots/sitemap PASS | 1 | Was an orphan; linked from Guides hub |
+| `/reference/margin-gripper.html` | 200; canonical/robots/sitemap PASS | 1 | Was an orphan; linked from Reference hub |
+| `/tools/` | 200; canonical/robots/sitemap PASS | 195 | No technical blocker |
+| `/tools/brochure-fold-panel-calculator.html` | 200; canonical/robots/sitemap PASS | 1 | Post-Press cluster discoverable |
+| `/tools/coil-binding.html` | 200; canonical/robots/sitemap PASS | 2 | Discoverable from relevant hubs |
+| `/tools/cutting-stack-lift-planner.html` | 200; canonical/robots/sitemap PASS | 1 | Post-Press cluster discoverable |
+| `/tools/folding-allowance-planner.html` | 200; canonical/robots/sitemap PASS | 1 | Post-Press cluster discoverable |
+| `/tools/gate-fold-panel-calculator.html` | 200; canonical/robots/sitemap PASS | 1 | Post-Press cluster discoverable |
+| `/tools/lamination-material-cost-calculator.html` | 200; canonical/robots/sitemap PASS | 1 | Post-Press cluster discoverable |
+| `/tools/post-press-finishing.html` | 200; canonical/robots/sitemap PASS | 2 | Post-Press cluster discoverable |
+| `/tools/post-press-time-cost-planner.html` | 200; canonical/robots/sitemap PASS | 1 | Post-Press cluster discoverable |
+| `/tools/roll-fold-panel-calculator.html` | 200; canonical/robots/sitemap PASS | 1 | Post-Press cluster discoverable |
+
+- Actual technical blockers: none. Actual discovery defect: three HTML-orphan pages—Paper Job Weight, Signatures, and Margin & Gripper—were absent from their natural subject hubs. The Post-Press cluster is not hub-isolated: its eight affected tool/hub URLs retain 1–2 static inbound links and the related guide has 9.
+- Production change: added three concise, topic-matched hub cards only: two on `/guides/` and one on `/reference/`. No sitewide links, URL changes, sitemap-lastmod manipulation, new pages, or content rewrites were introduced. `tools/gsc-indexability-audit.mjs` is the durable repeatable static audit for these exact 19 URLs.
+- QA before deployment: GSC static indexability audit PASS (19/19), `tools/qa.mjs` PASS (76 public HTML), `tools/navigation-qa.mjs` PASS (76), `tools/content-depth-qa.mjs` PASS (43 calculators / 24 articles), `tools/encoding-qa.mjs` PASS, `tools/legacy-scaffold-qa.mjs` PASS (44 calculators), and `git diff --check` PASS. Browser validation and post-push production confirmation follow this initial deployment commit.
+- Decision: **FIX** for the three verified orphan paths; **OBSERVE** for the other 16 URLs while Google recrawls. Exact next step: wait for the deployed commit, run 1440 px and 390 px browser checks on the two modified hubs, then request recrawl/monitor the 19 URLs in GSC rather than changing protected content.
+
 ### 2026-08-11 — New-cluster discovery review: NO-GO
 
 - Start baseline: clean `main` at `3a86144`; local `HEAD`, `origin/main`, and `refs/heads/main` matched before research. Current inventory remains 76 public HTML pages, 43 calculators, 15 Guides and 9 References.
