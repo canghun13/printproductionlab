@@ -7,6 +7,23 @@ Public site language: English
 
 ---
 
+## Existing-page growth review — 2026-08-20
+
+- Start commit: `bc03d1f` (`origin/main` and remote `main` matched before work).
+- Data available: the latest repository/handover state, the owner's historical first-signal list, public Google result checks on 2026-08-20, and the 2026-08-13 Search Console indexability review covering 19 URLs in `Discovered – currently not indexed`. No authenticated current GSC performance export or GA4 page/query export was available in the workspace; Search Console redirected to its signed-out landing page. Therefore page labels below are directional, not a claim about current clicks, CTR, or positions.
+- PROMISING: Print Run Time Calculator (public result for the exact calculator intent plus a reproducible formula defect); Booklet Page Order Calculator (public result plus prior signal, but its logic was repaired on 2026-08-10); Banner Square Footage Calculator (public result for a narrow exact intent).
+- IMPROVABLE: Print Run Time Calculator. It divided by passes instead of multiplying, used ambiguous `Total impressions / Press speed / Colors/passes` inputs, returned an unexplained number, and linked its guide relationship to Print Imposition.
+- OBSERVE: Booklet Page Order after the recent logic repair; the 19 indexability-review URLs until Google recrawls; other historically signalled pages including Booklet Creep, Print Imposition, Roll Media Yield, Press Sheets Required, Spoilage Allowance, Pixels Required, Signature Count and Sheet Yield/Waste because current query/page metrics were unavailable.
+- LOW PRIORITY: Banner Area as the next improvement despite its visible result, because the intent and calculation are extremely narrow and no deeper current performance evidence justified displacing the broken Print Run Time workflow.
+- Decision: GO on the existing Print Run Time calculator and its existing guide only; no new URL, cluster, redesign, title, H1, canonical, description or schema change.
+- Implementation: corrected runtime to `impressions per pass ÷ sustainable impressions/hour × sequential passes`; require positive values and a whole-number pass count; expose press hours, total press impressions and hours per pass; state excluded makeready, wash-up, drying and downtime; clarify defaults, labels, pass semantics, sustainable speed, limitations and the worked example. Fixed calculator ↔ guide and adjacent Press Sheets Required / Print Job Cost / Units links. Fixed shared Copy Result payload so it no longer copies its own button label and cache-busted the updated script on the target calculator.
+- Durable QA: added `tools/print-run-time-qa.mjs` with 4 normal, 7 invalid and 7 page-contract checks; made content-depth review dates accept a valid 2026 date instead of forcing the old 2026-07-27 string; made Copy Result QA accept the dated cache-buster pattern and assert the action-exclusion logic; added an explicit Print Run Time tool mapping to `tools/rebuild-content.mjs` so a future content rebuild does not restore the former Imposition link.
+- Browser QA: the local calculator passed at 1440, 1280, 1024, 768 and 390 CSS px; the linked guide and its calculator backlink passed at 390 px. Default 12,000 ÷ 6,000 × 4 returned 8.00 press hours, 48,000 total press impressions and 2.00 hours/pass. Calculate, Copy, Reset, zero, negative, blank and fractional-pass states were exercised; no horizontal overflow, panel overlap, clipping or console error was found. Desktop and mobile full-page screenshots were inspected.
+- Risk: HIGH 0. MEDIUM 0. LOW 1 — current GSC query/page clicks, impressions, CTR and average-position movement remain unverified until authenticated data and recrawl are available.
+- Exact next step: after Google recrawls the changed calculator and guide, compare the Print Run Time page's query-level impressions, CTR, average position and clicks against the pre-change window; retain the metadata unless the data identifies a specific CTR problem.
+
+---
+
 ## Encoding repair — 2026-07-29
 
 - Cause: a prior calculator-content expansion serialized UTF-8 production symbols through a non-UTF-8 command path. The affected characters were multiplication, division, square-metre, micrometre, and apostrophe symbols; the source history identifies the content-expansion commits as the introduction point.

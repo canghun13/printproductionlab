@@ -93,7 +93,8 @@ const articles = {
 function articleContent(type, file, html) {
   const [topic, context, example, tool, related] = articles[type][file];
   const title = titleOf(html);
-  const toolSlug = Object.entries(calculators).find(([, value]) => tool.toLowerCase().includes(value[0].replace(/planning|and|for|a|the/gi, '').trim().toLowerCase().split(' ')[0]))?.[0] || 'print-imposition-calculator.html';
+  const explicitToolSlugs = { 'Print Run Time Calculator': 'print-run-time.html' };
+  const toolSlug = explicitToolSlugs[tool] || Object.entries(calculators).find(([, value]) => tool.toLowerCase().includes(value[0].replace(/planning|and|for|a|the/gi, '').trim().toLowerCase().split(' ')[0]))?.[0] || 'print-imposition-calculator.html';
   const toolHref = `/tools/${toolSlug}`;
   return `<p class="crumb"><a href="/">Home</a> / <a href="/${type}/">${type}</a></p><p class="eyebrow">Production notes</p><h1>${esc(title)}</h1><p class="lead">A practical reference for making a documented production decision, not a substitute for the approved job specification.</p>
 ${tag('Purpose and production context', `<p>${esc(title)} addresses this production question: ${esc(context)}</p><p>Use this ${esc(type === 'guides' ? 'guide' : 'reference')} on ${esc(topic)} when preparing a quote, artwork brief, preflight record or production ticket. State the source of each measurement so a later operator can repeat the decision.</p>`)}

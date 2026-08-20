@@ -43,7 +43,11 @@ const setupCopyResult = calculator => {
     const valid = !result.querySelector('.error') && Boolean(result.querySelector('strong'));
     if (!valid) return hideCopy();
     const heading = calculator.closest('main')?.querySelector('h1')?.textContent.trim() || 'Calculation result';
-    const visibleResult = result.innerText.trim();
+    const visibleResult = [...result.childNodes]
+      .filter(node => node !== actions)
+      .map(node => node.textContent.trim())
+      .filter(Boolean)
+      .join('\n');
     if (!visibleResult) return hideCopy();
     button.dataset.copyValue = `${heading}\nResult: ${visibleResult}`;
     if (!result.contains(actions)) result.append(actions);
