@@ -53,6 +53,7 @@ const contracts = [
   [calculator.includes('Sustainable press speed (impressions/hour)'), 'sustainable-speed label'],
   [calculator.includes('Sequential passes'), 'pass label'],
   [calculator.includes('value="12000"') && calculator.includes('value="6000"') && calculator.includes('value="4"'), 'auditable defaults'],
+  [calculator.includes('expansion.js?v=runtime-20260820a'), 'runtime cache buster'],
   [calculator.includes('href="/guides/print-run-time.html"'), 'calculator-to-guide link'],
   [guide.includes('href="/tools/print-run-time.html"'), 'guide-to-calculator link'],
   [!guide.includes('href="/tools/print-imposition-calculator.html">Print Run Time Calculator'), 'no mislabeled imposition link'],
