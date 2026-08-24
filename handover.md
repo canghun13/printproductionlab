@@ -7,6 +7,15 @@ Public site language: English
 
 ---
 
+## Reprographics desktop form-layout refinement — 2026-08-24
+
+- Scope: visual form-layout refinement only for Drawing Scale Converter, Plan Print Scaling Calculator, Plot Sheet Fit Planner, Printed Scale Verification and Plan Tiling Calculator. Calculator formulas, JavaScript, IDs, URLs, content, SEO, metadata, shared site styling and mobile behavior were not changed.
+- Desktop improvement: input controls now occupy their own balanced two- or three-column grids; each primary action and Reset now sit together in a dedicated row below the inputs. The five result panels remain aligned with their form panels and retain their existing visual treatment.
+- Mobile preservation: at 768 px and 390 px the existing single-column, full-width action-button behavior remains intact.
+- Browser QA: actual renders reviewed for all five pages at 1440, 1280, 1024, 768 and 390 px. No horizontal overflow, clipping, overlap or console errors. Calculate, Reset, Copy Result and invalid-input handling passed on every page.
+- Automated QA: Reprographics QA, general QA, navigation QA, encoding QA, calculation verification, expanded calculation verification, legacy scaffold QA and layout QA passed. `tools/copy-result-qa.mjs` remains a pre-existing count-contract mismatch (expects 48 calculators; repository currently contains 43) and was not modified in this UI-only task.
+- Remaining risks: HIGH none; MEDIUM none; LOW the existing Copy Result QA expected-count maintenance item.
+
 ## New workflow-cluster discovery and delivery — 2026-08-24
 
 ### Repository baseline
