@@ -126,6 +126,7 @@ The five tools are independent: changing a ratio is not the same decision as mea
 - Added durable shared calculator logic at assets/js/calculators/reprographics.js and independent tests at tools/reprographics-qa.mjs.
 - Updated Tools and Guides hubs, sitemap.xml, llms.txt and the shared Copy Result QA count. The owner-managed homepage badge area was not modified.
 - Final inventory before commit: 83 public HTML pages, 48 calculators, 16 Guides and 9 References.
+- Delivery commit: 1623022616f7ee14d0155c6d22c0b99a7bc93194 (Build reprographics plan printing cluster), pushed to origin/main with local and remote HEAD matching.
 
 ### QA and release evidence
 
@@ -137,7 +138,10 @@ The five tools are independent: changing a ratio is not the same decision as mea
 - Browser visual QA: PASS — all seven new pages rendered at 1440, 1280, 1024, 768 and 390 CSS px (35 combinations). No horizontal overflow, clipping or overlap.
 - Browser interaction QA: PASS — Calculate, Reset, Copy Result, blank/zero/negative handling and error-state copy hiding across all five new calculators; mobile menu closed/open states; five mobile result panels.
 - Browser console: 0 warnings and 0 errors.
-- Risk before deployment: HIGH 0, MEDIUM 1 (organic demand still needs Search Console measurement after indexing), LOW 0.
+- GitHub Pages: PASS — pages build and deployment run 32683101109 completed successfully for delivery commit 1623022.
+- Live domain: PASS — cache-busted requests to the cluster hub, Printed Scale Verification, Guide, shared reprographics JavaScript and sitemap.xml all returned HTTP 200 with the expected new-content markers.
+- Push status: PASS. Handover finalization is the final commit containing this deployment record.
+- Remaining risk: HIGH 0, MEDIUM 1 (organic demand still needs Search Console measurement after indexing), LOW 0.
 
 ### Exact next measurement step
 
