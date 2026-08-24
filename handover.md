@@ -1,11 +1,147 @@
 # Print Production Lab — Project Handover
 
-Last updated: 2026-07-24  
+Last updated: 2026-08-24
 Project status: Initial setup pending  
 Primary working language for project documentation: Korean  
 Public site language: English
 
 ---
+
+## New workflow-cluster discovery and delivery — 2026-08-24
+
+### Repository baseline
+
+- Start state after fetch/pull: branch main, clean worktree, local HEAD and origin/main at 12ee6c6. Remote URL: https://github.com/canghun13/printproductionlab.git.
+- Baseline inventory: 76 public HTML pages, 43 calculators, 15 Guides and 9 References.
+- Latest handover and recent history were read before research. The 2026-08-20 Print Run Time repair was treated as recent existing-page growth work, not a new cluster.
+
+### Family-level exclusion map from prior reviews
+
+The following previously reviewed families were excluded before ideation and were not recycled as new recommendations: ink consumption/coverage; densitometry/process control; flexographic plate/repeat; press scheduling/capacity; digital-versus-offset/makeready; folding carton/corrugated; thermal-transfer consumables; barcode preflight; dye sublimation/screen printing; direct mail; paper inventory; pallet/logistics; carbon accounting; variable data; hardcover case making; wide-format display fabrication; fine-art canvas/framing; accessible/wayfinding signage.
+
+### First-pass screen: 50 genuinely new workflow/search families
+
+Legend: D/R = demand and repeat-use signal; T/L = tool intent and long-tail breadth; S/O = static feasibility and overlap risk; SERP = visible competition.
+
+| # | Family | D/R | T/L | S/O | SERP | First-pass decision |
+|---:|---|---|---|---|---|---|
+| 1 | CAD/reprographics plan scaling and plotting | high/high | high/high | high/low | fragmented | DEEP |
+| 2 | Browser-local PDF print preflight | high/high | high/high | medium/medium | very strong | DEEP |
+| 3 | Print-proof image comparison and diff | high/high | high/high | high/low | very strong | DEEP |
+| 4 | Raster-image batch preflight and metadata | medium/high | high/high | medium/medium | strong | HOLD |
+| 5 | Document scanning/digitization capacity planning | medium/high | medium/high | high/low | fragmented | HOLD |
+| 6 | OCR-ready scan quality control | medium/high | high/high | medium/low | strong | HOLD |
+| 7 | Microfilm/archive reproduction planning | low/medium | medium/medium | medium/low | weak | REJECT demand |
+| 8 | Newspaper column and ad planning | medium/high | high/high | high/medium | fragmented | DEEP |
+| 9 | Magazine ad specification handoff | medium/medium | medium/high | high/medium | strong vendor pages | HOLD |
+| 10 | Passport/ID photo print-sheet layout | high/high | high/high | high/low | saturated | DEEP |
+| 11 | NCR/carbonless form production | medium/high | high/high | high/low | vendor-heavy | DEEP |
+| 12 | Perforated ticket/stub layout | medium/high | high/high | high/medium | fragmented | HOLD |
+| 13 | Dust-jacket flap and turn-in planning | medium/medium | medium/high | high/high | fragmented | REJECT overlap |
+| 14 | Print-on-demand trim/channel comparator | high/medium | high/high | low/high | strong | REJECT volatility |
+| 15 | Print-proof approval/spec worksheet | medium/high | medium/high | high/low | weak | HOLD |
+| 16 | Industrial inkjet coding/marking setup | medium/high | high/high | low/low | vendor-heavy | DEEP |
+| 17 | Lenticular pitch/interlace workflow | low/high | high/high | medium/low | specialist tools | DEEP |
+| 18 | Risograph file preparation | medium/high | high/high | medium/low | strong specialist apps | DEEP |
+| 19 | Letterpress photopolymer/base compatibility | low/high | high/high | high/low | fragmented | DEEP |
+| 20 | Pad-printing image-transfer setup | low/high | medium/high | medium/low | vendor-heavy | HOLD |
+| 21 | Engraved nameplate cut-list planning | medium/high | high/high | high/medium | fragmented | HOLD |
+| 22 | Rubber-stamp artwork preflight | medium/high | high/high | high/low | vendor tools | HOLD |
+| 23 | Foil-blocking die setup | medium/high | high/high | medium/high | fragmented | REJECT overlap |
+| 24 | Emboss/deboss die clearance planning | medium/high | medium/high | medium/high | fragmented | REJECT overlap |
+| 25 | Ceramic-decal firing shrink compensation | low/high | high/high | medium/low | weak | HOLD |
+| 26 | In-mold label distortion planning | low/high | high/high | low/medium | vendor-heavy | REJECT risk |
+| 27 | Shrink-sleeve artwork distortion | medium/high | high/high | low/medium | specialist vendors | REJECT risk |
+| 28 | Cylindrical bottle/glass wrap geometry | medium/high | high/high | high/medium | fragmented | HOLD |
+| 29 | Printer geometry calibration/test target | medium/high | high/high | high/low | fragmented | HOLD |
+| 30 | Registration/crop-mark worksheet generator | medium/high | high/high | high/medium | strong design tools | HOLD |
+| 31 | Laser-printer duty-cycle feasibility | medium/medium | medium/high | low/low | vendor-heavy | REJECT volatility |
+| 32 | Office-production copier job routing | medium/high | high/high | medium/low | weak | HOLD |
+| 33 | Copier booklet-finisher compatibility | medium/high | high/high | low/low | vendor manuals | REJECT volatility |
+| 34 | Print inspection sampling-plan generator | medium/high | high/high | medium/low | quality tools | HOLD |
+| 35 | Print-defect root-cause troubleshooter | high/high | high/high | medium/low | fragmented | HOLD |
+| 36 | Press-maintenance interval/log planning | medium/high | medium/high | low/low | software vendors | REJECT volatility |
+| 37 | Substrate storage/acclimatization planning | medium/high | medium/high | medium/low | fragmented | HOLD |
+| 38 | Paper grain-direction compatibility checker | medium/high | high/high | high/medium | weak | HOLD |
+| 39 | Rigid-board cut-list optimization | medium/high | high/high | medium/high | strong generic optimizers | REJECT overlap |
+| 40 | Lamination curl-risk compatibility | medium/high | high/high | low/medium | vendor guidance | REJECT risk |
+| 41 | Label-adhesive application compatibility | medium/high | high/high | low/medium | vendor selectors | REJECT volatility |
+| 42 | Photo contact/proof-sheet generator | high/high | high/high | high/low | saturated | REJECT competition |
+| 43 | Print RFQ/specification builder | medium/high | high/high | high/low | fragmented | HOLD |
+| 44 | Production ticket/job-traveler generator | medium/high | high/high | high/low | MIS competition | HOLD |
+| 45 | Finishing-sequence compatibility planner | medium/high | high/high | medium/high | weak | REJECT overlap |
+| 46 | Reprint root-cause/variance worksheet | medium/high | medium/high | high/low | weak | HOLD |
+| 47 | Plate/cylinder storage and recall planning | low/high | medium/high | low/low | vendor systems | REJECT volatility |
+| 48 | Archival photo/paper storage planning | medium/medium | medium/high | medium/low | institutional guides | HOLD |
+| 49 | Proof cost and yield planner | medium/high | high/high | high/high | fragmented | REJECT overlap |
+| 50 | Copy-shop mixed-size job batching | medium/high | high/high | medium/medium | MIS vendors | HOLD |
+
+### Ten deep validations and weighted scores
+
+Score weights: search demand 35, competition opportunity 20, independent tool depth 20, Print Production Lab fit 15, implementation feasibility 10.
+
+| Rank | Family | Demand | Competition findings | Independent tool proof | Score | Decision |
+|---:|---|---|---|---|---:|---|
+| 1 | CAD/reprographics plan printing | repeated scale, fit-to-page and plot-size questions across search and forums | generic scale calculators exist, but competitors fragment conversion, paper fit, calibration and tiling | five distinct production decisions validated | 31+16+20+15+10 = 92 | GO |
+| 2 | Browser-local PDF preflight | strong direct checker intent | PrintReady, PDFPrintChecker, GoVisually, preflightprint and local page-box tools already cover the flow | deep, but correct fonts/colors/images/boxes parsing raises risk | 33+4+18+13+4 = 72 | REJECT |
+| 3 | Newspaper/magazine ad planning | recurring column-inch, bleed and publication-spec questions | publication/vendor pages dominate; dimensions remain publication-specific | column math, spec sheet, cost and ad-ticket ideas, but overlapping and data-dependent | 24+12+13+11+7 = 67 | HOLD |
+| 4 | Passport/ID photo sheets | very strong direct generator intent | many polished, free, local crop/layout/export tools | apparent tools are mostly variants of one layout workflow | 31+2+12+8+7 = 60 | REJECT |
+| 5 | Industrial inkjet coding | repeat production-line questions | vendor formulas and product tables dominate | line speed, encoder, dry distance and TCO are distinct but device/substrate dependent | 23+13+15+12+4 = 67 | REJECT |
+| 6 | Lenticular printing | specialist repeat use, limited overall volume | dedicated pitch-test/interlace software and open-source tools exist | pitch test, compatibility and interlace are useful, but physical calibration is mandatory | 16+14+14+10+5 = 59 | REJECT |
+| 7 | NCR/carbonless forms | recurring set-order, numbering and collation problems | vendors provide configurators; forums show real production confusion | set sequence, sheets, numbering and collation are plausible but adjacent to existing yield/VDP | 21+14+13+12+7 = 67 | HOLD |
+| 8 | Letterpress photopolymer setup | narrow but repeat practitioner need | Boxcar and specialist suppliers explain the core calculation | base/plate height is strong, but fewer than four independent reliable tools | 14+18+10+9+8 = 59 | REJECT |
+| 9 | Risograph file preparation | active practitioner demand and repeat color-pass decisions | Spectrolite plus new local separator tools already handle separations and previews | separations, printable area, masters and pass cost are mixed with strong software competition | 21+7+16+10+5 = 59 | REJECT |
+| 10 | Print-proof image comparison | strong browser-local comparison intent | numerous polished local diff, slider, heatmap and metric competitors | deep feature set but generic image QA rather than distinctly print-production | 28+3+17+11+7 = 66 | REJECT |
+
+### Evidence used in deep validation
+
+- CAD plotting: Autodesk plotting setup and exact plot-scale guidance: https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-setup-page-size-and-scale-for-plotting-in-AutoCAD.html and https://help.autodesk.com/cloudhelp/2025/ENU/DWGTrueView/files/GUID-0D72CF75-DA37-4937-9D9A-D93AA9BDF8D3.htm. Competitors inspected: https://europlan.be/en/schaalcalculator/, https://www.docuex.co.uk/tools/scale-calculator.html, https://blueprintprimer.com/tools/scale-converter, https://ensign.software/free-calculators/drawing-scale-calculator/, https://printsheet.io/calibration/ and https://3dstuff.at/tools/paper-size-tool.html.
+- PDF preflight: https://printreadyhq.com/en/pdf, https://www.pdfprintchecker.com/, https://www.preflightprint.com/, https://govisually.com/free-tools/pdf-preflight and https://polotno.com/tools/pdf-page-size-checker.
+- Print ads: https://advertiseinnewspapers.com/sizes and Idealliance Ad Ticket at https://idealliance.org/specifications/ad-ticket-specification/.
+- ID photo: https://www.piliapp.com/id-photo/print/, https://penguinedit.com/, https://passphototool.com/ and https://passportlayout.online/.
+- Industrial coding: https://packflowcalc.com/inkjet-coding, https://printingnumbering.com/industrial-coding-tco-calculator.html and https://www.inkjetcoder.co.uk/solutions/date-coder-with-encoder/.
+- Lenticular: https://innerpi.com/projects/lenticular-studio/, https://www.vicgi.com/lenticular-software.html and https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/lenticular.html.
+- NCR/carbonless: Canon technical CB/CFB/CF explanation, Koehler Paper coating explanation, Nekoosa pre-collated product tables and active commercial-printing discussions. Public sources: https://www.koehlerpaper.com/en/products/Carbonless-paper/functionality-of-carbonless-paper.php and https://nekoosa.com/sites/default/files/2023-04/M1118_U20Carbonless_Nekoosa_ProductOverview_WEB.pdf.
+- Letterpress: Boxcar base/plate guidance at https://www.boxcarpress.com/letterpress-base-and-plates/ and supplier height examples at https://www.moanaroadpress.com/bases.html.
+- Risograph: https://spectrolite.app/, University of Illinois file-preparation guidance and https://www.risolana.org/printing.
+- Proof comparison: VGG Oxford Image Compare at https://www.robots.ox.ac.uk/~vgg/software/image-compare/ plus local-browser competitors BlankAI, PicDiff and FastImageTools.
+
+### GO cluster and tool-by-tool breakdown
+
+Cluster: Reprographics & Plan Printing. It is separate from generic image scaling and N-up imposition because it controls real-world drawing representation, exact plot setup, physical verification and oversized plan assembly.
+
+| Tool | Primary user and intent | Inputs | Logic | Outputs | Repeat reason |
+|---|---|---|---|---|---|
+| Drawing Scale Converter | estimator, surveyor or site user taking a dimension from a verified plan | measured drawing length, drawing unit, 1:n denominator, real unit | normalize to mm, multiply by denominator, convert unit | represented real length plus audit sentence | every unlabelled take-off and revision |
+| Plan Print Scaling Calculator | reprographics operator changing an approved issue scale | source denominator, target denominator | source ÷ target × 100 | enlargement/reduction percentage and check-bar expectation | every source/target scale pair |
+| Plot Sheet Fit Planner | CAD technician or plot-room operator selecting media | real extents, target ratio, margin, ISO/ANSI/ARCH family | scale footprint, add margins, check both sheet orientations | smallest fitting sheet, orientation and geometry | each drawing extent, ratio and device |
+| Printed Scale Verification | QA operator releasing the first physical plot | known real length, measured print length, stated ratio | expected length, effective denominator, deviation and correction | effective scale, signed deviation, correction factor | every new file, preset, device or media setup |
+| Plan Tiling Calculator | office printer user assembling an oversized temporary set | plan size, measured printable area, overlap | page advances, ceil rows/columns, compare rotation | grid, page total and coverage | each plan/small-printer combination |
+
+The five tools are independent: changing a ratio is not the same decision as measuring real length, matching paper, verifying a physical output or dividing it across pages.
+
+### Implementation delivered
+
+- Added one cluster hub, five calculators and one independent workflow guide. No Reference page was needed.
+- Added durable shared calculator logic at assets/js/calculators/reprographics.js and independent tests at tools/reprographics-qa.mjs.
+- Updated Tools and Guides hubs, sitemap.xml, llms.txt and the shared Copy Result QA count. The owner-managed homepage badge area was not modified.
+- Final inventory before commit: 83 public HTML pages, 48 calculators, 16 Guides and 9 References.
+
+### QA and release evidence
+
+- Reprographics formula QA: PASS — five calculators, ten valid/invalid cases, metadata, review dates and duplicate-ID checks.
+- Site automated QA: PASS — 83 public HTML pages; canonical, GA4 G-QMCP8M0CW6, Open Graph, JSON-LD, sitemap and JavaScript syntax.
+- Content-depth QA: PASS — 48 calculators and 25 Guide/Reference articles; required workflow sections, minimum depth and duplicate long paragraphs.
+- Navigation, layout, encoding, legacy scaffold and Copy Result QA: PASS.
+- Existing calculation regression: PASS — 24 independent core samples plus 48 expanded samples.
+- Browser visual QA: PASS — all seven new pages rendered at 1440, 1280, 1024, 768 and 390 CSS px (35 combinations). No horizontal overflow, clipping or overlap.
+- Browser interaction QA: PASS — Calculate, Reset, Copy Result, blank/zero/negative handling and error-state copy hiding across all five new calculators; mobile menu closed/open states; five mobile result panels.
+- Browser console: 0 warnings and 0 errors.
+- Risk before deployment: HIGH 0, MEDIUM 1 (organic demand still needs Search Console measurement after indexing), LOW 0.
+
+### Exact next measurement step
+
+After Google indexes the seven new URLs, compare query-level impressions and clicks for drawing scale converter, print plans to scale, plot sheet size, verify printed scale and tile plan searches. Do not expand the cluster until the five tools show whether conversion, sheet-fit or QC intent is strongest.
 
 ## Existing-page growth review — 2026-08-20
 

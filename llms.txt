@@ -1,2 +1,11 @@
 # Print Production Lab
 Commercial print, prepress, paper and binding calculator site. Results are transparent estimates and must be confirmed against job specifications.
+
+Reprographics and plan-printing workflow:
+- https://printproductionlab.com/tools/reprographics-planning.html
+- https://printproductionlab.com/tools/drawing-scale-converter.html
+- https://printproductionlab.com/tools/plan-print-scaling-calculator.html
+- https://printproductionlab.com/tools/plot-sheet-fit-planner.html
+- https://printproductionlab.com/tools/printed-scale-verification.html
+- https://printproductionlab.com/tools/plan-tiling-calculator.html
+- https://printproductionlab.com/guides/printing-plans-to-scale.html
