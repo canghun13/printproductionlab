@@ -7,6 +7,14 @@ Public site language: English
 
 ---
 
+## Reprographics desktop field alignment repair — 2026-08-24
+
+- Issue: Plot Sheet Fit Planner used labels of different wrapped heights in its second desktop field row. Because the field-grid label track was content-sized, the Clear sheet margin input started below the adjacent Paper family select.
+- Fix: within the scoped `assets/css/reprographics-layout.css` desktop rule only, each Reprographics field now reserves a fixed label area, a 46 px control area and a helper area. This aligns controls independently of one- or two-line label text; no calculator logic, content, metadata, result styling, global calculator CSS or the other calculator pages changed.
+- QA: Plot Sheet Fit was visually checked at 1440, 1280 and 1024 px. Its first-row controls and the Clear sheet margin/Paper family controls now have identical top and bottom edges. Drawing Scale Converter, Plan Print Scaling, Printed Scale Verification and Plan Tiling were also checked at 1440 and 1024 px; same-row input/select controls align. At 768 and 390 px, the existing single-column full-width controls and action buttons remain unchanged.
+- Functional regression: Calculate, Reset and Copy Result passed for all five Reprographics tools; browser console errors: 0. Reprographics QA, general QA and layout QA passed.
+- Remaining risks: HIGH none; MEDIUM none; LOW none.
+
 ## Reprographics desktop form-layout refinement — 2026-08-24
 
 - Scope: visual form-layout refinement only for Drawing Scale Converter, Plan Print Scaling Calculator, Plot Sheet Fit Planner, Printed Scale Verification and Plan Tiling Calculator. Calculator formulas, JavaScript, IDs, URLs, content, SEO, metadata, shared site styling and mobile behavior were not changed.

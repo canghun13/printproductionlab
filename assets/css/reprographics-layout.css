@@ -11,7 +11,7 @@
 
   .reprographics-tool .reprographics-fields label{
     display:grid;
-    grid-template-rows:auto 46px minmax(2.7em,auto);
+    grid-template-rows:48px 46px minmax(2.7em,auto);
     align-content:start;
     gap:5px;
     margin:0;
