@@ -9,3 +9,12 @@ Reprographics and plan-printing workflow:
 - https://printproductionlab.com/tools/printed-scale-verification.html
 - https://printproductionlab.com/tools/plan-tiling-calculator.html
 - https://printproductionlab.com/guides/printing-plans-to-scale.html
+
+Web tension and winding workflow:
+- https://printproductionlab.com/tools/web-tension-winding.html
+- https://printproductionlab.com/tools/web-tension-force-calculator.html
+- https://printproductionlab.com/tools/winding-torque-calculator.html
+- https://printproductionlab.com/tools/taper-tension-planner.html
+- https://printproductionlab.com/tools/dancer-pressure-calculator.html
+- https://printproductionlab.com/tools/winder-acceleration-torque.html
+- https://printproductionlab.com/guides/web-tension-winding-setup.html

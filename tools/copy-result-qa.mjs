@@ -4,9 +4,10 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const tools = path.join(root, 'tools');
+const hasCalculatorClass = source => /class="[^"]*\bcalculator\b[^"]*"/.test(source);
 const calculators = fs.readdirSync(tools)
   .filter(name => name.endsWith('.html'))
-  .filter(name => fs.readFileSync(path.join(tools, name), 'utf8').includes('class="calculator"'));
+  .filter(name => hasCalculatorClass(fs.readFileSync(path.join(tools, name), 'utf8')));
 
 const failures = [];
 for (const name of calculators) {
@@ -20,7 +21,7 @@ for (const marker of ['setupCopyResult', 'new MutationObserver(updateCopy)', "!r
   if (!main.includes(marker)) failures.push(`main.js: missing state-management marker ${marker}`);
 }
 
-if (calculators.length !== 48) failures.push(`Expected 48 calculators, found ${calculators.length}`);
+if (calculators.length !== 53) failures.push(`Expected 53 calculators, found ${calculators.length}`);
 if (failures.length) {
   console.error(`COPY RESULT QA FAIL:\n${failures.join('\n')}`);
   process.exit(1);

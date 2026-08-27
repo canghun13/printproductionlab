@@ -1,0 +1,51 @@
+@media (min-width:769px){
+  .web-handling-tool .web-fields{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:18px 14px;
+  }
+
+  .web-handling-tool .web-fields--two{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .web-handling-tool .web-fields label{
+    display:grid;
+    grid-template-rows:48px 46px minmax(2.7em,auto);
+    align-content:start;
+    gap:5px;
+    margin:0;
+  }
+
+  .web-handling-tool .web-fields input,
+  .web-handling-tool .web-fields select{
+    height:46px;
+    min-height:46px;
+    margin-top:0;
+  }
+
+  .web-handling-tool .web-fields small{
+    min-height:2.7em;
+    margin:0;
+  }
+
+  .web-handling-tool .web-actions{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:12px;
+    margin-top:16px;
+    padding-top:16px;
+    border-top:1px solid #c4cbc5;
+  }
+
+  .web-handling-tool .web-actions button{
+    width:auto;
+    min-width:190px;
+    min-height:48px;
+    margin:0;
+    padding:0 20px;
+  }
+
+  .web-handling-tool .web-actions .reset{min-width:128px;}
+}
