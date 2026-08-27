@@ -120,7 +120,8 @@ Score columns: Traffic potential /35, Competition weakness /20, Tool depth /20, 
 - Browser QA: PASS. All seven new pages were actually rendered at 1440, 1280, 1024, 768 and 390 px (35 combinations). Visual review covered header, breadcrumbs, H1/lead, label/control/helper alignment, action rows, result panels, cards, long text, related links and footer. There was no horizontal overflow, overlap or clipping. Desktop three-column controls shared identical top/bottom edges; 768/390 controls and action buttons remained full width. The 390 px mobile menu opened and closed correctly.
 - Functional browser regression: PASS for all five calculators. Calculate, changed-value recalculation, Reset, Copy Result clipboard content and invalid-input messages were exercised through the browser. Browser console warnings/errors: 0.
 - Risk at implementation completion: HIGH none; MEDIUM none; LOW none.
-- Commit/push/deployment: pending at the time this section was drafted; finalized below after remote and production verification.
+- Commit/push/deployment: implementation commit `c62e159822137a188cc76e96dd98d3f285754b59` (`Build web tension and winding tools`) was pushed to `origin/main`; local HEAD, `origin/main` and live remote main matched. GitHub Pages run [33044200592](https://github.com/canghun13/printproductionlab/actions/runs/33044200592) completed successfully for that exact SHA.
+- Live deployment QA: PASS. The Hub, all five calculators, Guide, `assets/js/calculators/web-handling.js`, `assets/css/web-handling-layout.css` and `sitemap.xml` each returned HTTP 200 with the expected deployed marker. A live-browser run of Web Tension Force returned 200 N / 44.96 lbf, displayed the shared Copy Result control and logged zero console warnings/errors.
 
 ## Reprographics desktop field alignment repair — 2026-08-24
 
