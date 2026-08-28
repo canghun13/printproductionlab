@@ -7,6 +7,14 @@ Public site language: English
 
 ---
 
+## Book Spine desktop field alignment — 2026-08-28
+
+- The two-line `Binding / production allowance (mm)` label pushed its input below the other two desktop controls.
+- Root cause: each field label flowed label text, input and helper text as one auto-height block inside the shared grid.
+- Fix: the Book Spine form now uses page-scoped subgrid rows for label, control and helper areas; desktop keeps three aligned field columns, while the existing mobile single-column layout is unchanged.
+- Browser QA passed at 1440, 1280 and 1024 px; all three input top and bottom edges align, helper spacing is consistent, and the action row/result panel remain clear.
+- Regression QA passed at 768 and 390 px, plus Calculate, Reset, Copy Result, the representative 10.50 mm result and zero console errors.
+
 ## Existing-page Book Spine Width Calculator upgrade — 2026-08-28
 
 ### Scope, signal and decision
