@@ -1,11 +1,38 @@
 # Print Production Lab — Project Handover
 
-Last updated: 2026-08-27
+Last updated: 2026-08-28
 Project status: Production live; current expansion documented below
 Primary working language for project documentation: Korean
 Public site language: English
 
 ---
+
+## Existing-page Book Spine Width Calculator upgrade — 2026-08-28
+
+### Scope, signal and decision
+
+- Start commit: `3d1c5105d7ca6798a8544d7f495ad7d11d635264` on `main`, with a clean worktree after fast-forwarding the seven upstream commits. No new URL, calculator cluster, Guide or Reference page was added.
+- Supplied weekly GSC signal: `book spine width calculator` 5 impressions / average position 31; `perfect bound spine` 3 / 20; `book thickness` 3 / 23; `book spine calculator` 2 / 16; `spine book` 2 / 17.5; `spine width` 2 / 18.5; `perfect bound spine width` 1 / 19. The sample is too small for a CTR conclusion, but the terms consistently describe one existing perfect-bound spine-planning intent.
+- SERP review found supplier or print-provider calculators with paper presets and supplier-specific assumptions. The useful gap is a vendor-neutral planning workflow that asks for a measured leaf caliper, makes page-to-leaf math explicit, shows the raw block and allowance, and tells the operator to reconcile the result with the binder's cover template.
+- Decision: **GO** for a minimal upgrade of the existing `/tools/book-spine-width-calculator.html`. This changes the page's task clarity, output explanation, evidence and adjacent workflow paths without competing with a separate URL or changing unrelated high-ranking tools.
+
+### Formula and production implementation
+
+- Formula audit: `leaves = interior pages ÷ 2`; `raw book block = leaves × measured leaf caliper`; `planned spine = raw book block + binding/production allowance`; inches are `mm ÷ 25.4`. A 200-page interior at 0.100 mm and 0.50 mm allowance returns 10.50 mm / 0.413 in.
+- The calculator now requires a whole positive interior page count, positive measured leaf caliper and non-negative allowance. Odd counts remain calculable for planning but display a release-stage warning because printed interiors normally resolve to an even count.
+- Result hierarchy: primary spine width in mm and inches; then planning leaves, measured caliper, raw book block and allowance. Copy Result carries exactly that state-managed summary.
+- UX gap closed: labels identify final interior pages, measured physical leaf caliper and production allowance; concise helpers explain numbered pages versus leaves, why GSM cannot substitute for caliper, and why allowance must follow the production route.
+- Content gap closed: the target page now has specific sections for input selection, formula, worked production example, interpretation, common mistakes, limitations and the next workflow steps. It states the calculation is a planning value rather than a bindery approval.
+- Internal-link gap closed on the target: Paper Thickness Calculator, Book Cover Size Calculator, Book Spine Width Guide, Paper Caliper Reference and Binding & Spine Reference. The existing Guide's direct Calculator backlink was confirmed intact; no related Guide/Reference content was changed.
+- Metadata decision: H1 and title remain `Book Spine Width Calculator`; description/OG description now clarify perfect-bound spine inputs without changing the canonical URL or page identity.
+
+### Verification and follow-up
+
+- Functional cases passed in the exact calculator code: four normal cases (including zero allowance), one odd-page warning, and eight invalid cases covering zero, negatives, blank/non-numeric and fractional page counts. Page-contract checks cover all three inputs, the cache-busted calculator script and the five related workflow links.
+- Browser verification on local static output passed at 1440, 1280, 1024, 768 and 390 px: calculator returns 10.50 mm / 0.413 in for 200 / 0.10 / 0.50; output breakdown, Copy Result, Reset, validation, related links, one H1, footer, no horizontal overflow, overlap, clipping or console errors were checked. Mobile visual QA confirms the primary result is dominant while the production breakdown remains secondary.
+- Automatic QA passed: public HTML/meta/canonical (90 pages), navigation (90), content depth (53 calculators, 26 articles), encoding, legacy scaffold (56 calculators), independent calculation samples (24), expanded calculation samples (48 across 24 calculators), shared Copy Result (53 calculators), layout (90 pages) and `git diff --check`.
+- Risks: HIGH 0; MEDIUM 0; LOW 1 — weekly query impressions are very small and positions can be volatile while the revised description/content is recrawled. Do not infer a ranking win from the current sample.
+- Exact next step: after 2–4 weeks (or once the changed page has been recrawled), compare the same `book spine` query family in GSC; change only this existing page if the trend and search-result evidence support a further focused iteration.
 
 ## New workflow-family discovery and Web Tension & Winding delivery — 2026-08-27
 
