@@ -1,11 +1,21 @@
 # Print Production Lab — Project Handover
 
-Last updated: 2026-08-28
+Last updated: 2026-08-31
 Project status: Production live; current expansion documented below
 Primary working language for project documentation: Korean
 Public site language: English
 
 ---
+
+## Company/home reconciliation and aggressive workflow completion audit — 2026-08-31
+
+- Company checkout started on `main` at `3d1c5105d7ca6798a8544d7f495ad7d11d635264`, with a clean working tree, local `origin/main` at the same SHA and no company-only uncommitted or unpushed files. The aggressive workflow implementation was already present in commits `c62e159` through `3d1c510` and was already part of the live remote lineage.
+- Actual GitHub main was `f88742597a3b704ac54a7d214062cc9ee2956576`, two commits ahead of the company checkout. The user-supplied `bf83a437618b0ecde71774d6908f9743deb69598` is the Book Spine workflow upgrade; `f887425` is its follow-up desktop field-alignment commit. The only upstream file changes were the Book Spine page, its shared spine calculation branch, a dedicated Book Spine QA script and these handover records.
+- With the company worktree clean and 0 ahead / 2 behind, `git pull --ff-only origin main` safely advanced `3d1c510` to `f887425`. No reset, clean, force checkout, overwrite, stash, reinstall or development-environment reset was used. The completed Book Spine work was preserved and not repeated.
+- Aggressive workflow status: **already completed, GO delivered**. Web Tension & Winding remains the selected 87/100 cluster with one Hub, five independent calculators and one Guide. Its 50-family discovery, 14 deep validations, hard gates, sources, fixtures, browser QA, deployment and final inventory are recorded in the 2026-08-27 section below. No duplicate cluster or filler page was added during reconciliation.
+- Integrated automatic regression at `f887425`: Web Handling QA passed five calculators and 53 independent fixtures; Book Spine QA passed four normal, one odd-page, eight invalid and seven contract cases; public HTML, navigation, content depth, Copy Result, encoding, layout, legacy scaffold, calculation, expanded calculation, Reprographics, Print Run Time and Booklet Page Order suites all passed. Inventory remains 90 public HTML pages, 53 calculators, 17 Guides and 9 References.
+- Live browser regression at `f887425`: Web Tension Hub rendered with five cards and its Guide link; Web Tension Force returned 200 N / 44.96 lbf. Book Spine returned 10.50 mm / 0.413 in, Copy Result reached `COPIED`, Reset restored the prompt, all three 1280 px desktop controls shared identical top/bottom edges, and 390 px retained single-column full-width controls. Horizontal overflow and console errors were zero.
+- Deployment: GitHub Pages run [33140753109](https://github.com/canghun13/printproductionlab/actions/runs/33140753109) completed successfully for `f887425`. HIGH none; MEDIUM none; LOW retain the Book Spine GSC monitoring item documented below.
 
 ## Book Spine desktop field alignment — 2026-08-28
 
