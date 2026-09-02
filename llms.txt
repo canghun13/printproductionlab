@@ -18,3 +18,12 @@ Web tension and winding workflow:
 - https://printproductionlab.com/tools/dancer-pressure-calculator.html
 - https://printproductionlab.com/tools/winder-acceleration-torque.html
 - https://printproductionlab.com/guides/web-tension-winding-setup.html
+
+RFID and NFC smart-label production workflow:
+- https://printproductionlab.com/tools/smart-label-production.html
+- https://printproductionlab.com/tools/sgtin-96-epc-encoder.html
+- https://printproductionlab.com/tools/nfc-ndef-memory-estimator.html
+- https://printproductionlab.com/tools/rfid-label-pitch-drift-checker.html
+- https://printproductionlab.com/tools/rfid-encode-position-converter.html
+- https://printproductionlab.com/tools/rfid-encoding-throughput-planner.html
+- https://printproductionlab.com/guides/rfid-nfc-smart-label-production.html

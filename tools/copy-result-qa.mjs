@@ -21,7 +21,7 @@ for (const marker of ['setupCopyResult', 'new MutationObserver(updateCopy)', "!r
   if (!main.includes(marker)) failures.push(`main.js: missing state-management marker ${marker}`);
 }
 
-if (calculators.length !== 53) failures.push(`Expected 53 calculators, found ${calculators.length}`);
+if (calculators.length !== 58) failures.push(`Expected 58 calculators, found ${calculators.length}`);
 if (failures.length) {
   console.error(`COPY RESULT QA FAIL:\n${failures.join('\n')}`);
   process.exit(1);
