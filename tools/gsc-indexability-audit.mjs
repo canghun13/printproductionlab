@@ -1,41 +1,52 @@
-import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
-import { join, relative } from 'node:path';
+import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { join, relative, dirname } from 'node:path';
+import { createHash } from 'node:crypto';
 
 const root = process.cwd();
 const host = 'https://printproductionlab.com';
+const live = process.argv.includes('--live');
 const targets = [
-  '/contact.html','/guides/','/guides/booklet-creep.html','/guides/paper-job-weight.html','/guides/post-press-preflight.html','/guides/print-imposition.html','/guides/print-job-cost.html','/guides/signatures.html','/reference/margin-gripper.html','/tools/','/tools/brochure-fold-panel-calculator.html','/tools/coil-binding.html','/tools/cutting-stack-lift-planner.html','/tools/folding-allowance-planner.html','/tools/gate-fold-panel-calculator.html','/tools/lamination-material-cost-calculator.html','/tools/post-press-finishing.html','/tools/post-press-time-cost-planner.html','/tools/roll-fold-panel-calculator.html'
+  ['Existing/base', '/contact.html'], ['Existing/base', '/guides/'], ['Existing/base', '/guides/booklet-creep.html'], ['Existing/base', '/guides/paper-job-weight.html'], ['Existing/base', '/guides/print-imposition.html'], ['Existing/base', '/guides/print-job-cost.html'], ['Existing/base', '/guides/signatures.html'], ['Existing/base', '/reference/margin-gripper.html'], ['Existing/base', '/tools/'], ['Existing/base', '/tools/coil-binding.html'],
+  ['Post-Press', '/guides/post-press-preflight.html'], ['Post-Press', '/tools/brochure-fold-panel-calculator.html'], ['Post-Press', '/tools/cutting-stack-lift-planner.html'], ['Post-Press', '/tools/folding-allowance-planner.html'], ['Post-Press', '/tools/gate-fold-panel-calculator.html'], ['Post-Press', '/tools/lamination-material-cost-calculator.html'], ['Post-Press', '/tools/post-press-finishing.html'], ['Post-Press', '/tools/post-press-time-cost-planner.html'], ['Post-Press', '/tools/roll-fold-panel-calculator.html'],
+  ['Reprographics', '/guides/printing-plans-to-scale.html'], ['Reprographics', '/tools/reprographics-planning.html'], ['Reprographics', '/tools/drawing-scale-converter.html'], ['Reprographics', '/tools/plan-print-scaling-calculator.html'], ['Reprographics', '/tools/plot-sheet-fit-planner.html'], ['Reprographics', '/tools/printed-scale-verification.html'], ['Reprographics', '/tools/plan-tiling-calculator.html'],
+  ['Web Tension', '/guides/web-tension-winding-setup.html'], ['Web Tension', '/tools/web-tension-winding.html'], ['Web Tension', '/tools/web-tension-force-calculator.html'], ['Web Tension', '/tools/winding-torque-calculator.html'], ['Web Tension', '/tools/taper-tension-planner.html'], ['Web Tension', '/tools/dancer-pressure-calculator.html'], ['Web Tension', '/tools/winder-acceleration-torque.html']
 ];
+const controls = ['/', '/about.html', '/privacy.html', '/reference/', '/tools/booklet-creep-calculator.html', '/tools/print-run-time.html', '/tools/press-sheets-required.html', '/tools/roll-media-yield.html', '/tools/pixels-required.html', '/tools/book-spine-width-calculator.html', '/guides/book-spine-width.html', '/reference/binding-spine.html'];
 const htmlFiles = [];
-function walk(dir) { for (const entry of readdirSync(dir, { withFileTypes: true })) { const file = join(dir, entry.name); if (entry.isDirectory() && !['.git','.agents','node_modules'].includes(entry.name)) walk(file); else if (entry.isFile() && entry.name.endsWith('.html')) htmlFiles.push(file); } }
+function walk(dir) { for (const entry of readdirSync(dir, { withFileTypes: true })) { const file = join(dir, entry.name); if (entry.isDirectory() && !['.git', '.agents', 'node_modules'].includes(entry.name)) walk(file); else if (entry.isFile() && entry.name.endsWith('.html')) htmlFiles.push(file); } }
 walk(root);
-const sourceByUrl = new Map();
-for (const file of htmlFiles) {
-  const rel = relative(root, file).replaceAll('\\','/');
-  const url = rel === 'index.html' ? '/' : rel.endsWith('/index.html') ? `/${rel.slice(0, -10)}` : `/${rel}`;
-  sourceByUrl.set(url, readFileSync(file, 'utf8'));
+function fileToUrl(file) { const rel = relative(root, file).replaceAll('\\', '/'); return rel === 'index.html' ? '/' : rel.endsWith('/index.html') ? `/${rel.slice(0, -10)}` : `/${rel}`; }
+function normalizePath(path) { const u = new URL(path, host); let result = u.pathname; if (result.endsWith('/index.html')) result = result.slice(0, -10) || '/'; return result; }
+function resolveInternal(from, href) { if (/^(?:https?:)?\/\//i.test(href) && !href.startsWith(host)) return null; try { return normalizePath(new URL(href, `${host}${from}`).pathname); } catch { return null; } }
+function textOnly(html) { return html.replace(/<script\b[\s\S]*?<\/script>|<style\b[\s\S]*?<\/style>|<[^>]+>/gi, ' ').replace(/\s+/g, ' ').trim(); }
+function mainText(html) { return textOnly(html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1] || ''); }
+function titleOf(html) { return html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1].replace(/\s+/g, ' ').trim() || ''; }
+function canonicalOf(html) { return html.match(/<link\b[^>]*\brel=["']canonical["'][^>]*\bhref=["']([^"']+)["'][^>]*>/i)?.[1] || ''; }
+function schemasOf(html) { try { return [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)].map(m => JSON.parse(m[1])); } catch { return null; } }
+function assetFailures(file, html) { const failures = []; for (const match of html.matchAll(/<(?:script|link)\b[^>]+(?:src|href)=["']([^"']+)["']/gi)) { const value = match[1]; if (/^(?:https?:)?\/\//i.test(value) || value.startsWith('data:') || value.startsWith('#')) continue; if (!existsSync(join(dirname(file), value.split(/[?#]/)[0]))) failures.push(value); } return failures; }
+
+const sourceByUrl = new Map(htmlFiles.map(file => [fileToUrl(file), { file, html: readFileSync(file, 'utf8') }]));
+const links = new Map([...sourceByUrl.keys()].map(url => [url, []]));
+const inbound = new Map([...sourceByUrl.keys()].map(url => [url, []]));
+for (const [from, page] of sourceByUrl) for (const match of page.html.matchAll(/<a\b[^>]*\bhref=["']([^"'#?]+)["'][^>]*>([\s\S]*?)<\/a>/gi)) { const to = resolveInternal(from, match[1]); if (to && sourceByUrl.has(to)) { links.get(from).push(to); inbound.get(to).push({ from, anchor: textOnly(match[2]) }); } }
+function depthFrom(start) { const depth = new Map([[start, 0]]), queue = [start]; while (queue.length) { const url = queue.shift(); for (const next of links.get(url) || []) if (!depth.has(next)) { depth.set(next, depth.get(url) + 1); queue.push(next); } } return depth; }
+const homeDepth = depthFrom('/'); const toolsDepth = depthFrom('/tools/');
+const sitemap = readFileSync(join(root, 'sitemap.xml'), 'utf8'); const robots = readFileSync(join(root, 'robots.txt'), 'utf8');
+const sitemapLocs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/gi)].map(m => m[1]); const sitemapDuplicates = sitemapLocs.filter((url, index) => sitemapLocs.indexOf(url) !== index); const sitemapLastmods = [...sitemap.matchAll(/<lastmod>([^<]+)<\/lastmod>/gi)].map(m => m[1]);
+function staticRow(group, url) {
+  const page = sourceByUrl.get(url), html = page?.html || '', canonical = canonicalOf(html), schema = schemasOf(html), anchors = inbound.get(url) || [];
+  const robotsMeta = /<meta\b[^>]*\bname=["']robots["'][^>]*\bcontent=["'][^"']*\bindex\s*,\s*follow\b[^"']*["']/i.test(html);
+  const blocked = /<meta\b[^>]*\bname=["'](?:robots|googlebot)["'][^>]*\bcontent=["'][^"']*\bnoindex\b/i.test(html) || robots.includes(`Disallow: ${url}`);
+  const rawMain = mainText(html), assets = page ? assetFailures(page.file, html) : ['missing page'];
+  const staticPass = !!page && canonical === `${host}${url}` && robotsMeta && !blocked && sitemapLocs.includes(`${host}${url}`) && !!titleOf(html) && (html.match(/<h1\b[^>]*>/gi) || []).length === 1 && rawMain.length >= 250 && schema !== null && assets.length === 0 && anchors.length > 0;
+  return { group, url, file: !!page, selfCanonical: canonical === `${host}${url}`, robotsMeta, blocked, sitemap: sitemapLocs.includes(`${host}${url}`), h1s: (html.match(/<h1\b[^>]*>/gi) || []).length, bodyChars: textOnly(html).length, rawMain: rawMain.length >= 250, schemas: schema?.length ?? 0, schemaUrl: !!schema?.some(item => JSON.stringify(item).includes(`${host}${url}`)), inbound: anchors.length, uniqueSources: new Set(anchors.map(x => x.from)).size, anchors: [...new Set(anchors.map(x => x.anchor).filter(Boolean))], homeDepth: homeDepth.get(url) ?? null, toolsDepth: toolsDepth.get(url) ?? null, assets, staticPass };
 }
-const inbound = new Map(targets.map(target => [target, []]));
-for (const [from, source] of sourceByUrl) {
-  if (/noindex/i.test(source)) continue;
-  for (const href of source.matchAll(/<a\b[^>]*\bhref=["']([^"'#?]+)["']/gi)) {
-    let to = href[1];
-    if (!to.startsWith('/')) continue;
-    if (to.endsWith('index.html')) to = to.replace(/index\.html$/, '');
-    if (inbound.has(to)) inbound.get(to).push(from);
-  }
-}
-const sitemap = readFileSync(join(root, 'sitemap.xml'), 'utf8');
-const robots = readFileSync(join(root, 'robots.txt'), 'utf8');
-const rows = targets.map(url => {
-  const source = sourceByUrl.get(url);
-  const canonical = source?.match(/<link rel="canonical" href="([^"]+)"/i)?.[1] || '';
-  const title = /<title>[^<]+<\/title>/i.test(source || '');
-  const h1 = (source?.match(/<h1\b[^>]*>/gi) || []).length === 1;
-  return { url, file: !!source, canonical: canonical === `${host}${url}`, robots: /<meta name="robots" content="index,follow">/i.test(source || ''), noindex: /noindex/i.test(source || ''), sitemap: sitemap.includes(`<loc>${host}${url}</loc>`), inbound: inbound.get(url).length, from: inbound.get(url).join(', '), title, h1, robotsBlocked: robots.includes(`Disallow: ${url}`) };
-});
-const failures = rows.filter(row => !row.file || !row.canonical || !row.robots || row.noindex || !row.sitemap || !row.title || !row.h1 || row.robotsBlocked || !row.inbound);
-const markdown = ['| URL | HTTP | Canonical | Robots | Sitemap | Internal links | Status |','|---|---:|---|---|---|---:|---|', ...rows.map(row => `| \`${row.url}\` | pending | ${row.canonical?'PASS':'FAIL'} | ${row.robots&&!row.noindex&&!row.robotsBlocked?'PASS':'FAIL'} | ${row.sitemap?'PASS':'FAIL'} | ${row.inbound} | ${!failures.includes(row)?'static PASS':'CHECK'} |`)].join('\n');
-writeFileSync(join(root, 'tools', 'gsc-indexability-report.md'), markdown + '\n', 'utf8');
-if (failures.length) { console.error(`GSC INDEXABILITY STATIC QA FAIL (${failures.length})\n${failures.map(row => row.url).join('\n')}`); process.exit(1); }
-console.log(`GSC INDEXABILITY STATIC QA PASS: ${rows.length} affected URLs; report written to tools/gsc-indexability-report.md.`);
+const rows = targets.map(([group, url]) => staticRow(group, url)); const controlRows = controls.map(url => staticRow('Control', url));
+async function fetchLive(url, ua) { const response = await fetch(`${host}${url}?gsc-audit=20260911`, { redirect: 'manual', headers: { 'user-agent': ua, accept: 'text/html,application/xhtml+xml' } }); const body = await response.text(); return { status: response.status, location: response.headers.get('location') || '', type: response.headers.get('content-type') || '', cache: response.headers.get('cache-control') || '', xRobots: response.headers.get('x-robots-tag') || '', server: response.headers.get('server') || '', cf: response.headers.get('cf-cache-status') || '', hash: createHash('sha256').update(body).digest('hex').slice(0, 16), bodyChars: body.length, challenge: /cf-chl|challenge-platform|captcha|just a moment/i.test(body), canonical: canonicalOf(body), robotsMeta: /<meta\b[^>]*\bname=["']robots["'][^>]*\bcontent=["'][^"']*\bindex\s*,\s*follow\b[^"']*["']/i.test(body) }; }
+if (live) { const browserUa = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140 Safari/537.36'; const botUa = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'; for (const row of [...rows, ...controlRows]) { row.browser = await fetchLive(row.url, browserUa); row.googlebot = await fetchLive(row.url, botUa); row.livePass = row.browser.status === 200 && row.googlebot.status === 200 && !row.browser.location && !row.googlebot.location && !row.browser.xRobots && !row.googlebot.xRobots && !row.browser.challenge && !row.googlebot.challenge && row.browser.canonical === `${host}${row.url}` && row.googlebot.canonical === `${host}${row.url}` && row.browser.robotsMeta && row.googlebot.robotsMeta; row.uaEquivalent = row.browser.hash === row.googlebot.hash; } }
+for (const row of rows) row.classification = row.staticPass && (!live || (row.livePass && row.uaEquivalent)) ? 'Type 4 — No site-side defect found' : row.inbound === 0 || row.homeDepth == null ? 'Type 2 — Discoverability weakness' : 'Type 1 — Definite technical blocker';
+const failures = rows.filter(row => row.classification !== 'Type 4 — No site-side defect found');
+const md = ['# GSC discovered-not-indexed technical audit', '', `Targets: ${rows.length}; controls: ${controlRows.length}; live HTTP mode: ${live ? 'yes' : 'no'}.`, `Sitemap URLs: ${sitemapLocs.length}; duplicate locs: ${sitemapDuplicates.length}; lastmod entries: ${sitemapLastmods.length}; robots sitemap declaration: ${/Sitemap:\s*https:\/\/printproductionlab\.com\/sitemap\.xml/i.test(robots) ? 'PASS' : 'FAIL'}.`, '', '| URL | Group | HTTP / Googlebot | Canonical | Robots | Sitemap | Inbound / anchor evidence | Home depth | Raw main | Schema | Assets | Classification |', '|---|---|---|---|---|---|---|---:|---|---|---|---|', ...rows.map(row => `| \`${row.url}\` | ${row.group} | ${live ? `${row.browser.status}/${row.googlebot.status}${row.uaEquivalent ? '' : ' UA-diff'}` : 'not run'} | ${row.selfCanonical ? 'PASS' : 'FAIL'} | ${row.robotsMeta && !row.blocked ? 'PASS' : 'FAIL'} | ${row.sitemap ? 'PASS' : 'FAIL'} | ${row.inbound} / ${row.anchors.slice(0, 2).join('; ').replaceAll('|', '/')} | ${row.homeDepth ?? '—'} | ${row.rawMain ? 'PASS' : 'FAIL'} | ${row.schemas && row.schemaUrl ? 'PASS' : 'CHECK'} | ${row.assets.length ? 'FAIL' : 'PASS'} | ${row.classification} |`), '', '## Normal indexed-signal controls', '', '| URL | HTTP / Googlebot | Inbound | Home depth | Static pass |', '|---|---|---:|---:|---|', ...controlRows.map(row => `| \`${row.url}\` | ${live ? `${row.browser.status}/${row.googlebot.status}` : 'not run'} | ${row.inbound} | ${row.homeDepth ?? '—'} | ${row.staticPass && (!live || row.livePass) ? 'PASS' : 'CHECK'} |`), ''].join('\n');
+writeFileSync(join(root, 'tools', 'gsc-indexability-report.md'), md, 'utf8');
+if (sitemapDuplicates.length || failures.length) { console.error(`GSC INDEXABILITY QA FAIL: ${failures.length} target issue(s), ${sitemapDuplicates.length} sitemap duplicate(s). Report written to tools/gsc-indexability-report.md.`); process.exit(1); }
+console.log(`GSC INDEXABILITY QA PASS: ${rows.length} targets, ${controlRows.length} controls${live ? ', browser and Googlebot HTTP compared' : ''}. Report written to tools/gsc-indexability-report.md.`);
