@@ -88,7 +88,9 @@ Review scores are prioritization judgments, not search volumes: search evidence 
 
 ## Delivery and remaining risks
 
-- Implementation, push and live verification: pending at the time of this pre-delivery record; append exact commit/deployment evidence after push.
+- Implementation commit: `ca361bb55694b314b6288a782d479713c6063c18`, pushed to `origin/main`; local HEAD, tracking branch and actual remote main matched after push with a clean worktree. [GitHub Pages run 36822477483](https://github.com/canghun13/printproductionlab/actions/runs/36822477483) completed successfully for this exact SHA.
+- Actual live-domain Chrome verification completed after that deployment: 13 target/control/Guide render measurements and 4 functional records, including target calculation, changed inputs, invalid inputs, clipboard, Reset and mobile menu. Target widths 1440/1280/1024/900/768/390 retained the same baseline Footer exception below; checked console/page errors and internal asset failures were 0.
+- Live target HTML and versioned calculator script returned HTTPS 200; deployed script matched the local production script. Canonical and GA4 were preserved. HTTP and www target variants normalized to the HTTPS apex. The published 100 m / 0.10 mm / 76 mm example produces 136.05 mm. A documentation-only follow-up commit records this verification; its SHA is obtainable from Git history and the final delivery report rather than embedding a self-referential commit hash here.
 - HIGH: none found in the delivered unit-fix scope.
 - MEDIUM: pre-existing 900 px shared-footer 4 px overflow; separate scoped layout task, not a unit-fix regression.
 - LOW: incomplete/mismatched reporting windows and very small recent search sample; Booklet Creep's unused reference input remains a separate lower-priority contract issue. Do not assert that this repair improves rankings.
