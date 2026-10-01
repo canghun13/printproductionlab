@@ -1,11 +1,25 @@
 # Print Production Lab — Project Handover
 
-Last updated: 2026-09-02
+Last updated: 2026-10-01
 Project status: Production live; current expansion documented below
 Primary working language for project documentation: Korean
 Public site language: English
 
 ---
+
+## Weekly growth/search decision — 2026-10-01
+
+- Decision: **FIX — technical defect corrected: Roll Diameter unit contract**. One existing URL repaired; new cluster/pages 0. Book Spine work preserved. Full evidence, current-session attachment inventory, periods, candidate scores, exclusions and risks: `research/weekly-growth-review-2026-10-01.md`.
+- Start: clean `main` at `0ca7687f7f089c58f75911838ffcac3644b4b582`; local HEAD, fetched origin/main and actual remote main matched, ahead/behind 0/0. No reset, clean, stash, overwrite of user work, install or environment reset. Inventory unchanged: 97 public HTML, 58 calculators, 18 Guides, 9 References, 7 hubs and 5 other pages. Latest cluster remains RFID/NFC Smart Label Production.
+- All five current-session reports were completely read in one operation and retained before analysis. Performance July 22–September 28: 1 click / 357 impressions / 0.2801% CTR; 49 impression-page rows, 114 disclosed queries. Last seven available days September 22–28: 0 impressions / 0 clicks versus September 15–21: 3 / 0. Historical July 27 click is not this week's growth. Page/query subtotal grains were not substituted for property totals.
+- Coverage latest data September 21: 56 indexed / 42 excluded, comprising 40 Discovered–currently not indexed and 2 redirects; no Crawled–currently not indexed category. Last two comparable coverage weeks unchanged. No per-URL redirect detail supplied. Do not repeat the previous 33-target audit or mass-edit SEO solely because Discovered increased; seven current Smart Label routes, robots/sitemap and two controls passed targeted HTTP checks.
+- Bing CSV date window unspecified: pages 248 impressions / 7 clicks, keywords 237 / 7. Leading clicked pages: Booklet Creep 20 / 4 and Roll Diameter 30 / 2; no valid Bing week-over-week claim. GA4 September 3–30: All Users 37; first-user Direct 21, Bing organic 4, DuckDuckGo 3, ChatGPT 4, KittyLaunch 2, Twelve Tools 1, unavailable 2. Google organic not listed; current CSV has no session-source table. Repeated 5 views/1 user patterns and prior QA mean pageviews are not organic popularity evidence.
+- Root cause: Roll Diameter labels omitted units while the published 100 m / 0.10 mm / 76 mm example was calculated without metre-to-mm conversion. Chrome reproduced 76.08 before repair; independent annulus geometry gives 136.045563865 mm. Fixed length m → mm normalization and explicit caliper/core/output mm; defaults 100 / 0.10 / 76 now give **136.05 mm**. Input IDs, URL, metadata, GA4, CSS, result styling and shared Copy/Reset stay intact. Only the Roll Diameter branch, target guidance/example and retained generator entry changed.
+- Unit fixtures: 4 independent normal/decimal/boundary, 13 invalid/extreme and page contracts PASS; 23 other expansion branches byte-identical to start-commit outputs at unchanged fixtures. Whole-site static/navigation/content/encoding/Copy/layout/legacy, core calculations, expanded input samples, Reprographics, Web Handling, Smart Label, Book Spine, Print Run Time and Booklet Page Order suites PASS. Existing expanded QA checks inputs, not expected outputs; this new unit suite tests production output.
+- Actual Chrome QA: target at 1440/1280/1024/900/768/390, six screenshot/box checks plus full desktop/mobile visual inspection; 13 explicit target/control/Guide measurements. All 58 calculators passed Calculate, actual Copy success and Reset at 390. Target also passed clipboard contents, changed-input calculation, blank/zero/negative/extreme errors, copy hiding, restored defaults, rerun and mobile menu. Checked console/page errors and broken internal assets 0. Test analytics blocked to avoid GA4 contamination.
+- Browser exception: **pre-existing shared Footer overflows 4 px at 900**, reproduced identically on start-commit HTML; no overflowing calculator control. Not hidden or counted as a clean all-width PASS. Other target widths, including 768/390, have overflow 0. No global layout or user-managed badge changes. HIGH none in fix scope; MEDIUM this existing Footer issue; LOW limited date-window/search evidence and Booklet Creep's separate unused reference input.
+- Existing growth upgrade: not justified by sustained recent Google evidence. Expansion considered but not executed because Priority A wins; current exclusion records reviewed, no recycled candidate or claimed 40-family discovery. Next: matched weekly Roll Diameter/Booklet Creep search data; separately scoped 900 px Footer repair; later Smart Label crawl/index evidence.
+- Delivery: implementation commit, push, Pages and live-domain evidence to be appended after verification.
 
 ## GSC “Discovered – currently not indexed” 33-URL technical audit — 2026-09-11
 
