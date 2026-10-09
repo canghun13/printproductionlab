@@ -84,7 +84,11 @@ Scores are prioritization judgments, not measured keyword volume: search evidenc
 
 ## Deployment and risks
 
-- Local QA complete. Implementation commit/push and GitHub Pages/live confirmation are recorded in the follow-up delivery entry after actual verification; they are not inferred from local QA.
+- Implementation commit: `f5a8439a5eb5506019a0783e01b9b5c0fe4e25d5` (`Remove unused booklet creep input and record weekly review`), pushed to origin/main. Local HEAD, tracking origin/main and actual remote main matched; working tree clean after implementation push.
+- [GitHub Pages run 37895186428](https://github.com/canghun13/printproductionlab/actions/runs/37895186428) completed successfully for that exact SHA. The first post-push request still served old HTML while deployment was in progress; this was treated as propagation, not a reason to rewrite code.
+- After deployment, ordinary live target HTML returns HTTPS 200, removes the obsolete input and serves corrected guidance. Target HTML, calculator JS, main JS and layout-refinement CSS match local source after normalizing Git's Windows CRLF/LF difference; no stale-code mismatch remains. Apex canonical/GA4 are preserved.
+- Actual live Chrome passed the same six target widths and eight control/Guide measurements (14 total), all 14 target valid/error fixtures, actual clipboard, Reset/defaults, rerun/menu and three mobile calculator interaction controls. All six live screenshots were inspected. Checked console/page errors and internal asset failures: 0. The same pre-existing 900 px footer 4 px overflow remains, explicitly excepted rather than reported as a clean PASS. Formula output remains 64 pages / 0.10 mm = 1.50 mm.
+- This documentation-only follow-up records verified delivery. Its final SHA is available from Git history/final report rather than embedding a self-referential hash in the document.
 - HIGH: none found in the delivered input-contract scope.
 - MEDIUM: pre-existing shared-footer 4 px overflow at 900; separate authorized layout task.
 - LOW: small recent Google sample, Bing missing report windows, shifted GA4 windows and QA contamination; no ranking win asserted.
