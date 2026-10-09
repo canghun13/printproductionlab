@@ -1,11 +1,21 @@
 # Print Production Lab — Project Handover
 
-Last updated: 2026-10-01
+Last updated: 2026-10-09
 Project status: Production live; current expansion documented below
 Primary working language for project documentation: Korean
 Public site language: English
 
 ---
+
+## Weekly growth/search decision — 2026-10-09
+
+- Decision: **FIX — technical defect corrected**. Removed Booklet Creep's unused “Required positive reference” control and false validation guidance; one existing URL, no new pages, no formula/JS/CSS/metadata/footer/badge changes. Booklet Creep generator source entry aligned without a sitewide rebuild. Full sources, periods, comparisons, scores and exclusions: `research/weekly-growth-review-2026-10-09.md`.
+- Repository: initial clean main/HEAD/tracking `f88742597a3b704ac54a7d214062cc9ee2956576`; actual remote checked before fetch `1709c15a291097cc3c003678a99109b8c80328a4`. 0 ahead/7 behind safely fast-forwarded to that implementation start SHA. No overwrite/reset/stash/install. Inventory unchanged: 97 public HTML, 58 calculators, 18 Guides, 9 References, 7 hubs, 5 other pages; latest cluster RFID/NFC Smart Label.
+- Current-session attachments only: October 9 Performance ZIP, Coverage Drilldown ZIP, Bing PageTraffic/Keyword CSVs and GA4 overview. Google July 22–October 6: 1 historical click / 362 impressions / 0.2762% CTR, 51 page rows / 116 queries. Adjacent last seven available days September 30–October 6: 5 impressions/0 clicks versus September 23–29: 0/0. Discovered count 40 through October 4, unchanged; aggregate indexed/excluded/redirect/Crawled counts unavailable from this drilldown. 1970 crawl dates are unavailable sentinels. No repeat indexability audit or SEO rewrite.
+- Bing date range unspecified: pages 346 impressions/11 clicks (45 rows); queries 325/11 (197). Prior snapshot 248/7 and 237/7; differences are not verified weekly growth. Booklet Creep 24/4 clicks; Roll Diameter 35/2. GA4 September 11–October 8: active/new 48/48, engagement 22.23 s, 290 events; first-user Direct 23, Bing organic 9, DuckDuckGo 4, Yahoo 1, ChatGPT 9, Copilot 1, Twelve Tools 1. Google organic not listed. Shifted period/Direct/prior QA prevent clean weekly organic or human-only popularity claims.
+- Reproduction: latest-main local and live Chrome both returned 1.50 mm for 64 pages/0.10 mm with reference 1, empty, zero, negative or 10000. Root cause: stale HTML/generator claimed a required validation input while the creep branch used/validated only a/b. Corrected contract exposes only page count and sheet caliper; calculation `(pages/4−1) × caliper` unchanged.
+- QA: new two-input/generator contract + 15 independent valid/error fixtures PASS; all existing static/navigation/content/encoding/Copy/layout/legacy and relevant calculation suites PASS. Actual Chrome local: 1440/1280/1024/900/768/390 screenshot/box checks and visual inspection, 14 target/control/Guide measurements; target Calculate/clipboard/Reset/error/rerun/menu and three mobile calculator controls PASS. Page/console errors and internal asset failures 0; analytics blocked during QA. **Known exception:** existing shared Footer 4 px overflow at 900 reproduced from start-commit baseline; no off-screen calculator element, not hidden or counted as clean all-width PASS.
+- Priority A chosen; current discovery exclusions reviewed, no claimed 40-family expansion branch. HIGH none in fix scope; MEDIUM existing footer overflow; LOW small/mismatched-window search data and QA contamination. Next: matched search windows; separate footer task; later Smart Label crawl/index evidence. Commit/deployment/live completion is recorded after actual verification below.
 
 ## Weekly growth/search decision — 2026-10-01
 
