@@ -1,11 +1,23 @@
 # Print Production Lab — Project Handover
 
-Last updated: 2026-10-09
+Last updated: 2026-10-15
 Project status: Production live; current expansion documented below
 Primary working language for project documentation: Korean
 Public site language: English
 
 ---
+
+## Weekly growth/search decision — 2026-10-15
+
+- Decision: **FIX — technical defect corrected**: shared Footer tablet reflow. No new pages, content/formula changes or repetition of delivered Book Spine/Roll Diameter/Booklet Creep work. Evidence and source periods: `research/weekly-growth-review-2026-10-15.md`.
+- Repository: initial clean main/local HEAD/cached origin `1709c15a291097cc3c003678a99109b8c80328a4`; actual remote before fetch `39a130a520e87cc635e8ce5c49642924f64ad6fe`. 0 ahead/2 behind safely fast-forwarded to that implementation start. No reset, stash, overwrite, install or environment reset. Inventory remains 97 HTML / 58 calculators / 18 Guides / 9 References / 7 hubs / 5 other; latest cluster RFID/NFC Smart Label.
+- Current attachments fully read and retained: October 15 Performance and Coverage Drilldown ZIPs, Bing pages/keywords and GA4 overview. Google July 22–October 12: 1 historical click / 368 impressions / 0.2717% CTR, 51 page rows / 118 queries. Adjacent October 6–12 versus September 29–October 5: 6 versus 5 impressions, 0 versus 0 clicks. Coverage July 24–October 9: 40 Discovered, unchanged; aggregate indexed/excluded/redirect/Crawled counts unavailable. Crawl epoch dates are unavailable sentinels; no repeated 33-URL audit or SEO rewrite.
+- Bing date window absent: pages 447 impressions/12 clicks (49 rows), queries 403/12 (251); previous 346/11 and 325/11 are snapshot comparisons, not verified weekly growth. GA4 September 17–October 14: 55 active/55 new, 20 s engagement, 305 events. First-user Direct 31, Bing 11, DuckDuckGo 3, Yahoo 1, ChatGPT 8, Copilot 1; sessions 34/16/3/1/10/1 respectively. Google organic not listed; no directory referral row in current acquisition tables. Shifted windows/Direct/prior QA limit organic conclusions.
+- Reproduction: Booklet Creep Footer overflows 4 px at 900 in local baseline and actual live Chrome; baseline 769 overflows 135 px, 800 overflows 104 px. Four-column tracks/gaps/padding require 932 px in the critical legacy variant and 936 px in the alternate variant, but old mobile reflow begins only at 768. Fix: one `.footer .footer-inner` two-column rule in shared layout-refinement CSS for **769–935 px** only. Existing important tracks are overridden without changing overflow, badge CSS, any HTML, calculator JS, generator or SEO. Mobile <=768 and desktop >=936 remain intact.
+- Local actual Chrome: 97 pages × six required widths (1440/1280/1024/900/768/390) = 582 renders, plus 97 × six boundary widths (769/800/931/932/935/936) = 582; total 1,164. Page/Footer/control overflow 0, checked console/page/internal asset errors 0. Screenshots inspected across required widths and representative Home/Smart Label/target/boundary views. All 58 calculators passed actual Calculate/clipboard Copy/Reset at 390; target invalid/rerun/menu/state checks PASS. External analytics/badge images blocked during QA, not changed.
+- Static/content/encoding/Copy/navigation/legacy and existing calculation suites PASS, JS syntax and diff check PASS. Extended layout QA verifies breakpoint, IDs and local links/assets. **Newly confirmed separate baseline issue:** `/reference/binding-page-count.html` has no other-page static inbound link at start commit. Orphan count is **1, not 0**; layout QA explicitly warns for this known page and fails for additional unreviewed orphans. Not bundled into the unrelated Footer repair.
+- Growth candidates Print Run Time / Plan Print Scaling / Winding Torque remain OBSERVE; Priority A wins. Exclusions reviewed; no claimed 40-family expansion branch. HIGH none in Footer fix scope; MEDIUM one pre-existing orphan Reference; LOW limited/mismatched periods and QA attribution. Next: separate inbound-link repair; matched search windows; later Smart Label crawl evidence.
+- Delivery: exact implementation commit, push, Pages and post-deployment live evidence to be appended after verification.
 
 ## Weekly growth/search decision — 2026-10-09
 

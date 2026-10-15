@@ -161,6 +161,12 @@ body > .footer + div[style*="min-width:1280px"] {
 body > .footer + div[style*="min-width:1280px"] a { margin: 0 !important; max-width: 100%; }
 body > .footer + div[style*="min-width:1280px"] img { max-width: 100%; }
 
+/* Footer variants need up to 790px tracks + 90px gaps + 56px padding = 936px.
+   Reflow below that width; leave desktop, mobile and owner badge rules intact. */
+@media (min-width: 769px) and (max-width: 935px) {
+  .footer .footer-inner { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+
 @media (max-width: 1100px) {
   .grid,
   .grid:has(> :nth-child(3):last-child),
