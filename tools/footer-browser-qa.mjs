@@ -48,7 +48,8 @@ try{
   async function measure(route,width){
     await page.setViewportSize({width,height:900});
     const response=await page.goto(base+route,{waitUntil:'load'});
-    assert.equal(response.status(),live&&route==='/404.html'?404:200,route);
+    // The explicit /404.html file is a normal 200 page; unknown routes return 404.
+    assert.equal(response.status(),200,route);
     const measurement=await page.evaluate(()=>{
       const box=e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height,right:r.right,bottom:r.bottom};};
       const footer=document.querySelector('footer'),inner=footer.querySelector('.footer-inner');
@@ -78,6 +79,7 @@ try{
         const a=await measure(route,width);
         assert.equal(a.overflow,0,`${route}/${width}: page overflow`);
         assert.equal(a.footerOverflow.length,0,`${route}/${width}: footer clipping`);
+        assert.ok(a.h1.y>=a.header.bottom-.5,`${route}/${width}: header/H1 overlap`);
         for(const control of a.controls)if(control.width)assert.ok(control.x>=-.5&&control.right<=width+.5,`${route}/${width}: offscreen control`);
         for(const link of a.links)assert.ok(link.height>0&&link.width>0,`${route}: footer link hidden`);
         const {tail,...record}=a;renders.push(record);

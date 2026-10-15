@@ -84,7 +84,10 @@ Scores are prioritization judgments: search evidence /30 + concrete output gap /
 
 ## Deployment and risks
 
-- Implementation commit/push, exact Pages run and post-deployment live evidence will be appended after verification.
+- Implementation commit: `985903faf8a37a6f1d5bbaa27c8925e556d702bb` (`Fix tablet footer overflow and record weekly review`), pushed to origin/main. Local HEAD, tracking branch and actual remote matched, ahead/behind 0/0, worktree clean after implementation push. [GitHub Pages run 38698774527](https://github.com/canghun13/printproductionlab/actions/runs/38698774527) completed successfully for that exact SHA.
+- During Pages deployment the CSS still returned its prior content; after completion the ordinary existing stylesheet URL returned the new rule and matched local source after CRLF/LF normalization. Home and target HTML also returned 200 and matched the preserved local source. No mass cache-busting HTML rewrite or cache workaround was used.
+- Actual post-deployment live Chrome: **97 pages × all six required widths = 582 renders**, all **58 calculators Calculate/clipboard Copy/Reset**, target invalid/rerun/mobile menu/state checks PASS. Page/Footer/control overflow, header/H1 overlap and checked console/page/internal-asset failures 0. Boundary comparisons also passed; the old 900 px Footer exception is resolved. Live target 900/390 and Home 900 screenshots were visually inspected. External analytics/badge images remained intentionally blocked, not modified.
+- QA harness follow-up distinguishes the explicit `/404.html` file's normal 200 response from unknown-route 404 behavior, and makes header/H1 overlap an explicit assertion. All 1,164 local and 582 live saved render records were independently checked for header/H1 overlap: 0. This follow-up changes QA/docs only; its exact final SHA is available from Git history/final delivery report instead of embedding a self-referential hash here.
 - HIGH: none found in the Footer fix scope. MEDIUM: one pre-existing orphan Reference, explicitly outstanding. LOW: tiny Google sample, unspecified Bing windows, overlapping GA4 windows and QA contamination. No ranking gain claimed.
 
 ## Next state — maximum three
