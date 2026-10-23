@@ -1,11 +1,24 @@
 # Print Production Lab — Project Handover
 
-Last updated: 2026-10-15
+Last updated: 2026-10-23
 Project status: Production live; current expansion documented below
 Primary working language for project documentation: Korean
 Public site language: English
 
 ---
+
+## Weekly growth/search decision — 2026-10-23
+
+- Decision: **FIX — technical defect corrected**: Binding Method/Page Count Reference discovery workflow. One missing hub card and two wrong named destinations repaired; no new pages/cluster, formula/content rewrite, metadata/CSS/public JS/badge change. Full evidence: `research/weekly-growth-review-2026-10-23.md`.
+- Start clean main/local HEAD/cached origin/actual remote before fetch/fetched origin all `44e1952cd33c6d83e277e1272ed76502f0c2859d`, ahead/behind 0/0. No pull, reset, stash, overwrite, install or environment reset. Inventory unchanged 97 HTML / 58 calculators / 18 Guides / 9 References / 7 hubs / 5 other; latest cluster RFID/NFC Smart Label. Prior Book Spine/Roll Diameter/Booklet Creep/Footer fixes preserved.
+- Current five attachments captured before analysis. Performance July 22–October 20: **2 clicks / 608 impressions / 0.3289% CTR**, 52 pages/124 queries. October 14–20 **237 impressions/1 click** vs October 7–13 **9/0**; +228 impressions, but 232 recent impressions occur October 18–20. Print Run Time 157 impressions/position 7.01 (prior 10/15.10); Booklet Creep 2 clicks/14/6 (prior 1/10/7.5). Real emergence, not yet multi-week sustained intent or proof of a ranking effect from prior work.
+- Coverage August 5–October 16: 40 Discovered, unchanged; current aggregate indexed/excluded/redirect/Crawled counts unavailable; epoch crawl dates are missing-data sentinels. Repaired Reference is not among these 40. No repeated 33-URL audit or mass SEO/link/sitemap work.
+- Bing window absent: pages 55 rows, 561 impressions/17 clicks; keywords **308 records, 496/17**. Keyword CSV has an unescaped inch quote; invariant check rejected the swallowed-row parse. Fixed numeric-suffix extraction validated 308/308 physical records with zero unmatched, original untouched. Snapshot deltas +114/+5 pages, +93/+5 keywords are not matched weekly growth.
+- GA4 September 25–October 22: 68 active/67 new, 19.29 s, 365 events. First-user Direct42/Bing12/Google2/DuckDuckGo1/Yahoo1/ChatGPT9/Copilot1; sessions42/16/2/1/1/11/1, total74. Google organic now explicitly appears. Shifted 28-day windows/Direct61.8%/historical QA prevent human-only or weekly organic claims; QA analytics blocked.
+- Reproduction: local graph and live raw Reference hub lack the target card; orphan1. Named Signature Count anchor incorrectly opens Print Imposition; named Signatures Guide opens Guides hub. Root: omitted hub integration and legacy renderer fallback/generic destination. Repair adds the existing Reference card, fixes those two hrefs and aligns narrowly scoped retained source entries without running broad builders. Red test captured four findings; green graph now **orphan0, all96 non-404 pages Home-reachable, target depth2**. Previous QA exception removed.
+- QA: all whole-site static/navigation/content/encoding/Copy/layout/legacy and established calculation suites PASS. New source contract checks prove exact two-HTML scope, CSS/JS/SEO preservation and **22 unrelated article renderer outputs unchanged**. Actual local Chrome **18 renders**, six target/hub widths1440/1280/1024/900/768/390 plus three calculator controls1440/390. Screenshots inspected at all six widths. Card/related-link clicks, keyboard, mobile menu and three Calculate/current clipboard/Reset defaults/error/rerun controls PASS; Signature Count192/16→12. Checked overflow/Header-H1 overlap/console/page/internal-asset errors0.
+- Print Run Time is the lead existing-growth follow-up (65), Booklet Creep60 and Plan Print Scaling59; no new verified output gap. Priority A wins. Exclusions reviewed, no claimed40-family expansion. HIGH none in delivered scope; prior orphan MEDIUM resolved; LOW reporting/parser/window/three-day concentration limits. Next: matched Runtime/Creep query data; later repaired Reference/Smart Label crawl evidence; explicit Bing/organic landing windows before growth/expansion decisions.
+- Delivery: implementation commit, push, exact Pages run and live-domain verification to be appended after deployment.
 
 ## Weekly growth/search decision — 2026-10-15
 

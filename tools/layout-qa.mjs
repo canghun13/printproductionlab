@@ -50,17 +50,25 @@ for (const file of htmlFiles) {
   }
 }
 const orphans = [...inbound].filter(([file, sources]) => !sources.size && !['index.html', '404.html'].includes(path.relative(root, file)));
-// Explicit baseline debt, not a zero-orphan assertion or part of the footer fix.
-const knownOrphans = new Set(['reference/binding-page-count.html']);
 for (const [file] of orphans) {
   const name = path.relative(root, file).replaceAll('\\', '/');
-  if (knownOrphans.has(name)) console.warn(`KNOWN ISSUE: ${name}: pre-existing orphan; separate discovery-link repair needed`);
-  else errors.push(`${name}: new/unreviewed orphan page`);
+  errors.push(`${name}: orphan page`);
 }
+const depth = new Map([[path.join(root, 'index.html'), 0]]), queue = [...depth.keys()];
+for (let i = 0; i < queue.length; i++) for (const [target, sources] of inbound) {
+  if (!depth.has(target) && sources.has(queue[i])) { depth.set(target, depth.get(queue[i]) + 1); queue.push(target); }
+}
+for (const file of htmlFiles) if (path.basename(file) !== '404.html' && !depth.has(file)) errors.push(`${path.relative(root, file)}: unreachable from Homepage`);
+if (depth.get(path.join(root, 'reference/binding-page-count.html')) !== 2) errors.push('Binding Method reference: expected Home → Reference hub → article discovery path');
+const referenceHub = fs.readFileSync(path.join(root, 'reference/index.html'), 'utf8');
+const bindingReference = fs.readFileSync(path.join(root, 'reference/binding-page-count.html'), 'utf8');
+if ([...referenceHub.matchAll(/href="\/reference\/binding-page-count\.html"/g)].length !== 1) errors.push('Reference hub: expected one static Binding Method and Page Count card');
+if (!bindingReference.includes('href="/tools/signature-count.html">Signature Count Calculator</a>')) errors.push('Binding Method reference: Signature Count link must open its named calculator');
+if (!bindingReference.includes('href="/guides/signatures.html">How Signatures Work in Book Printing</a>')) errors.push('Binding Method reference: named Guide must open its article, not the Guides hub');
 
 if (errors.length) {
   console.error(`LAYOUT QA FAIL\n${errors.join('\n')}`);
   process.exit(1);
 }
-console.log(`LAYOUT QA PASS with ${orphans.length} explicit baseline orphan: ${htmlFiles.length} HTML pages, scoped footer breakpoint, unique IDs, local links/assets; homepage/Post-Press cards and owner badges verified`);
+console.log(`LAYOUT QA PASS: ${htmlFiles.length} HTML pages, ${orphans.length} orphans, ${depth.size} reachable from Home (404 excluded), scoped footer breakpoint, unique IDs, local links/assets; Reference workflow, homepage/Post-Press cards and owner badges verified`);
 
