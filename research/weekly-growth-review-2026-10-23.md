@@ -91,7 +91,10 @@ Scores are prioritization judgments, not keyword volumes: search evidence /30 + 
 
 ## Deployment and remaining risks
 
-- Exact implementation commit, push, Pages run and live-domain evidence will be appended after deployment verification.
+- Implementation commit: `4622c8c868ef39fda471612ab3c8f30519204f95` (`Restore binding reference discovery workflow`), pushed to origin/main. Local HEAD, tracking main and actual remote matched, ahead/behind 0/0, tree clean. [GitHub Pages run 39907663134](https://github.com/canghun13/printproductionlab/actions/runs/39907663134) completed successfully for that exact SHA.
+- Ordinary live Reference hub and target HTML return HTTPS 200 and match local corrected source after CRLF/LF normalization. Preserved layout CSS, main JS and expansion calculator JS also match. Googlebot target returns 200 with both corrected hrefs and GA4 intact. HTTP and www target variants normalize to the HTTPS apex. No canonical/URL/sitemap/cache-busting rewrite.
+- Actual post-deployment Chrome: the same **18 renders** at all six required widths plus calculator controls, six sets of card/two-destination clicks, keyboard Enter, mobile menu and all three Calculate/current clipboard/Reset-default/error/rerun controls PASS. Checked overflow/Header-H1 overlap/console/page/internal assets 0; live hub desktop/mobile and article-link mobile screenshots inspected. Full local graph remains orphan 0 / 96 reachable non-404 pages / target depth 2. This is link repair verification, not a claim that Google has already crawled or indexed the target.
+- A documentation-only follow-up records verified delivery; its final SHA is available from Git history/final delivery report rather than embedding a self-referential hash here. No additional production edits after live verification.
 - HIGH: none found in the delivered discovery repair. MEDIUM: no outstanding orphan in the checked public graph; the prior one is resolved. LOW: missing Bing periods, safely recovered malformed keyword CSV, shifted GA4 windows and a Google surge concentrated in three days. Whole-site semantic correctness of every existing related-link label is not claimed; the selected workflow's destinations are explicitly tested.
 
 ## Next state — maximum three
