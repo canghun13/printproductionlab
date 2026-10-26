@@ -112,7 +112,7 @@ try{
     const menu=page.locator('header button');await menu.click();assert.equal(await menu.getAttribute('aria-expanded'),'true');await menu.click();assert.equal(await menu.getAttribute('aria-expanded'),'false');
     await page.locator('#a').fill('0');await page.locator("button[onclick=\"run('creep')\"]").click();assert.equal(await page.locator('.result .error').count(),1);assert.equal(await page.locator('[data-copy]').count(),0);
     await page.locator('[data-reset]').click();await page.locator("button[onclick=\"run('creep')\"]").click();assert.equal(await page.locator('.result strong').innerText(),'1.50 mm');
-    assert.equal(functions.length,boundaryOnly?0:58);assert.deepEqual(errors,[]);
+    assert.equal(functions.length,boundaryOnly?0:62);assert.deepEqual(errors,[]);
   }
   const report={mode:live?'live':'local',reproduce,baseline,renders,functions,errors,unchanged,visuals,output};
   await fs.writeFile(path.join(output,'report.json'),JSON.stringify(report,null,2));

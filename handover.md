@@ -1,9 +1,28 @@
 # Print Production Lab — Project Handover
 
-Last updated: 2026-10-23
+Last updated: 2026-10-26
 Project status: Production live; current expansion documented below
 Primary working language for project documentation: Korean
 Public site language: English
+
+## External keyword / new-cluster research — 2026-10-26
+
+- 최초 응답은 조사 단계에서 잘못 종료했다. 사용자 정정에 따라 신규 클러스터 구현·QA·배포까지 이어가며, 아래 후속 구현 기록이 초기 연구-only 상태를 대체한다. GSC/현재 보유 페이지에 한정하지 않고 Google·Naver, Reddit, Adobe Community/UserVoice, PrintPlanet, YouTube 검색 카드, GitHub, 전문 자료와 경쟁 도구를 비교했다. 상세: `research/aggressive-workflow-discovery-2026-10-26.md`.
+- 시작 main/local HEAD/origin/actual remote `e2a986a5d719537012b4b99d87b5d8b13c395732`, clean/0 ahead/0 behind 확인 후 조사. 사용자 작업 손상, 설치, 환경 재설정, 기존 Book Spine 재작업 없음.
+- 50개 seed 항목 → 12개 중간 후보 → 6개 심층 비교. 50개를 검증된 신규 클러스터 50개로 세지 않는다: 잠정 신규 문제 seed43, 명시적 재검토6, 병합1. 기존 제외군 인접 seed는 독립 신규군 확정 아님. 검색량·전체 문서 수·SEO KD는 확보하지 않았으며 수치를 만들지 않았다.
+- 추천 1순위: **Data Merge Production Prep**. 범용 VDP/PDF 생성 재도전이 아니라 인쇄용 CSV 진단, cut-and-stack 전체 레코드 재정렬, 로컬 이미지 manifest 대조, 물리 단위 텍스트 프레임 사전검사 후보. 범용 CSV validator/VDP/text-fit는 무료 경쟁 도구가 있으므로 ‘경쟁 없음’ 주장 금지. 네 번째 도구는 무료 Text Fit Bench와의 차별성 및 조판 정확도 한계 검증이 필요하며, 미구현 상태에서 4-tool release GO/PASS를 선언하지 않았다.
+- Adobe 이미지 질문 5,534 views/21 replies, overset 질문 7,716/11, Google에 표시된 four-up 티켓 YouTube 카드6.5K+ views 확인. 누적 질문/영상 관심 신호이지 월 검색량이나 예상 유입 아님. Overset의 threaded/table 사례는 단순 Canvas 검사로 해결할 수 없음. Naver 블로그 수집 제한·Daum 접근 실패를 수요0으로 처리하지 않았다.
+- 배너/SEG/벽지/디지털 네거티브는 직접 대응 무료 도구가 여럿 확인되어 광범위 신규 클러스터 추천에서 제외. 촉각 도안/악보/봉제/프로토콜 등은 수요·독립 기능·기술 한계에 따라 HOLD/REJECT를 구분했다.
+- 위 연구 단계 당시에는 공개 코드/배포 변경이 없었다. 현재 구현·QA·배포 상태는 다음 후속 기록과 보고서의 Implemented architecture 절을 기준으로 한다.
+
+## Data Merge Production Prep 구현 / QA — 2026-10-26
+
+- **GO / 실제 구현**: 신규 Hub1 + Tool4 + Guide1. `/tools/data-merge-production.html`, `/tools/data-merge-csv-preflight.html`, `/tools/cut-stack-csv-sequencer.html`, `/tools/data-merge-image-matcher.html`, `/tools/variable-text-fit-checker.html`, `/guides/data-merge-production-preflight.html`. Home/Tools/Guides/sitemap/llms 연결 완료. 103 HTML / 62 interactive tools / 19 Guides / 9 References / 8 hubs / 5 other, sitemap102/orphan0/Home-reachable102.
+- 서로 다른 결정: CSV source contract 검사, 전체 레코드 cut-stack 재배열, 실제 전달 asset manifest 대조, 실제 폰트·mm/pt text-frame screening. 네 번째는 최종 InDesign 조판 검증이 아니라 명시적 한계가 있는 plain-text 사전검사이며 자동 글자 축소/텍스트 변경 없음. 무료 경쟁 도구 부재·세계 최초·예상 검색량을 주장하지 않음.
+- 새 data-merge 전용 CSS/core/UI만 사용. 기존 계산식/공용 CSS/main.js/Book Spine/기존 metadata/owner Footer·badge 불변 검사 PASS. QA의 재고 수58→62 두 곳만 갱신. CSV 선행0/장문ID/원본값 보존; 위험한 수식형 production export는 명시적 acknowledgement로 보호. Report의 예방적 prefix와 production 원본 export를 구분. 파일/폰트/명단 업로드·storage·로그 없음.
+- 로컬 독립 core QA80 PASS. 실제 Chrome 신규6페이지×6폭(1440/1280/1024/900/768/390)=36 renders 및 네 도구 run/현재 clipboard Copy/Reset 기본값/error/rerun, 파일3인코딩, folder File API, 실제 로컬 폰트, Unicode/XSS, 실제 다운로드·CSV재입력·formula gate PASS. 실제12pt DOM 글자폭과 비교 오차0.05pt 미만 PASS. Scoped Reset select 복원과 모바일 표·긴 결과 요약 가독성은 QA에서 수정 후 재검증했다.
+- 전체 로컬 Chrome103×6=618 renders, **62 Calculate/Copy/Reset PASS**, page/Footer/control overflow0, Header-H1 overlap0, checked console/page/internal-resource errors0. Analytics 차단. 신규 화면 screenshot 육안 확인과 desktop 같은 row control top/bottom 검사 포함. 전체 static/navigation/content/encoding/Copy/layout/legacy 및 기존 계산 검증 전부 PASS.
+- HIGH 없음 / MEDIUM 미해결 없음 / LOW 외부 수요 신호의 유입 예측 한계, 브라우저 텍스트 조판·파일 시스템 차이(공개 한계 명시). 커밋·push 및 실배포 결과는 실제 검증 후 아래에 기록한다.
 
 ---
 

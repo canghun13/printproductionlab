@@ -1,0 +1,25 @@
+.data-merge-tool{align-items:start!important;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr)!important}
+.data-merge-tool>.panel{min-width:0}
+.data-merge-tool .dm-fields{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 14px!important}
+.data-merge-tool .dm-fields label{display:grid;grid-template-rows:3em auto 1fr;gap:6px;margin:0;min-width:0;align-content:start}
+.data-merge-tool .dm-fields label>span{align-self:end;line-height:1.35}
+.data-merge-tool .dm-fields input,.data-merge-tool .dm-fields select{height:46px!important;min-height:46px!important;margin:0!important;width:100%;min-width:0}
+.data-merge-tool .dm-fields small{margin:0;line-height:1.45}
+.data-merge-tool .dm-wide{grid-column:1/-1}
+.data-merge-tool textarea{display:block;resize:vertical;width:100%;min-height:160px;padding:12px;margin:8px 0 16px;font:14px/1.55 ui-monospace,Consolas,monospace;box-sizing:border-box;border:1px solid #87958b;background:#fff;color:#15251d}
+.data-merge-tool .dm-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px;padding-top:16px;border-top:1px solid #bbc5bc}
+.data-merge-tool .dm-actions button{margin:0;min-height:48px}
+.data-merge-tool input[type=file]{height:auto!important;min-height:46px;padding:8px;font-size:13px}
+.data-merge-tool .result p{overflow-wrap:anywhere}
+.calculator.data-merge-tool>.result strong{font-family:Arial,sans-serif;font-size:clamp(1.5rem,2.4vw,2rem);letter-spacing:-.015em;line-height:1.15}
+.dm-output{margin:20px 0 32px;min-width:0}
+.dm-output[hidden]{display:none!important}
+.dm-table-wrap{overflow:auto;max-height:450px;border:1px solid #aab6ab;background:#fff}
+.dm-table-wrap table{width:100%;min-width:640px;border-collapse:collapse;font-size:14px}
+.dm-table-wrap th,.dm-table-wrap td{padding:10px;text-align:left;border-bottom:1px solid #d6dcd5;vertical-align:top;max-width:360px;overflow-wrap:anywhere;white-space:pre-wrap}
+.dm-table-wrap th{background:#e6ece3;color:#163327;position:sticky;top:0;overflow-wrap:normal;word-break:normal;white-space:normal;min-width:64px}
+.dm-downloads{display:flex;flex-wrap:wrap;gap:12px;margin:16px 0}
+.dm-ack{display:block;padding:12px;border:1px solid #a07134;background:#fff5df}
+.dm-ack input{width:20px;height:20px;vertical-align:middle;margin-right:10px}
+.dm-preview{display:block;max-width:100%;height:auto;margin:16px 0;border:2px solid #345745;background:white}
+@media(max-width:768px){.data-merge-tool{display:block!important}.data-merge-tool .dm-fields{grid-template-columns:1fr!important}.data-merge-tool .dm-fields label{grid-template-rows:auto auto auto}.data-merge-tool .dm-actions,.dm-downloads{flex-direction:column}.data-merge-tool .dm-actions button,.dm-downloads button{width:100%!important}.data-merge-tool textarea{font-size:16px}.dm-table-wrap{max-height:360px}}

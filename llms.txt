@@ -27,3 +27,11 @@ RFID and NFC smart-label production workflow:
 - https://printproductionlab.com/tools/rfid-encode-position-converter.html
 - https://printproductionlab.com/tools/rfid-encoding-throughput-planner.html
 - https://printproductionlab.com/guides/rfid-nfc-smart-label-production.html
+
+## Data Merge Production Prep
+- https://printproductionlab.com/tools/data-merge-production.html — local source-preparation workflow, not PDF rendering.
+- https://printproductionlab.com/tools/data-merge-csv-preflight.html — Check InDesign data-merge CSV headers, record structure, required fields, duplicate IDs and leading-zero risks locally before production.
+- https://printproductionlab.com/tools/cut-stack-csv-sequencer.html — Reorder complete CSV records into cut-and-stack sheet rows, with n-up cells, partial lifts, blank-cell accounting and a downloadable production map.
+- https://printproductionlab.com/tools/data-merge-image-matcher.html — Compare CSV image references with a local image folder or filename manifest; report missing, ambiguous, case-only and unused paths by record.
+- https://printproductionlab.com/tools/variable-text-fit-checker.html — Screen CSV text against print frame dimensions in mm and font/leading in pt, using a local font and record-level overflow estimates without uploading data.
+- https://printproductionlab.com/guides/data-merge-production-preflight.html — source-to-release checklist and worked cut-stack proof.
