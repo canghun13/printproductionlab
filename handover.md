@@ -22,7 +22,10 @@ Public site language: English
 - 새 data-merge 전용 CSS/core/UI만 사용. 기존 계산식/공용 CSS/main.js/Book Spine/기존 metadata/owner Footer·badge 불변 검사 PASS. QA의 재고 수58→62 두 곳만 갱신. CSV 선행0/장문ID/원본값 보존; 위험한 수식형 production export는 명시적 acknowledgement로 보호. Report의 예방적 prefix와 production 원본 export를 구분. 파일/폰트/명단 업로드·storage·로그 없음.
 - 로컬 독립 core QA80 PASS. 실제 Chrome 신규6페이지×6폭(1440/1280/1024/900/768/390)=36 renders 및 네 도구 run/현재 clipboard Copy/Reset 기본값/error/rerun, 파일3인코딩, folder File API, 실제 로컬 폰트, Unicode/XSS, 실제 다운로드·CSV재입력·formula gate PASS. 실제12pt DOM 글자폭과 비교 오차0.05pt 미만 PASS. Scoped Reset select 복원과 모바일 표·긴 결과 요약 가독성은 QA에서 수정 후 재검증했다.
 - 전체 로컬 Chrome103×6=618 renders, **62 Calculate/Copy/Reset PASS**, page/Footer/control overflow0, Header-H1 overlap0, checked console/page/internal-resource errors0. Analytics 차단. 신규 화면 screenshot 육안 확인과 desktop 같은 row control top/bottom 검사 포함. 전체 static/navigation/content/encoding/Copy/layout/legacy 및 기존 계산 검증 전부 PASS.
-- HIGH 없음 / MEDIUM 미해결 없음 / LOW 외부 수요 신호의 유입 예측 한계, 브라우저 텍스트 조판·파일 시스템 차이(공개 한계 명시). 커밋·push 및 실배포 결과는 실제 검증 후 아래에 기록한다.
+- HIGH 없음 / MEDIUM 미해결 없음 / LOW 외부 수요 신호의 유입 예측 한계, 브라우저 텍스트 조판·파일 시스템 차이(공개 한계 명시).
+- **구현 commit/push 완료**: `f214b9405214afdeae69173e595d36d401884b28` (`Build data merge production prep workflow`). origin/main push 후 local/tracking/actual remote 동일 SHA, clean 확인. [Pages run40289116936](https://github.com/canghun13/printproductionlab/actions/runs/40289116936) 해당 SHA 성공 완료.
+- **실도메인 확인 완료**: 신규6페이지·전용3자산·Home/Tools/Guides/sitemap/llms/robots 총15리소스 HTTP200 및 로컬과 소스 일치. 새 Hub/Sequencer/Guide Googlebot200, canonical 정상/noindex 없음. 실사이트 신규6×6폭=36 renders, 네 도구 입력·현재 clipboard Copy·Reset·다운로드·파일3인코딩·실제 folder/font·Unicode/XSS·formula gate·0.05pt DOM 비교·메뉴/링크 전부 PASS. 전체 실사이트 **103×6=618 renders, 62 Calculate/Copy/Reset PASS**, page/Footer/control overflow0, Header-H1 overlap0, checked console/page/internal-resource errors0. QA analytics 차단. 실사이트 screenshot 육안 확인 포함.
+- 이 후속 문서 커밋은 검증 결과 기록만 변경한다. 검증된 공개 코드 재수정 없음. 최종 docs SHA/local/origin/remote/clean은 Git 이력과 최종 보고 기준. 신규 클러스터 배포 완료이며 즉시 색인/검색 유입 증가는 주장하지 않는다.
 
 ---
 
