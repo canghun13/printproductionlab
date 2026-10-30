@@ -1,9 +1,24 @@
 # Print Production Lab — Project Handover
 
-Last updated: 2026-10-26
+Last updated: 2026-10-30
 Project status: Production live; current expansion documented below
 Primary working language for project documentation: Korean
 Public site language: English
+
+## Weekly growth/search decision — 2026-10-30
+
+- **FIX — technical defect corrected**: Print Run Time의 양수 짧은 실행→0.00시간, 파생 impression total∞ 노출, desktop label wrapping/input/action 정렬 문제를 실사이트에서 재현하고 같은 페이지 범위에서 수정. 신규 cluster/페이지0, 기존 Book Spine/Data Merge 재작업 없음. 상세 원본 집계·판단·QA: `research/weekly-growth-review-2026-10-30.md`.
+- 시작 clean main/local/cached origin/actual remote/fetched origin 모두 `86902e19114e9cb02e7d751dee670d8927ea14fc`, ahead/behind0/0. Pull/reset/stash/삭제/설치/환경 재설정 없음. Inventory103HTML/62Tools/19Guides/9References/8hubs/5other, sitemap102/orphan0/Home-reachable102; 최신 cluster Data Merge Production Prep 유지.
+- 이번 메시지의 정확한5개 파일 참조만 읽음. 다른 폴더 검색/과거 export 대체/원본 수정 없음. GSC7CSV 전부: July28–Oct27 **5clicks/1,013impressions/0.4936%**,51page rows/97queries. 같은 export의 Oct21–27 **579/4** vs Oct14–20 **237/1**, +342impressions/+144.3%/+3clicks. 초기 commentary679는579로 정정. Page합1,150과 disclosed queries213/0은 property집계와 다르므로 합산·대체 안 함. Runtime512/1/7.53, Imposition32/2/16.84, Creep12/2/3.75. 일부 수학문제 노출을 전체 상업 수요로 단정하지 않음.
+- Coverage Aug5–Oct23 Discovered36, 이전 Oct16의40보다4감소(Oct20부터36). Indexed4증가라고 단정 금지. Aggregate indexed/excluded/Crawled/redirect 수는 미제공,1970crawl은 unavailable. Oct26출시보다 오래된 Coverage로 Data Merge 색인 판정 금지. 전체33URL 감사/SEO·sitemap churn 없음.
+- Bing기간 미제공: pages61rows **683/23**, keywords381records **606/23**. Unescaped inch quote2곳으로 strict parse 실패; 고정 numeric suffix로381/381 physical records 복구·검증, unmatched0/duplicates0/numeric anomalies0, 원본불변. 이전561/17·496/17 대비 +122/+6, +110/+6은 snapshot차이이지 검증된 주간성장 아님. Runtime68/2, Scaling70/3, Creep33/4.
+- GA4 Oct2–29 **82active/80new/14.52s/376events**. 최초source 기준 active cohorts Direct56/Bing12/Google5/DDG1/Yahoo1/ChatGPT7; sessions57/15/5/1/1/8=87. 이전68active/Google2와의 비교는 이동28일창. Direct68.3%, Data Merge hub4views/1user, Singapore30만으로 organic인기·bot을 단정하지 않음. 현 QA analytics차단.
+- 원인: Runtime은 total시간만 finite검증하고 무조건2소수 hours/locale counts를 출력. 1/6000/1은 실제0.6초인데0.00시간,1e308/1e308/2는2시간과∞impressions. 수정은 runtime분기만: 모든 파생값finite/positive, 시간0.00이 될 때 seconds/표시한계 하한, 극소·극대 counts scientific표시. `a/b*c` 공식/기존normal8시간/입력ID·default 유지, 새기계권장값·임의산업threshold 없음.
+- 같은 페이지 desktop1280 speed input만20.828px아래,1024 action이field칸차지 재현. `print-run-time-layout.css`와 field/action wrapper만 추가, inputtop/bottom delta0, helper는control아래. 다른 계산기 CSS와 charcoal/lime result design·Header/Footer·badge 불변. 기존 label/input/helper markup, SEO head(새scoped CSS제외), normal결과 보존fixture PASS.
+- 로컬 QA: legacy Runtime4normal/7invalid/8contracts + 새8literal expected displays/4range errors PASS,46non-runtime outputs와 runtime외 JS bytes 불변. 전체static/navigation/content/encoding/Copy/layout/기존계산/DataMerge80 등 PASS. 전체Chrome618renders/62Calculate·현재clipboard Copy·Reset PASS 후 최종page-scoped layout을 target30renders로 재검증(6폭×default/short/sub-resolution/error +3controls×2폭). Same-row top/bottom<0.6px, checked overflow/Header-H1/console/page/internal-assets0. 미계산/오류 Copy숨김, Reset기본값·재계산·메뉴 PASS. 실제 screenshot 육안 확인 포함.
+- 우선순위 A가 승리. 기존성장 후보 Runtime90/Imposition67/Scaling63은 판단점수이지SEO KD/검색량 아님. 신규40family discovery는 실행·주장하지 않음. 낮은organic/직전출시 자체를 expansion veto로 삼지 않음. Generator는 변경/실행 안 함.
+- HIGH 미해결 없음 / MEDIUM 로컬수정완료·실배포검증대기 / LOW 기간·집계·익명검색어·CSV export 한계. 다음 확인 최대3개: Runtime의 matched page×query/daily intent, Imposition/Creep 클릭 family, Oct26 이후 Coverage와 Data Merge organic landing.
+- Commit/push/Pages/실배포 결과는 실제 완료 후 후속 기록. 배포 성공을 local PASS만으로 추정하지 않음.
 
 ## External keyword / new-cluster research — 2026-10-26
 
