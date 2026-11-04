@@ -1,0 +1,22 @@
+/* Print Imposition only; shared calculator and owner Footer styles are untouched. */
+.imposition-tool .imposition-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.imposition-tool .imposition-actions button{width:auto;min-width:170px;margin:0;min-height:46px}
+.imposition-tool small{display:block;font-size:.8rem;font-weight:400;line-height:1.45}
+.imposition-tool .imposition-comparison{max-width:100%;margin:12px 0}
+.imposition-tool .imposition-comparison table{width:100%;border-collapse:collapse;font-size:.85rem;table-layout:fixed;color:#f5f7fa;background:#1f2933}
+.imposition-tool .imposition-comparison th,.imposition-tool .imposition-comparison td{padding:8px 4px;text-align:left;overflow-wrap:anywhere;background:transparent;color:inherit;border:0;border-bottom:1px solid #ffffff40}
+.imposition-tool caption{text-align:left;margin-bottom:8px;font-weight:700}
+.imposition-tool [data-area-breakdown]{margin:12px 0;font-size:.9rem}
+.imposition-tool [data-area-breakdown]>div{padding:8px 0;border-bottom:1px solid #ffffff40}
+.imposition-tool dd{margin:3px 0 0;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.imposition-tool .imposition-area-note,.imposition-tool figcaption{font-size:.83rem;line-height:1.5}
+.imposition-tool .imposition-figure{margin:14px 0 0;min-width:0}
+.imposition-tool .imposition-sheet{display:block;width:100%;height:auto;max-height:500px;background:#fff;border:1px solid #d2d9de}
+.imposition-tool figcaption{margin-top:9px;color:#f5f7fa}
+@media(min-width:769px){
+ .imposition-tool .fields{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px 14px!important}
+ .imposition-tool .fields label{display:grid;grid-template-rows:3em 46px minmax(3em,auto);gap:5px;align-content:start;line-height:1.4;margin:0}
+ .imposition-tool .fields input{height:46px;min-height:46px;margin-top:0!important;width:100%;min-width:0}
+}
+@media(min-width:1100px){.imposition-tool .fields{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media(max-width:768px){.imposition-tool .imposition-actions{display:grid}.imposition-tool .imposition-actions button{width:100%!important}.imposition-tool .imposition-comparison table{font-size:.8rem}}

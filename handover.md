@@ -1,9 +1,23 @@
 # Print Production Lab — Project Handover
 
-Last updated: 2026-10-30
+Last updated: 2026-11-04
 Project status: Production live; current expansion documented below
 Primary working language for project documentation: Korean
 Public site language: English
+
+## Weekly growth/search decision — 2026-11-04
+
+- **EXISTING-UPGRADE GO — Print Imposition sheet-area/scaled-layout workflow**. 기존 반복 클릭 URL 한 곳의 실제 기능 공백을 보강. 신규 cluster/페이지0. 최신 Runtime/Book Spine/Data Merge 재작업 없음. 상세: `research/weekly-growth-review-2026-11-04.md`.
+- 시작 clean main/local/cached origin/actual remote/fetched origin 모두 `658a1574d59558cfb8c642a4db8a09b4a6371351`, ahead/behind0/0. Fetch만 수행, reset/stash/삭제/설치/환경재설정 없음. Inventory103HTML/62Tools/19Guides/9References/8hubs/5other, sitemap102/orphan0/Home-reachable102 유지.
+- 이번 메시지의 정확한5개 파일 모두 읽고 원본불변. GSC Aug2–Nov1 **6clicks/977impressions/0.6141%**,47pages/67queries. 동일export Oct26–Nov1 **112/1** vs Oct19–25 **755/5**, −643impressions/−85.17%/−4clicks. Page합1,136·query175/0은 property977과 별도집계. 이전1,013/5는다른누적창. Runtime553/2/7.39, Imposition33/2/16.64, Creep10/2/3.20. 교육용문제 노출을 전체상업수요로 단정하지 않음.
+- Coverage는 새파일명이어도 Aug7–Oct23 **Discovered36**으로 이전과 마지막날짜·수치동일. 모든crawl1970sentinel, aggregate indexed/excluded/Crawled/redirect 미제공. Oct26 Data Merge 색인 판정 불가. 33URL감사 반복/SEO·sitemap churn 없음.
+- Bing기간미제공: pages61rows **746/24**, keywords420records **659/24**. Unescaped quotes3records를 고정numeric suffix로420/420 복구검증, unmatched/duplicates/numeric anomalies0. 원본수정없음. 이전683/23·606/23 대비 +63/+1·+53/+1은 snapshot차이. Scaling91/3, Runtime75/2, Imposition24/1, Creep33/4. 거대한 pasted lab-data query를 여러수요family로 쪼개거나 원문공개하지 않음.
+- GA4 Oct7–Nov3 **78active/76new/13.14s/318events**, first-source active Direct53/Bing10/Google9/ChatGPT6, sessions54/11/9/7=81. Google5→9는 이동28일창비교이지주간증가아님. DDG/Yahoo absent≠측정0. Direct67.95%, DataMergeHub5views/1user, Singapore31로organic인기·bot단정안함. 현재QA analytics차단.
+- 실사이트baseline Chrome1280/390에서 default56items(normal7×8 vs rotated12×4=48)는 정상, area breakdown없고 preview는여백·그리퍼구분없는packed grid임을 기록. 우선순위B: Imposition90/Runtime68/Scaling63(판단점수·KD아님). 외부Heidelberg 문서로sheet/trim/bleed구분확인, 직접무료경쟁도구도확인. 기존기능 보강이지신규저경쟁시장 주장아님. Exclusion검토Yes, expansion검토Yes/미선택;40family실행주장없음.
+- 기존 Imposition HTML + 전용 `imposition.js`/`imposition-layout.css`만 공개변경. 원래uniform floor공식·tie rule·IDs/defaults/SEO/GA4/Header/Footer/owner badge유지. 공용main.js·계산JS·CSS·generator·sitemap/robots/llms불변. 결과에면적표·normal/rotated비교·parent/usable/bleed/trim/gripper실비율SVG추가.250개이상개별도형생략은브라우저예산이며장비한계아님. 단위제곱/미사용면적≠손지율/생산한계 고유설명보강.
+- 독립예제:350,000 parent/301,056 allocated/48,944 unallocated=13.984%/252,000 trim=72%, default56up유지.50outer면36normal/40rotated. Core8독립geometry/area/unitbasis +23invalid/range +SVG/boundedrender/source보존 PASS. 전체static103/content62+28/encoding/Copy62/layout/기존math/Web53/SmartLabel36/DataMerge80/Repro10/이전repair들 PASS.
+- 최종로컬Chrome36renders(대상5states×6폭 +3controls×2폭), 추가13fixtures·1million bounded draw, Calculate/현재clipboard·Reset/error/rerun/menu PASS. Same-rowtop/bottom<0.6px, contrast13.75:1, overflow/Header-H1/checked console/page/assets0. 표대비·긴header는육안QA에서수정후재검증. 추가전체Chrome618renders/62functions/errors0 PASS.
+- HIGH0 로컬미해결 / MEDIUM실배포검증대기 / LOW 기간·익명쿼리·staleCoverage·schematic한계. Commit/push/Pages/실도메인결과는 실제완료후후속기록. 다음최대3개: Imposition후속query/page intent, Runtime교육/상업분리·Google organic, Oct26이후Coverage/DataMergeorganic landing.
 
 ## Weekly growth/search decision — 2026-10-30
 
