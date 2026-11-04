@@ -17,7 +17,9 @@ Public site language: English
 - 기존 Imposition HTML + 전용 `imposition.js`/`imposition-layout.css`만 공개변경. 원래uniform floor공식·tie rule·IDs/defaults/SEO/GA4/Header/Footer/owner badge유지. 공용main.js·계산JS·CSS·generator·sitemap/robots/llms불변. 결과에면적표·normal/rotated비교·parent/usable/bleed/trim/gripper실비율SVG추가.250개이상개별도형생략은브라우저예산이며장비한계아님. 단위제곱/미사용면적≠손지율/생산한계 고유설명보강.
 - 독립예제:350,000 parent/301,056 allocated/48,944 unallocated=13.984%/252,000 trim=72%, default56up유지.50outer면36normal/40rotated. Core8독립geometry/area/unitbasis +23invalid/range +SVG/boundedrender/source보존 PASS. 전체static103/content62+28/encoding/Copy62/layout/기존math/Web53/SmartLabel36/DataMerge80/Repro10/이전repair들 PASS.
 - 최종로컬Chrome36renders(대상5states×6폭 +3controls×2폭), 추가13fixtures·1million bounded draw, Calculate/현재clipboard·Reset/error/rerun/menu PASS. Same-rowtop/bottom<0.6px, contrast13.75:1, overflow/Header-H1/checked console/page/assets0. 표대비·긴header는육안QA에서수정후재검증. 추가전체Chrome618renders/62functions/errors0 PASS.
-- HIGH0 로컬미해결 / MEDIUM실배포검증대기 / LOW 기간·익명쿼리·staleCoverage·schematic한계. Commit/push/Pages/실도메인결과는 실제완료후후속기록. 다음최대3개: Imposition후속query/page intent, Runtime교육/상업분리·Google organic, Oct26이후Coverage/DataMergeorganic landing.
+- 구현 `5e5c6dc1369ee155df32d6685732e3178961ac2d` (`Improve imposition area accounting and scaled preview`) origin/main push 및actual remote일치, Pages run`41756396116` **success**. 실배포 target36renders/추가13fixtures·현재clipboard/Reset/error/rerun/menu/고밀도SVG예산 PASS, 실화면desktop/mobile/Reset육안확인. Tablecontrast13.748:1/checked errors·overflow0. 실사이트전체618renders/62Calculate·현재Copy·Reset/errors0 PASS. Analytics차단 유지.
+- 실배포HTML/새JS·CSS/main.js/공용calculators/Home/sitemap/robots/llms **9/9HTTP200·개행/BOM정규화 source parity PASS**. Googlebot200/selfcanonical/noindex없음, HTTP/www→HTTPSapex확인. 문서-only후속커밋은검증증거만기록, 공개자산추가변경없음. Finaldocs SHA는Git이력/최종보고기준, 즉시색인·순위상승보장아님.
+- HIGH0 / MEDIUM0 미해결(검사범위기준) / LOW 기간·익명쿼리·staleCoverage·schematic한계. 과거broadgenerator불변/미실행이므로 향후전체재생성시bespoke페이지보존필수. 다음최대3개: Imposition후속query/page intent, Runtime교육/상업분리·Google organic, Oct26이후Coverage/DataMergeorganic landing.
 
 ## Weekly growth/search decision — 2026-10-30
 

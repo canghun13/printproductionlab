@@ -76,9 +76,14 @@ Google quoted-newline queries are parsed as single records. Blank daily CTR/posi
 
 ## Deployment checkpoint and risk
 
-Implementation is locally verified at this checkpoint. Actual commit/push/Pages and live source/interaction results will be appended only after they occur. No search improvement is attributed to the new feature before release.
+Implementation commit **`5e5c6dc1369ee155df32d6685732e3178961ac2d`**, `Improve imposition area accounting and scaled preview`, was pushed to origin/main; actual remote matched that full SHA. [Pages run41756396116](https://github.com/canghun13/printproductionlab/actions/runs/41756396116) completed **success** for the exact implementation SHA.
 
-- HIGH0 locally unresolved. MEDIUM: production verification pending at this recording checkpoint. LOW: sparse clicked intent, unmatched Bing window, shifted GA4 periods, stale Coverage, omitted queries and schematic/production limitations.
+- Actual live targeted Chrome **36renders /13additional normal-invalid fixtures PASS** at1440/1280/1024/900/768/390. Default56 and alternate15, rotated6, exact-fit1, margin50→40, current clipboard contents, source-data labels, invalid/range errors with Copy absent, Reset defaults/prompt/no SVG residue, rerun, million-item bounded drawing and mobile menu confirmed. Live desktop/mobile result and Reset screenshots visually inspected. Same-row control alignment, minimum table contrast13.748:1, checked overflow/Header-H1/console/page/internal-asset errors0.
+- Actual live full-site Chrome **618renders /62 Calculate-current clipboard Copy-Reset /errors0 PASS**. Old Footer overflow in the harness is only an intentionally injected historical baseline, not a production failure. Current checks block analytics/third parties.
+- **9/9 ordinary/versioned production resources HTTP200 and source parity PASS**, normalizing line endings/UTF-8 BOM: target HTML, its new JS/CSS, unchanged main.js/shared calculators, Home, sitemap, robots, llms. All other public HTML/shared code and owner badge areas remain unchanged by source contract. Target Googlebot200, self-canonical, noindex false; HTTP/www normalization was also confirmed. Delivery/accessibility is not an indexing or ranking guarantee.
+- This documentation-only follow-up records observed release evidence; it does not modify the already tested public assets. No growth/CTR improvement is attributed to the new feature from pre-release exports. Final documentation SHA is supplied by Git history/final report, avoiding a self-referential hash in its own content.
+
+- HIGH0 / MEDIUM0 unresolved in the checked workflow. LOW: sparse clicked intent, unmatched Bing window, shifted GA4 periods, stale Coverage, omitted queries and schematic/production limitations. Historical broad generators were not run or updated; a future broad rebuild must preserve this bespoke published page rather than treat an old generic content seed as authoritative.
 - Next1: matched Imposition query/page signals after release; do not infer a CTR lift from a few clicks.
 - Next2: Runtime commercial versus educational intent and sustained Google organic acquisition.
 - Next3: post-October26 Coverage and organic landing evidence for Data Merge; do not infer failure from this stale drilldown.
