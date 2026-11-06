@@ -1,9 +1,18 @@
 # Print Production Lab — Project Handover
 
-Last updated: 2026-11-04
+Last updated: 2026-11-06
 Project status: Production live; current expansion documented below
 Primary working language for project documentation: Korean
 Public site language: English
+
+## Aggressive workflow expansion — 2026-11-06
+
+- **GO: Print & Cut Production QA.** 시작 clean main/local/origin/actual remote 모두 `232a9ed0d6313b4d4c883afa05bf826fc307349d`, fetch0/0. 다른 환경의 미반영 작업을 추정·덮어쓰지 않았고 reset/install 없음. 기존 GO와 HOLD/MERGE/NO-GO 제외 목록 적용.
+- 외부 SERP 45개 1차 스크린, 인접/기존군 5개 제외 후 잠정 신규40개. 상위 작업별 경쟁·반복·사이트 적합성·정적 구현 비교. 83/100 판단점수(GO), 검색량·KD·예상순위가 아님. 범용 weeding/SVG·카메라 보드·plotter·workshop template은 강한 무료 경쟁 또는 적합성으로 탈락. 세부 근거 `research/aggressive-workflow-discovery-2026-11-06.md`.
+- 네 독립 도구: 실측 offset의 공통 shift/공간 drift 분석, 센서 keep-out을 제외한 최대 라미네이트 사각형, 배치된 혼합 스티커 보수적 간격/경계 검사, 실제 크기 trial SVG 생성. 각각 분석/배치/검사/생성으로 입력·출력·결정이 다름. 장비 제어·승인·보편 설정 추천 없음.
+- 4 tools + hub + guide 실제 구현. 109 HTML/66 Tools/20 Guides/9 References/9 hubs/5 other, sitemap108/orphan0. Home/Tools/Guides/sitemap/llms 연결, 공용 JS/CSS·robots·기존 도구·Header/Footer·owner badge 보존. 이전 Imposition QA는 해당 배포 커밋의 보존 검증과 현재 페이지 계약을 유지하되 후속 내비 확장을 막지 않도록 변경.
+- 기본 예제: 최대 실측오차0.4472mm, laminate210×247mm, sticker 2mm nominal→0.8mm conservative, coupon18도형/128×56mm envelope. 실제 SVG는 원래 시트210×297mm, 화면만 envelope 확대. 출력은 사용자 입력 기준으로 해석하며 제조사 절차·실물 proof 필요.
+- 구현/검증 증거와 실제 Pages/실도메인 확인 결과는 배포 완료 후 기록. 다음: search intent별 실사용/색인 확인, 실제 생산 피드백 우선. 새 도구의 즉시 색인/순위/유입 보장 없음.
 
 ## Weekly growth/search decision — 2026-11-04
 

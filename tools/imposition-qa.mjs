@@ -29,7 +29,9 @@ const section=(s,re)=>{const m=s.match(re);assert.ok(m);return m[0];};
 assert.equal(section(current,/<head>[\s\S]*?<\/head>/).replace('<link rel="stylesheet" href="../assets/css/imposition-layout.css?v=imposition-20261104a">',''),section(previous,/<head>[\s\S]*?<\/head>/));
 for(const re of [/<header[\s\S]*?<\/header>/,/<footer[\s\S]*?<\/footer>/,/<h1>[\s\S]*?<\/h1>/])assert.equal(section(current,re),section(previous,re));
 for(const id of ['a','b','c','d','e','f'])assert.equal(section(current,new RegExp(`<input id="${id}"[^>]*>`)),section(previous,new RegExp(`<input id="${id}"[^>]*>`)).replace(id==='c'?'min=".01"':'NO_REPLACEMENT',id==='c'?'min="0"':'NO_REPLACEMENT'));
-for(const p of ['assets/js/main.js','assets/js/calculators/calculators.js','assets/js/calculators/expansion.js','index.html','sitemap.xml','robots.txt','llms.txt','tools/rebuild-content.mjs'])assert.equal(normalize(read(p)),normalize(old(p)),`Unrelated source changed: ${p}`);
-const changes=execFileSync('git',['diff','--name-only',baseline],{encoding:'utf8'}).trim().split(/\r?\n/).filter(p=>p.endsWith('.html'));assert.deepEqual(changes,[file]);
+// Preserve the historical delivery scope without blocking future, unrelated releases.
+const delivered='5e5c6dc1369ee155df32d6685732e3178961ac2d';
+for(const p of ['assets/js/main.js','assets/js/calculators/calculators.js','assets/js/calculators/expansion.js','index.html','sitemap.xml','robots.txt','llms.txt','tools/rebuild-content.mjs'])assert.equal(normalize(execFileSync('git',['show',`${delivered}:${p}`],{encoding:'utf8'})),normalize(old(p)),`Imposition delivery changed unrelated source: ${p}`);
+const changes=execFileSync('git',['diff','--name-only',baseline,delivered],{encoding:'utf8'}).trim().split(/\r?\n/).filter(p=>p.endsWith('.html'));assert.deepEqual(changes,[file]);
 assert.ok(current.includes('imposition.js?v=imposition-20261104a'));assert.ok(!current.includes('data-copy'));
 console.log(`IMPOSITION QA PASS: 8 independent geometry/area/unit-basis fixtures, ${bad.length} invalid/range cases, scaled SVG and bounded-render checks; metadata/Header/Footer/IDs/defaults and shared assets preserved.`);

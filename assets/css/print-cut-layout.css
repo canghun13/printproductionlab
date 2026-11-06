@@ -1,0 +1,35 @@
+.print-cut-tool{align-items:start!important;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)!important}
+.print-cut-tool>.panel,.pc-detail{min-width:0}
+.print-cut-tool .pc-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.print-cut-tool label{display:grid;gap:6px;min-width:0;margin:0 0 12px}
+.print-cut-tool .pc-fields label{grid-template-rows:3.2em 46px auto;align-content:start}
+.print-cut-tool label span{align-self:end}
+.print-cut-tool input,.print-cut-tool textarea{display:block;box-sizing:border-box;width:100%;min-width:0;margin:0!important}
+.print-cut-tool input{height:46px!important}
+.print-cut-tool textarea{min-height:148px;padding:12px;resize:vertical;font:16px/1.45 ui-monospace,Consolas,monospace;background:#fff;color:#172620;border:1px solid #76867c}
+.print-cut-tool small{margin:0;line-height:1.4}
+.print-cut-tool .pc-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+.print-cut-tool .pc-actions button{margin:0;min-height:46px;width:auto!important;min-width:140px}
+.calculator.print-cut-tool>.result strong{font:700 clamp(1.45rem,2.6vw,2.15rem)/1.15 Arial,sans-serif}
+.print-cut-tool .result p{overflow-wrap:anywhere}
+.pc-detail{margin:20px 0 32px}
+.pc-detail[hidden]{display:none!important}
+.pc-diagram,.pc-coupon svg{display:block;width:100%;height:auto;max-height:450px;margin:14px 0;background:#fff;border:1px solid #566a60}
+.pc-diagram rect{vector-effect:non-scaling-stroke}
+.pc-coupon svg :is(rect,circle,polygon){vector-effect:non-scaling-stroke;stroke-width:1.4px}
+.pc-scroll-note{font-size:.9rem}
+.pc-sheet{fill:#fff}
+.pc-zone{fill:#f9c9c9;stroke:#a83131}
+.pc-cover{fill:#b8e6bf;stroke:#236635}
+.pc-art{fill:none;stroke:#1546a0;stroke-width:2}
+.pc-table{overflow:auto;max-height:420px;border:1px solid #87958a;background:#fff}
+.pc-table table{width:100%;min-width:490px;border-collapse:collapse;color:#14241c;background:#fff}
+.pc-table th,.pc-table td{padding:8px 10px;text-align:left;border-bottom:1px solid #c3cec6}
+.pc-table th{background:#e4eee6;color:#14241c}
+@media(max-width:768px){
+ .print-cut-tool{display:block!important}
+ .print-cut-tool .pc-fields{grid-template-columns:1fr}
+ .print-cut-tool .pc-fields label{grid-template-rows:auto 46px auto}
+ .print-cut-tool .pc-actions{display:grid}
+ .print-cut-tool .pc-actions button{width:100%!important}
+}
