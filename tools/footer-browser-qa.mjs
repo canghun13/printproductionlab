@@ -45,6 +45,26 @@ try{
   page.on('pageerror',e=>errors.push(e.message));
   page.on('console',m=>{if(m.type()==='error'&&!/net::ERR_FAILED|net::ERR_BLOCKED_BY_CLIENT|404 \(Not Found\)/.test(m.text()))errors.push(m.text());});
   page.on('response',r=>{if(r.url().startsWith(base+'/')&&r.status()>=400&&!r.url().endsWith('/404.html'))errors.push(`${r.status()} ${r.url()}`);});
+  // Independent browser-native form.reset() oracle for delegated field reset.
+  await page.setContent(`<section class="calculator"><form>
+    <select id="implicit"><option>A</option><option>B</option></select>
+    <select id="explicit"><option>A</option><option selected>B</option></select>
+    <select id="disabled"><option disabled>A</option><optgroup disabled><option>B</option></optgroup><option>C</option></select>
+    <select id="empty"></select>
+    <select id="multi" multiple><option selected>A</option><option>B</option><option selected>C</option></select>
+    <select id="multi-empty" multiple><option>A</option><option>B</option></select>
+    <select id="listbox" size="3"><option>A</option><option>B</option></select>
+    <select id="last"><option selected>A</option><option selected>B</option></select>
+    <input id="input" value="12"><textarea id="text">original</textarea>
+    <button type="button" data-reset>Reset</button></form><div class="result">Initial</div></section><script>${await fs.readFile(path.join(root,'assets/js/main.js'),'utf8')}</script>`);
+  const resetOracle=await page.evaluate(()=>{
+    const fields=[...document.querySelectorAll('select,input,textarea')];
+    const state=()=>fields.map(e=>({id:e.id,value:e.value,selected:e.tagName==='SELECT'?[...e.options].map(o=>o.selected):null}));
+    const mutate=()=>fields.forEach(e=>{if(e.tagName==='SELECT'){for(const o of e.options)o.selected=false;if(e.options.length)e.options[e.options.length-1].selected=true;}else e.value='changed';});
+    mutate();document.querySelector('form').reset();const expected=state();
+    mutate();document.querySelector('[data-reset]').click();return{expected,actual:state()};
+  });
+  assert.deepEqual(resetOracle.actual,resetOracle.expected,'Reset must match native form.reset selectedness/defaults');
   async function measure(route,width){
     await page.setViewportSize({width,height:900});
     const response=await page.goto(base+route,{waitUntil:'load'});
@@ -97,6 +117,8 @@ try{
       await measure(route,390);
       if(!await page.locator('.calculator').count())continue;
       const result=page.locator('.result').first(),initial=await result.innerHTML();
+      const fields=()=>page.locator('.calculator input,.calculator select,.calculator textarea').evaluateAll(es=>es.map(e=>({id:e.id,value:e.value})));
+      const defaults=await fields();
       assert.equal(await page.locator('[data-copy]').count(),0,`${route}: initial copy`);
       await page.locator('.calculator button:not([data-copy]):not([data-reset])').first().click();
       await result.locator('[data-copy]').waitFor({state:'visible'});
@@ -104,9 +126,19 @@ try{
       await result.locator('[data-copy]').click();
       await page.getByRole('button',{name:'Copy calculation result'}).filter({hasText:'Copied'}).waitFor();
       const copied=await page.evaluate(()=>navigator.clipboard.readText());assert.ok(copied.trim().length>0);
+      // A cleared result alone is not a successful Reset: mutate every select,
+      // restore actual initial field values, then prove a second calculation works.
+      await page.locator('.calculator select').evaluateAll(es=>es.forEach(e=>{if(e.options.length>1){e.selectedIndex=(e.selectedIndex+1)%e.options.length;e.dispatchEvent(new Event('change',{bubbles:true}));}}));
       await page.locator('[data-reset]').click();assert.equal(await result.innerHTML(),initial,`${route}: reset`);
+      assert.deepEqual(await fields(),defaults,`${route}: reset field values`);
       assert.equal(await page.locator('[data-copy]').count(),0,`${route}: reset copy`);
-      functions.push({route,calculate:'PASS',copy:'PASS',reset:'PASS'});
+      await page.locator('.calculator button:not([data-copy]):not([data-reset])').first().click();
+      await result.locator('[data-copy]').waitFor({state:'visible'});
+      assert.ok(!/NaN|Infinity|undefined/.test(await result.innerText()),`${route}: rerun`);
+      await result.locator('[data-copy]').click();
+      await page.getByRole('button',{name:'Copy calculation result'}).filter({hasText:'Copied'}).waitFor();
+      assert.equal(await page.evaluate(()=>navigator.clipboard.readText()),copied,`${route}: rerun clipboard`);
+      functions.push({route,calculate:'PASS',copy:'PASS',reset:'PASS',fieldDefaults:'PASS',rerun:'PASS'});
     }
     await measure('/tools/booklet-creep-calculator.html',390);
     const menu=page.locator('header button');await menu.click();assert.equal(await menu.getAttribute('aria-expanded'),'true');await menu.click();assert.equal(await menu.getAttribute('aria-expanded'),'false');
@@ -114,7 +146,7 @@ try{
     await page.locator('[data-reset]').click();await page.locator("button[onclick=\"run('creep')\"]").click();assert.equal(await page.locator('.result strong').innerText(),'1.50 mm');
     assert.equal(functions.length,boundaryOnly?0:66);assert.deepEqual(errors,[]);
   }
-  const report={mode:live?'live':'local',reproduce,baseline,renders,functions,errors,unchanged,visuals,output};
+  const report={mode:live?'live':'local',reproduce,resetOracle,baseline,renders,functions,errors,unchanged,visuals,output};
   await fs.writeFile(path.join(output,'report.json'),JSON.stringify(report,null,2));
   console.log(JSON.stringify({mode:report.mode,reproduce,baseline:baseline.map(r=>({width:r.width,overflow:r.overflow,columns:r.columns})),renders:renders.length,functions:functions.length,errors,unchanged,output}));
 }finally{await browser.close();if(server)await new Promise(r=>server.close(r));}

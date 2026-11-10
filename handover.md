@@ -1,9 +1,20 @@
 # Print Production Lab — Project Handover
 
-Last updated: 2026-11-06
+Last updated: 2026-11-10
 Project status: Production live; current expansion documented below
 Primary working language for project documentation: Korean
 Public site language: English
+
+## Weekly growth/search decision — 2026-11-10
+
+- **FIX — technical defect corrected: shared Reset/select 복원**. 신규 cluster/공개 페이지0. 실사이트 Drawing Scale Converter/Plot Sheet Fit Planner는 Reset 후 단위·용지 select가 빈값이 되어 재계산 TypeError, Web Tension Force는200N→35.03N으로 조용히 바뀌는 오류 재현. 숫자-only Scaling과 별도 복원되는 Smart Label은 정상 대조군. 원인: select에도 input용 defaultValue 대입. 계산식 아닌 공통 main.js의 field restoration 블록만 수정; 나머지 shared JS 소스 불변 검사 추가.
+- 시작 clean main/local/cached origin/actual remote/fetched origin 모두 `3cdf9b858e9e8f2ce7f00ac73cbd7fb858a64d42`,0/0. Fetch만 실행, 사용자 작업·다른환경 작업 추정 덮어쓰기/reset/stash/설치 없음. Inventory109HTML/66Tools/20Guides/9References/9hubs/5other, sitemap108/orphan0 유지. 최신 완료 cluster는11/6 Print & Cut.
+- 재첨부된 정확한5개 모두 읽음. 두 Coverage ZIP은 archive SHA는 다르지만 내부3CSV 전체내용 동일; Aug14–Nov6, Discovered24(Oct23의36→Oct24의24). 감소12를 indexed12로 추정 금지.24crawl모두1970 sentinel, aggregate indexed/Crawled/excluded/redirect 미제공. **이번 첨부에 GSC Performance 없음**: Google clicks/impressions/CTR/최근7일/pages/queries unavailable, 이전6/977을 최신값으로 대체 안 함.
+- Bing기간미제공:64pages846impressions/27clicks,470keywords743/27. Unescaped quote6records를 고정numeric suffix로 전체복구검증, unmatched/duplicate/numeric anomalies0. 이전746/24·659/24 대비 +100/+3·+84/+3은 snapshot차이. Scaling110/4/4.64, Runtime88/2, Imposition30/2, Creep35/4, Winding18/3. 큰 pasted-data검색어 원문공개/분할수요화 안 함.
+- GA4 Oct13–Nov9:95active/92new/11.1053s/368events. First-source active Direct65/Bing12/Google10/ChatGPT5/DDG1/Yahoo1 합94, property95와1차이 명시. Sessions66/13/11/6/1/2 합99. Direct68.42%/Ashburn15/Singapore26로 봇·신규Tool인기 단정 안 함. 이동28일창이므로 검증된 주간성장 주장 안 함. QA analytics차단.
+- Priority A 선택. Scaling65/Imposition68은 현재 검색의도 기능 공백 미확인으로 OBSERVE; Tension89는 실제 Reset결함 FIX(판단점수·KD아님). Exclusion 검토, expansion 고려했으나 이번40-family discovery branch 미실행/미주장. 저유입·직전출시 자체를 확장 금지 규칙으로 삼지 않음. 상세 `research/weekly-growth-review-2026-11-10.md`.
+- 기존 QA의 blind spot(결과가 비워졌는지만 검사)을 수정: 모든66개에서 select변경→Reset→초기 field값→재계산→동일 clipboard까지 검사. Native form.reset과10개 제어 fixture 비교, 영향3routes×6폭 target QA 추가. 이전 Data Merge/Print & Cut의 historical preservation은 당시 delivery커밋 검증으로 유지하고 이번 shared 변경은 별도 exact-boundary 검사. 모든HTML/CSS/계산모듈/SEO/GA4/sitemap/robots/llms/Header/Footer/owner badge 불변.
+- 최종-source 로컬109×6=654renders/66Calculate·Copy·Reset·fielddefaults·rerun PASS, native Reset10fixture PASS, target18renders·오류복원·clipboard·정렬·스크린샷 PASS. Static/navigation/content/encoding/Copy/기존계산/신규source contract PASS. 실배포 마감은 아래 후속 기록과 Git이력 기준; 아직 미완료 배포를 PASS로 선언하지 않음.
 
 ## Aggressive workflow expansion — 2026-11-06
 

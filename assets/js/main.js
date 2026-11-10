@@ -77,7 +77,16 @@ document.addEventListener('click', event => {
   if (!event.target.matches('[data-reset]')) return;
   const calculator = event.target.closest('.calculator');
   const result = calculator?.querySelector('.result');
-  calculator?.querySelectorAll('input,select,textarea').forEach(field => { field.value = field.defaultValue; });
+  calculator?.querySelectorAll('input,select,textarea').forEach(field => {
+    if (field.tagName === 'SELECT') {
+      const options = [...field.options];
+      if (field.multiple) options.forEach(option => { option.selected = option.defaultSelected; });
+      else {
+        const defaults = options.filter(option => option.defaultSelected);
+        field.selectedIndex = defaults.length ? defaults.at(-1).index : field.size > 1 ? -1 : options.findIndex(option => !option.disabled && !option.closest('optgroup')?.disabled);
+      }
+    } else field.value = field.defaultValue;
+  });
   if (result) result.innerHTML = result.dataset.resetContent || 'Enter values to calculate.';
   calculator?.querySelector('.preview')?.replaceChildren();
 });

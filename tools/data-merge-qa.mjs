@@ -61,7 +61,8 @@ test('row limit enforced',()=>assert.throws(()=>parse('ID\n'+'1\n'.repeat(20001)
 test('column limit enforced',()=>assert.throws(()=>parse(Array(101).fill('x').join(',')+'\n1'),/100 columns/));
 const baseline='e2a986a5d719537012b4b99d87b5d8b13c395732';
 test('old calculation and shared layout assets unchanged',()=>{
-  for(const file of ['assets/js/main.js','assets/css/layout-refinement.css','assets/css/styles.css','assets/css/reprographics-layout.css','tools/book-spine-width-calculator.html'])assert.equal(fs.readFileSync(file,'utf8').replaceAll('\r\n','\n'),execFileSync('git',['show',baseline+':'+file],{encoding:'utf8'}).replaceAll('\r\n','\n'));
+  assert.equal(execFileSync('git',['show','f214b94:assets/js/main.js'],{encoding:'utf8'}).replaceAll('\r\n','\n'),execFileSync('git',['show',baseline+':assets/js/main.js'],{encoding:'utf8'}).replaceAll('\r\n','\n'));
+  for(const file of ['assets/css/layout-refinement.css','assets/css/styles.css','assets/css/reprographics-layout.css','tools/book-spine-width-calculator.html'])assert.equal(fs.readFileSync(file,'utf8').replaceAll('\r\n','\n'),execFileSync('git',['show',baseline+':'+file],{encoding:'utf8'}).replaceAll('\r\n','\n'));
   const old=execFileSync('git',['show',baseline+':index.html'],{encoding:'utf8'}),current=fs.readFileSync('index.html','utf8');assert.equal(current.split('</main>')[1],old.split('</main>')[1]);
 });
 console.log(`DATA MERGE QA PASS: ${cases.length} independent parser/data/sequence/assets/text/export/preservation checks`);
