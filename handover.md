@@ -1,9 +1,21 @@
 # Print Production Lab — Project Handover
 
-Last updated: 2026-11-10
+Last updated: 2026-11-18
 Project status: Production live; current expansion documented below
 Primary working language for project documentation: Korean
 Public site language: English
+
+## Weekly growth/search decision — 2026-11-18
+
+- **EXISTING-UPGRADE GO — Runtime 시간당/분당 속도 입력**. 동일 URL에 speed time unit 선택과 미반올림 계산 기반 minutes breakdown 추가. 신규 cluster/페이지0, 기존10/30 precision·11/10 Reset 수리 재작업 아님. 기본12000/6000/4→8h/480min 유지;100/min도동일,400/20/min→20min,12000/4000/min→3min. Unit전환은 숫자를 자동변환하지 않고 label갱신·이전결과/Copy제거, Reset→hour/default/label복원.
+- 시작 main/clean local/cached origin/actual remote/fetched origin 모두 `db3dfc560775ce88b57ddf72ce25b2ed7806d850`,0/0. Fetch만 수행, reset/stash/삭제/설치/환경재설정·다른환경 작업 추정 덮어쓰기 없음. Inventory109HTML/66Tools/20Guides/9References/9hubs/5other, sitemap108/orphan0 유지. 최신 cluster Print&Cut 완료상태 유지.
+- 정확한5개 첨부 모두 읽고 원본불변. GSC Aug16–Nov15:14clicks/1998impressions/0.7007%,55pages/97실제queryrecords(quotednewline복원). Countries/devices각14/1998검산;page합2134·query1/299은별도grain. 같은export Nov9–15=642/4 vs Nov2–8=403/4,+239/+59.31%,click동일. 이전11/10Performance미첨부,11/4의6/977은다른누적창. Runtime1248/7/6.81,Imposition45/3/14.29,Creep10/3/3.00. 분당4질문24impressions/0click를입력공백근거로사용하며7클릭전부·상업수요전체로단정하지않음.
+- Coverage Aug21–Nov13 Discovered29,11/6의24→11/7의29. 모두1970crawl sentinel,aggregate indexed/Crawled/excluded/redirect미제공. Print&Cut6경로가issue목록에있음은발견신호이지성공색인·thin판정아님. 숫자증가만으로SEO/링크/sitemap일괄작업·반복감사안함.
+- Bing기간미제공:65pages955/30,554keywords842/30. 인용부호6records 고정numeric suffix복원,unmatched/duplicate/numeric anomalies0. 이전846/27·743/27 대비+109/+3·+99/+3은snapshot차이. Scaling134/4,Runtime104/2,Imposition31/2,SheetYield19/1,Coil15/1. 큰pasted-query원문공개/수요분할안함.
+- GA4 Oct21–Nov17:103active/101new/8.6117s/372events. First-source active Direct73/Google13/Bing9/ChatGPT4/Yahoo2/Findly1/DDG1=103, sessions74/14/10/5/3/1/1=108. Findly.tools `(not set)`1은신규외부source신호이나engaged referral/ROI검증아님. Direct70.87%/Singapore19/Ashburn13로봇·인기단정안함. 이전95active/Google10/Bing12와의이동28일창비교를주간성장으로안봄. QAanalytics차단.
+- Runtime88/Imposition68/Scaling65(판단점수·SEO KD아님),현재실사이트hour전용입력/시작소스일치확인. Ricoh/Xerox의기기별ipm/시트/양면count정의로단위구분근거확인;ppm→press-sheet보편환산·기계권장속도없음. ExistingUpgrade선택,exclusion검토/expansion고려Yes이나40-family discovery미실행·미주장. 상세 `research/weekly-growth-review-2026-11-18.md`.
+- 공개변경 Runtime HTML1+전용rate JS1+기존전용CSS. 다른HTML/공통main·legacy계산·globalCSS/generator/SEO·GA4·URL/검색파일/Header/Footer/owner배지보존. 새10독립expected/13invalid+표시범위와이전precision/46otheroutputs PASS. Static109/content66+29/layoutorphan0/encoding/Copy/기존계산suite PASS.
+- 최종로컬Chrome36renders(Runtime5states×6폭+대조3×2폭),14추가fixture/hour/minute/현재clipboard/Resetlabel·값/error/rerun/menu/정렬top-bottom<0.6px PASS,checkederrors/overflow0.1440/1280/1024/900/768/390전체calculator screenshot·모바일결과하단육안확인. 공유자산불변이므로이번전체109×6/66interaction재실행주장없음. 구현push·실도메인배포검증은후속마감기록기준,아직production PASS선언아님.
 
 ## Weekly growth/search decision — 2026-11-10
 

@@ -90,7 +90,7 @@ for(const [type,rows]of Object.entries(inputCases))if(type!=='runtime')for(const
  assert.equal(evaluate(source),evaluate(before),type);unchanged++;
 }
 const oldHTML=execFileSync('git',['show',baseline+':tools/print-run-time.html'],{encoding:'utf8'});
-assert.equal(calculator.split('</head>')[0].replace('<link rel="stylesheet" href="../assets/css/print-run-time-layout.css?v=runtime-20261030a">',''),oldHTML.split('</head>')[0],'SEO and shared CSS head unchanged; only new page-scoped stylesheet allowed');
+assert.equal(calculator.split('</head>')[0].replace(/<link rel="stylesheet" href="\.\.\/assets\/css\/print-run-time-layout\.css\?v=runtime(?:-rate)?-\d{8}a">/,''),oldHTML.split('</head>')[0],'SEO and shared CSS head unchanged; only versioned page-scoped stylesheet allowed');
 const form=s=>s.split('<section class="calculator')[1].split('<section class="content-detail">')[0];
 assert.deepEqual([...form(calculator).matchAll(/<label>[\s\S]*?<\/label>/g)].map(m=>m[0]),[...form(oldHTML).matchAll(/<label>[\s\S]*?<\/label>/g)].map(m=>m[0]),'All original label/input/helper markup preserved');
 assert.ok(calculator.includes('<button onclick="run2(\'runtime\')">Calculate press time</button>'));
