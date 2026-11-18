@@ -76,10 +76,13 @@ The educational share limits commercial-demand inference but does not negate a l
 
 ## Delivery
 
-Pending implementation commit/push, Pages completion, ordinary live HTML/CSS/new-JS parity and the same targeted actual-domain browser checks. This is not yet a production PASS claim.
+- Implementation **`75874ef52ff6061734f5c1eb069a7f91b115b5cf`**, `Support per-minute print run time rates`, pushed to origin/main; actual remote SHA matched. [Pages run44245025372](https://github.com/canghun13/printproductionlab/actions/runs/44245025372) completed **success** for that exact SHA.
+- Ordinary actual-domain URLs match local source after BOM/CRLF normalization:Runtime HTML,its actual versioned new JS/scoped CSS,preserved main/expansion JS,sitemap,robots,llms **8/8 HTTP200/parity PASS**. No invented cache-buster URL or unnecessary cache-driven rewrite. Runtime Googlebot200 includes the new controller,selfcanonical,noindex absent;HTTP/www normalization unchanged.
+- Actual-domain Chrome **36 rendered states and14 additional fixture checks PASS**, matching local coverage. Hour/minute/equivalent-rate/20-minute/3-minute results,current clipboard,unit-change stale-result removal,Reset default unit/label/values,error recovery,short-time/scientific cases,mobile menu and3 existing calculator controls PASS. All6 widths,control top/bottom delta<0.6px,current overflow/offscreen/Header-H1/checked console/page/internal-asset failures0. Desktop/mobile full-calculator screenshots visually reviewed, including the complete minutes output and Copy row.
+- This closeout changes documentation only. Final documentation SHA and local/tracking/actual-remote synchronization are recorded in Git history and the final session report, avoiding a self-referential hash. Verified public assets are not changed again.
 
 ## Risks and next state
 
-No HIGH/MEDIUM unresolved in tested local scope; production validation remains a completion prerequisite. LOW:small/partly educational disclosed queries, absent page×query/daily attribution,Bing period missing,GA4 QA/direct mix and constant-speed model. No predicted traffic or immediate indexing guarantee.
+**HIGH0/MEDIUM0 unresolved in checked scope**, including the deployed Runtime workflow. LOW:small/partly educational disclosed queries, absent page×query/daily attribution,Bing period missing,GA4 QA/direct mix and constant-speed model. No predicted traffic or immediate indexing guarantee; current export predates this release.
 
 Next at most3:(1)Runtime hour/minute use and matched GSC page/query evidence, without attributing this export to today's change;(2)Print&Cut/DataMerge post-November13 issue/indexed/organic landing evidence;(3)Scaling/Imposition intent or exclusion-aware expansion only when a specific stronger gap appears.
