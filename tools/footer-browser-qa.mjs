@@ -113,6 +113,35 @@ try{
       }
       console.log(JSON.stringify({progress:'renders',width,completed:renders.length}));
     }
+    const paperMass=[];
+    if(!boundaryOnly)for(const [slug,mass,count,defaultMass] of [['m-weight','42.00 kg','1,000','0.01 kg'],['ream-weight','21.00 kg','500','0.005 kg']])for(const width of widths){
+      const route=`/tools/${slug}.html`;
+      await measure(route,width);
+      const result=page.locator('.result'),initial=await result.innerHTML();
+      const run=()=>page.locator('.calculator button:not([data-reset]):not([data-copy])').first().click();
+      assert.equal(await page.locator('[data-copy]').count(),0);
+      for(const [id,value] of [['a','700'],['b','500'],['c','120']])await page.locator('#'+id).fill(value);
+      await run();
+      assert.equal(await result.locator('strong').innerText(),mass);
+      assert.ok((await result.innerText()).includes(`for ${count} sheets`));
+      await result.locator('[data-copy]').click();
+      await page.getByRole('button',{name:'Copy calculation result'}).filter({hasText:'Copied'}).waitFor();
+      const copied=await page.evaluate(()=>navigator.clipboard.readText());
+      assert.ok(copied.includes(mass)&&copied.includes(`for ${count} sheets`));
+      assert.ok(!copied.includes('42000')&&!copied.includes('Copied'));
+      assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth),0);
+      const screenshot=path.join(output,`${slug}-mass-${width}.png`);
+      await page.locator('.calculator').screenshot({path:screenshot});visuals.push(screenshot);
+      await page.locator('#a').fill('0');await run();
+      assert.equal(await result.locator('.error').count(),1);
+      assert.equal(await page.locator('[data-copy]').count(),0);
+      await page.locator('[data-reset]').click();
+      assert.equal(await result.innerHTML(),initial);
+      assert.deepEqual(await page.locator('.calculator input').evaluateAll(es=>es.map(e=>e.value)),['100','10','10']);
+      await run();assert.equal(await result.locator('strong').innerText(),defaultMass);
+      paperMass.push({route,width,mass,count,defaultMass,clipboard:'PASS',error:'PASS',resetRerun:'PASS'});
+    }
+    if(!boundaryOnly)console.log(JSON.stringify({paperMass:paperMass.length,output}));
     for(const route of boundaryOnly?[]:routes){
       await measure(route,390);
       if(!await page.locator('.calculator').count())continue;

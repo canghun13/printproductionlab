@@ -1,9 +1,18 @@
 # Print Production Lab — Project Handover
 
-Last updated: 2026-11-18
+Last updated: 2026-11-24
 Project status: Production live; current expansion documented below
 Primary working language for project documentation: Korean
 Public site language: English
+
+## Weekly growth/search decision — 2026-11-24
+
+- **FIX — M-Weight/Ream Weight 공통 단위 오류**. 실사이트 700×500mm·120gsm 두 도구 모두 단위 없는 42000.00 재현; 대조 Paper Weight 1장 0.042kg, Runtime 8h·480min 정상. M 1,000장 42kg, ream 500장 21kg으로 수정. mm→m, GSM→g/장, 장수→kg 및 단위·장수 표시. 포장 제외; ream 500장 기준.
+- 시작 main/clean local/cached origin/actual remote/fetched origin 71b64ac9ef4bd9608ea77691dfc2c3a437f75ca4,0/0. Fetch만, reset/stash/설치 없음. 109HTML/66Tools/20Guides/9References/9hubs/5other, sitemap·Home-reachable108/orphan0; 최신 Print&Cut 유지.
+- 첨부5개 전부 원본불변. GSC Aug22–Nov21 14클릭/1975노출/0.7089%,54pages/97queries. Nov15–21 4노출/0클릭 vs Nov8–14 642/4, −99.38%. Runtime1247/7,Imposition41/3,Creep9/3. 급락 원인 미확정; HTTP/www 정규화, robots/sitemap200, Googlebot-UA 5표본200/selfcanonical/noindex없음.
+- Coverage Aug28–Nov16 Discovered28(29→28 Nov14), 1970 sentinel, Crawled/전체 indexed 미제공. Print&Cut6경로 목록 유지. Bing기간 미표기:66pages1019/30(+64/0),588keys897/30(+55/0); malformed quote6개 숫자 suffix 복원/unmatched·duplicate·range0. M-Weight33/2 vs18/1, Scaling136/4, Runtime125/2.
+- GA4 Oct27–Nov23 142active/141new/5.669s/481events. First-source Direct114(80.28%, 이전73),Google9,Bing10,ChatGPT4,Yahoo2,DDG1,Findly1,boostdomainrating1; sessions148. 두 외부 (not set) 각1은 referral ROI 미검증. 이동창·QA·낮은 참여시간으로 성장/봇 단정 안 함.
+- Priority A. Paper mass94 FIX, Runtime68/Scaling65 OBSERVE. Exclusions 검토, 40-family 미실행, 신규 cluster·페이지0. 공개 변경은 expansion.js 2분기/해당 HTML2 설명·asset version. 다른 계산·공통 Reset/CSS/SEO/URL/검색파일/Footer/owner badge 불변. Static 및 12정답/22오류/44unchanged fixture PASS. 자세한 근거·배포: research/weekly-growth-review-2026-11-24.md.
 
 ## Weekly growth/search decision — 2026-11-18
 

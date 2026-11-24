@@ -82,12 +82,13 @@ for(const input of rangeErrors){const output=calculate(...input);assert.ok(outpu
 const baseline='86902e19114e9cb02e7d751dee670d8927ea14fc';
 const before=execFileSync('git',['show',baseline+':assets/js/calculators/expansion.js'],{encoding:'utf8'});
 const removeRuntime=s=>s.replace(/if\(type==='runtime'\)[\s\S]*?(?=if\(type==='rolldiameter'\))/,'').replaceAll('\r\n','\n');
-assert.equal(removeRuntime(source),removeRuntime(before),'No non-runtime implementation change');
+const delivered=execFileSync('git',['show','056886f:assets/js/calculators/expansion.js'],{encoding:'utf8'});
+assert.equal(removeRuntime(delivered),removeRuntime(before),'No non-runtime implementation change in the October Runtime delivery');
 const inputCases=vm.runInNewContext(fs.readFileSync('tools/verify-expanded.mjs','utf8').split(';let count=')[0]+';cases',{});
 let unchanged=0;
 for(const [type,rows]of Object.entries(inputCases))if(type!=='runtime')for(const [a,b,c]of rows){
  const evaluate=code=>{const fields={a:{value:a},b:{value:b},c:{value:c},result:{innerHTML:''}},context=vm.createContext({document:{getElementById:id=>fields[id]},Number,Math,Set});vm.runInContext(code,context);context.run2(type);return fields.result.innerHTML;};
- assert.equal(evaluate(source),evaluate(before),type);unchanged++;
+ assert.equal(evaluate(delivered),evaluate(before),type);unchanged++;
 }
 const oldHTML=execFileSync('git',['show',baseline+':tools/print-run-time.html'],{encoding:'utf8'});
 assert.equal(calculator.split('</head>')[0].replace(/<link rel="stylesheet" href="\.\.\/assets\/css\/print-run-time-layout\.css\?v=runtime(?:-rate)?-\d{8}a">/,''),oldHTML.split('</head>')[0],'SEO and shared CSS head unchanged; only versioned page-scoped stylesheet allowed');

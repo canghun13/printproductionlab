@@ -67,6 +67,7 @@ const baseline='232a9ed0d6313b4d4c883afa05bf826fc307349d';
 const old=p=>execFileSync('git',['show',baseline+':'+p],{encoding:'utf8'}).replace(/\r/g,'').trimEnd();
 // Verify that delivery's shared-JS preservation without blocking later Reset fixes.
 eq(execFileSync('git',['show','9d03e77:assets/js/main.js'],{encoding:'utf8'}).replace(/\r/g,'').trimEnd(),old('assets/js/main.js'));
-for(const p of ['assets/js/calculators/imposition.js','assets/js/calculators/expansion.js','assets/css/layout-refinement.css','robots.txt','tools/print-imposition-calculator.html'])eq(read(p).replace(/\r/g,'').trimEnd(),old(p));
+eq(execFileSync('git',['show','9d03e77:assets/js/calculators/expansion.js'],{encoding:'utf8'}).replace(/\r/g,'').trimEnd(),old('assets/js/calculators/expansion.js'));
+for(const p of ['assets/js/calculators/imposition.js','assets/css/layout-refinement.css','robots.txt','tools/print-imposition-calculator.html'])eq(read(p).replace(/\r/g,'').trimEnd(),old(p));
 for(const p of ['index.html','tools/index.html','guides/index.html'])eq(read(p).slice(read(p).indexOf('</main>')).replace(/\r/g,'').trimEnd(),old(p).slice(old(p).indexOf('</main>')));
 console.log('PRINT & CUT QA PASS: '+checks+' geometry, bounds, independent oracle, export and preservation assertions.');
