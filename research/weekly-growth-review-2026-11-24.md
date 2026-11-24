@@ -31,7 +31,7 @@ GSC multiline quoted queries counted as logical records. Country/device/daily to
 
 ## Bing and GA4
 
-- Bing pages **1,019 impressions / 30 clicks / 2.9441% CTR**, keywords **897 / 30 / 3.3445%**. Prior955/30 and842/30: +64 and+55 impressions, unchanged clicks. No matched weekly claim. Leaders: Scaling136/4, Runtime125/2, Home83/1, PaperWeight61/0, Creep38/4, Imposition35/2, M-Weight33/2 vs18/1, Ream22/0. Keyword m weight calculator10/1, web tension drive roller torque8/0, print imposition calculator7/0; gsm to m-weight has one click.
+- Bing pages **1,019 impressions / 30 clicks / 2.9441% CTR**, keywords **897 / 30 / 3.3445%**. Prior955/30 and842/30: +64 and+55 impressions, unchanged clicks. No matched weekly claim. Leaders: Scaling136/4, Runtime125/2, Home83/1, PaperWeight61/0, Creep38/4, Imposition35/2, M-Weight33/2 vs18/1, Ream25/0 (prior22/0). Keyword m weight calculator10/1, web tension drive roller torque8/0, print imposition calculator7/0; gsm to m-weight has one click.
 - GA4 **142 active /141 new /5.669s average engagement /481 events** vs103/101/8.612s/372 in overlapping previous window. Direct first-source active114 (80.28%; prior73) increased41 against +39 overall. Google9 vs13, Bing10 vs9, ChatGPT4,Yahoo2,DDG1,Findly1,boostdomainrating1; sum142. Sessions148: Direct114,Google10,Bing13,ChatGPT5,Yahoo3,DDG1,Findly1,boostdomainrating1.
 - Findly and boostdomainrating each1 with medium (not set), not verified meaningful referrals. 150 views across title rows (Home21,Imposition9,RollDiameter7,Runtime6). Direct mix, weaker engagement, Singapore21/Ashburn13 and prior QA constrain interpretation; not proof of bots. Current QA blocks analytics.
 
@@ -47,9 +47,10 @@ Priority A: paper mass repair 94/100 editorial score, FIX. Runtime68/Scaling65 O
 
 ## QA and delivery
 
-- Static/navigation/layout/content/encoding/Copy/Reset and existing calculation suites PASS. New tests: 12 literal outputs,22 invalid/range outputs,44 other dispatcher samples unchanged. Full-browser regression checks 109 pages×6 widths, 66 tools, 12 additional target viewport interactions/screenshots. Production closeout to be appended after verification.
+- Static/navigation/layout/content/encoding/Copy/Reset and existing calculation suites PASS. New tests: 12 literal outputs,22 invalid/range outputs,44 other dispatcher samples unchanged. Chrome local and actual-domain each: **654 current renders (109×1440/1280/1024/900/768/390),66 Calculate/Copy/Reset/field defaults/rerun/clipboard checks,12 additional target viewport interactions (42kg/21kg, pack basis, real Copy, error, Reset and default rerun)**. Current overflow and checked browser errors0. Desktop/mobile screenshots reviewed. Deliberate injection of historical Footer overflow is not a current result. Ream non-500-pack guidance follow-up is prose-only, validated by static/content checks and final live suite.
+- Implementation c122f17ecfdb00e118068f8e6f22e6f0b37accf7 [Pages run45306347640](https://github.com/canghun13/printproductionlab/actions/runs/45306347640) success; final public revision b34b5c17f0987f3343ff5bd5870bde5950412d47 [Pages run45306483198](https://github.com/canghun13/printproductionlab/actions/runs/45306483198) success. Verified ordinary live URLs: two HTML pages, expansion JS all four actual URL variants, main.js, robots, sitemap, llms **10/10 HTTP200 and normalized content parity**. Both modified Googlebot-UA responses200/self-canonical/noindex absent/new script. Programmatic browser tests did not send analytics. Documentation closeout does not change public code; final SHA follows Git history/final session.
 
 ## Risks and next state
 
-- Google search-impression decline remains unexplained. No hypothesis of a technical blocker without corroboration.
+- HIGH0 in checked release scope. MEDIUM: Google search-impression decline remains unexplained and warrants matched-window follow-up; no evidence of a site-side blocker in sampled checks. LOW: Bing period unknown, GA4/QA attribution, nominal paper mass estimates.
 - Next: (1) compare next finalized GSC daily window; if sustained, use page/date filters and actual URL Inspection; (2) review Print & Cut/Data Merge coverage and organic landings without equating issue-list removal with indexing; (3) monitor corrected M-Weight/Ream use and limit attribution of direct or isolated directory traffic.

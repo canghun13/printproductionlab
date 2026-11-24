@@ -14,6 +14,8 @@ Public site language: English
 - GA4 Oct27–Nov23 142active/141new/5.669s/481events. First-source Direct114(80.28%, 이전73),Google9,Bing10,ChatGPT4,Yahoo2,DDG1,Findly1,boostdomainrating1; sessions148. 두 외부 (not set) 각1은 referral ROI 미검증. 이동창·QA·낮은 참여시간으로 성장/봇 단정 안 함.
 - Priority A. Paper mass94 FIX, Runtime68/Scaling65 OBSERVE. Exclusions 검토, 40-family 미실행, 신규 cluster·페이지0. 공개 변경은 expansion.js 2분기/해당 HTML2 설명·asset version. 다른 계산·공통 Reset/CSS/SEO/URL/검색파일/Footer/owner badge 불변. Static 및 12정답/22오류/44unchanged fixture PASS. 자세한 근거·배포: research/weekly-growth-review-2026-11-24.md.
 
+- 구현 c122f17, 비표준 pack 설명 b34b5c1 main push 및 [Pages 배포 성공](https://github.com/canghun13/printproductionlab/actions/runs/45306483198). 실제 HTML2+JS5+검색파일3 10/10 HTTP200·소스 일치, 수정 URL2 Googlebot-UA200/selfcanonical/noindex없음. 로컬·실도메인 각각654 renders(1440/1280/1024/900/768/390)·66 Calculate/Copy/Reset/기본값/rerun·12무게검증 PASS, 현재 overflow·checked errors0. 데스크톱·모바일 screenshot 육안 확인, analytics 차단. HIGH0, MEDIUM 최근 Google 노출 급락 원인 미확정, LOW Bing기간/GA4 attribution/명목 stock 조건. 다음: GSC 동일기간·URL Inspection, Print&Cut/DataMerge 색인·landing, M-Weight/Ream 실제 사용. 문서 마감 커밋은 공개 코드 추가 변경 없음.
+
 ## Weekly growth/search decision — 2026-11-18
 
 - **EXISTING-UPGRADE GO — Runtime 시간당/분당 속도 입력**. 동일 URL에 speed time unit 선택과 미반올림 계산 기반 minutes breakdown 추가. 신규 cluster/페이지0, 기존10/30 precision·11/10 Reset 수리 재작업 아님. 기본12000/6000/4→8h/480min 유지;100/min도동일,400/20/min→20min,12000/4000/min→3min. Unit전환은 숫자를 자동변환하지 않고 label갱신·이전결과/Copy제거, Reset→hour/default/label복원.
